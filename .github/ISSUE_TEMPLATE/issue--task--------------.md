@@ -8,16 +8,15 @@ assignees: ''
 ---
 
 ### ISSUE
-- Group:  `client`, `server`, `sr`
-- Type: `bug`, `feature`, `delete`
-- Detail: fix actions from client redux
+- Group:  `클라이언트`, `서버`, `기타`
+- Type: `오류`, `제작`, `수정`, `삭제`
+- Detail: 내용 요약
 
-### TODO
-1. [ ] Job1
-2. [ ] Job2
-3. [ ] Job3
+### 할 일
+1. [ ] 토글 버튼 기능 추가 (예시)
+2. [ ] CSS 다듬기 (예시)
 
-### Estimated time
+### 소요 시간
 > Pick one
 ### `0.5h`
 ### `1h`
