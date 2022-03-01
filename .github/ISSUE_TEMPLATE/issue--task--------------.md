@@ -8,8 +8,8 @@ assignees: ''
 ---
 
 ### ISSUE
-- Group:  `클라이언트`, `서버`, `기타`
-- Type: `오류`, `제작`, `수정`, `삭제`
+- Group:  `client`, `server`, `other`
+- Type: `error`, `feature`, `update`, `delete`
 - Detail: 내용 요약
 
 ### 할 일
