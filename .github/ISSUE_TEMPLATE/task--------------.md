@@ -9,7 +9,7 @@ assignees: ''
 
 ### ISSUE
 - Group:  `client`, `server`, `other`
-- Type: `feature`, `update`, `delete`, `update`
+- Type: `feature`, `update`, `delete`, `error`
 
 ### 할 일
 1. [ ] 토글 버튼 기능 추가 (예시)
