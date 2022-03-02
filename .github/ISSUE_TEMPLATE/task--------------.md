@@ -9,7 +9,7 @@ assignees: ''
 
 ### ISSUE
 - Group:  `client`, `server`, `other`
-- Type: `error`, `feature`, `update`, `delete`
+- Type: `feature`, `update`, `delete`, `update`
 
 ### 할 일
 1. [ ] 토글 버튼 기능 추가 (예시)
@@ -24,5 +24,5 @@ assignees: ''
 ### `3h`
 
 ### Labels
-- Sprint: `Sprint__NUMBER__`
-- Urgency: `High`, `Middle`, `Low`
+- Sprint: `Sprint__2__`
+- Urgency: `High`
