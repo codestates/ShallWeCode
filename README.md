@@ -54,3 +54,9 @@
 <details>
 <summary>양희제</summary>
 <div markdown="1">    
+   
+💁‍♂️ **백엔드**
+
+- DB 스키마 작성
+- 유저 CRUD
+
