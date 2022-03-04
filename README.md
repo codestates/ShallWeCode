@@ -1,4 +1,5 @@
 
+![logo (2)](https://user-images.githubusercontent.com/86206374/156135517-6f4821d8-f091-4771-b69e-3db66143323e.png)
 # 검증된 팀원과 함께, 성공적인 프로젝트! Shall We Code
 
 프로젝트 할 팀원을 구했는데 마음에 안드셨던 경험이 있으신가요?
