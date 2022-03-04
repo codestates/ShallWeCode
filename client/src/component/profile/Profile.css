@@ -1,0 +1,28 @@
+.basicSize{
+  width: 55%;
+  height: 100%;
+  background-color: #ECECEC;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.mainProfile{
+  /* margin-left: 20%; */
+  margin-top: 10%;
+  /* background-color: #C4C4C4; */
+  display: flex;
+  flex-direction: row;
+}
+
+.profileText{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin-left: 10px;
+}
+.delete{
+  width: 83px;
+  height: 25px;
+  font-size: 16px;
+}
