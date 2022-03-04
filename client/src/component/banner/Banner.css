@@ -1,0 +1,29 @@
+/* *{
+  background-color: #F8F9FA;
+} */
+
+
+.banner{
+  /* background-color: #ECECEC; */
+  margin-top: 40px;
+}
+
+
+.bannerImg{
+  /* width: 100%; */
+  /* background-color: aqua; */
+  display : block ;
+  text-align : center ;
+}
+
+.mainImg{
+  /* width: 35%; */
+  /* margin-left:40%;   */
+  display : inline;
+
+}
+
+.banner_comment{
+  text-align: center;
+  font-size: 28px;
+}
