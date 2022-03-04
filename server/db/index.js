@@ -5,13 +5,13 @@ const config = require('../config/config')
 dotenv.config()
 
 const con = mysql.createConnection(
-    config[process.env.NODE_ENV || 'test']
+	config[process.env.NODE_ENV || 'test']
 )
 
-con.connect( (err) => {
-    if (err) {
-        throw err
-    }
+con.connect((err) => {
+	if (err) {
+		throw err
+	}
 })
 
 module.exports = con
