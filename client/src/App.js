@@ -7,6 +7,7 @@ import Navbar from './component/navbar/Navbar';
 import Main from './page/main/Main';
 import Login from './page/login/Login';
 import SignUp from './page/signUp/SignUp';
+import Setting from './page/setting/Setting';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route path="/SignUp">
           <SignUp />
+        </Route>
+        <Route path="/Setting">
+          <Setting />
         </Route>
     </BrowserRouter>
   );
