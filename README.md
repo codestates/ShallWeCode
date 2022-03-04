@@ -60,3 +60,22 @@
 - DB 스키마 작성
 - 유저 CRUD
 
+</div>
+</details>
+
+<details>
+<summary>유균한</summary>
+<div markdown="1">    
+   
+💁‍♂️ **백엔드**
+
+- API문서 작성
+- 게시글 CRUD
+
+</div>
+</details>
+
+
+
+
+
