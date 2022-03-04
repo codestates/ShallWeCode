@@ -1,0 +1,10 @@
+.filterMain{
+  width: 80%;
+  margin-left: 10%;  
+
+}
+
+.filterImg{
+  display: flex;
+  justify-content: space-between;
+}

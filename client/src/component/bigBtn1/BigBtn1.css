@@ -1,0 +1,19 @@
+.bigBtn1{
+  width: 305px;
+  height: 55px;
+  background-color: #38555A;
+  color: white;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input{
+  width: 305px;
+  height: 55px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
