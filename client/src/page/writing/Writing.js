@@ -20,7 +20,7 @@ function Writing(props) {
       <Navbar />
 
 
-    <div className="">
+    <div className="writingSection">
       <div className="categoryName">
         
         <div className="types">
@@ -33,13 +33,13 @@ function Writing(props) {
       </div>
       </div>
           
-      <div>
-        <label className="mediumSizeFont">제목</label>
-        <input className="writingTitle"></input>
+      <div className="writingTitlMainDiv">
+        <div className="mediumSizeFont writingTitleDiv ">제목</div>
+        <input  className="writingTitle"></input>
       </div>
   
         <div className="selectLanguage">
-          <div className ="mediumSizeFont categorySelectLanguage">사용언어</div>
+          <label className ="mediumSizeFont categorySelectLanguage">기술스택</label>
           <Select
           
           isMulti
@@ -63,7 +63,7 @@ function Writing(props) {
       />
       <div className="writingBtnDiv">
         <button className="miniBtn">글 등록</button>
-        <button className="miniBtn" >취소</button>
+        <button className="miniBtn writingCancelBtn" >취소</button>
       </div>
       
     </div>

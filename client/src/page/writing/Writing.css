@@ -9,19 +9,22 @@
   /* background-color: silver; */
   padding: 80px;
   text-align: left;
-  max-width: 1500px;
+  max-width: 1200px;
+  min-width: 480px;
   margin: auto;
 }
 
 .basic-multi-select{
-  width: 1000px;
+  width: 90%;
   margin-left: 35px;
 }
 
+/* 제목 */
 .writingTitle{
-  width: 1000px;
+  display: block;
+  width: 90%;
   border: 1px solid #CBCBCB;
-  margin-left: 76px;
+  margin-left: 15px;
   border-radius: 2.5px;
 }
 
@@ -29,11 +32,6 @@
   display: flex;
   flex-direction: row;
   height: 100px;
-}
-
-.categorySelectLanguage{
-  text-align: center;
-  line-height: 70px;
 }
 
 .types {
@@ -57,4 +55,34 @@
 .writingBtnDiv{
   text-align: right;
   padding: 20px;
+}
+
+/* .categorySelectLanguage{
+  text-align: center;
+  line-height: 70px;
+} */
+
+
+.categorySelectLanguage{
+  text-align: center;
+  /* line-height: 70px; */
+  margin: 20px 0;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+
+}
+
+.writingTitlMainDiv{
+  display: flex;
+}
+
+.writingTitleDiv{
+  min-width: 90PX;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  margin: 24px 0 16px 0;
+}
+
+.writingCancelBtn{
+  margin-left: 20px;
 }
