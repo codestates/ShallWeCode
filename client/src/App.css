@@ -5,3 +5,21 @@
   max-width: 1000px;
   margin: auto;
 }
+
+.smallSizeFont{
+  font-size: 16px;
+}
+
+.mediumSizeFont{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.largeSizeFont{
+  font-size: 28px;
+}
+
+.miniBtn {
+  height: 35px;
+}
+
