@@ -47,7 +47,7 @@ module.exports = {
   },
   detail: (contentId, callback) => {
 
-    const queryString = `select id from contents where id = ${contentId};`
+    const queryString = `SELECT id FROM contents WHERE id = ${contentId};`
 
     db.query(queryString, (err, result) => {
       if (err) {
