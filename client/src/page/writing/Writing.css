@@ -1,0 +1,60 @@
+.selectLanguage{
+  display: flex;
+  margin: auto;
+  
+}
+
+.writingSection{
+
+  /* background-color: silver; */
+  padding: 80px;
+  text-align: left;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.basic-multi-select{
+  width: 1000px;
+  margin-left: 35px;
+}
+
+.writingTitle{
+  width: 1000px;
+  border: 1px solid #CBCBCB;
+  margin-left: 76px;
+  border-radius: 2.5px;
+}
+
+.categoryName{
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+.categorySelectLanguage{
+  text-align: center;
+  line-height: 70px;
+}
+
+.types {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin-left: 105px;
+}
+
+.type {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+
+.typeBtn {
+  width: 20px;
+  transform: translate(-10%, -10%) 
+}
+
+.writingBtnDiv{
+  text-align: right;
+  padding: 20px;
+}
