@@ -9,7 +9,7 @@ function Setting() {
     <div>
       <Navbar />
       <Profile />
-      <div className="basicSize" >
+      <div className="basicSize section" >
         
         <form>
           <h3>기본정보</h3>

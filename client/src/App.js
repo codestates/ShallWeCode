@@ -8,6 +8,7 @@ import Main from './page/main/Main';
 import Login from './page/login/Login';
 import SignUp from './page/signUp/SignUp';
 import Setting from './page/setting/Setting';
+import Writing from './page/writing/Writing';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route path="/Setting">
           <Setting />
+        </Route>
+        <Route path="/Writing">
+          <Writing />
         </Route>
     </BrowserRouter>
   );

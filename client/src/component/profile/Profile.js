@@ -30,9 +30,9 @@ function Profile(props) {
   
   return (
 
-    <div className="basicSize">
-      <div className="mainProfile">
-        <div style={{"backgroundColor": "#efefef", "width":"150px", "height" : "150px"}}>
+ 
+      <div className="mainProfile section">
+        <div style={{"backgroundColor": "#298854", "width":"150px", "height" : "150px"}}>
       </div>
 
         <div className="profileText">
@@ -40,7 +40,7 @@ function Profile(props) {
           <button className= "delete">삭제</button>
         </div> 
       </div>
-    </div>
+  
 
   );
 }
