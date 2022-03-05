@@ -5,21 +5,21 @@ import "./SignUp.css"
 
 function SignUp(props) {
   return (
-    <div>
+    <div >
       <center>
         <h1>Sign In</h1>
         <form>
           <div>
-            <input type='email' placeholder="아이디"/>
+            <input className="logoutInput" type='email' placeholder="아이디"/>
           </div>
           <div>
-            <input className="" type='password' placeholder="비밀번호"/>
+            <input className="logoutInput" type='password' placeholder="비밀번호"/>
           </div>
           <div>
-            <input type='email' placeholder="비밀번호 확인"/>
+            <input className="logoutInput" type='email' placeholder="비밀번호 확인"/>
           </div>
           <div>
-            <input className="signUpInput" type='email' placeholder="닉네임"/>
+            <input className="logoutInput signUpInput" type='email' placeholder="닉네임"/>
           </div>
           <div>
             <BigBtn1/>

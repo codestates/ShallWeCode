@@ -1,8 +1,3 @@
-/* *{
-  background-color: #F8F9FA;
-} */
-
-
 .banner{
   /* background-color: #ECECEC; */
   margin-top: 40px;
@@ -26,4 +21,16 @@
 .banner_comment{
   text-align: center;
   font-size: 28px;
+}
+
+.imgBox{
+  width: 100%;
+  height: 500px;
+}
+
+.imgBox1{
+  background-image: url("../../../public/images/banner11.png") ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }

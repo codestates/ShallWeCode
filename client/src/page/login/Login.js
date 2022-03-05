@@ -6,15 +6,15 @@ import "./Login.css"
 function Login() {
 
   return (
-    <div>
+    <div >
       <center>
         <h1>Sign In</h1>
         <form>
           <div>
-            <input type='email' placeholder="아이디"/>
+            <input className="loginInput" type='email' placeholder="아이디"/>
           </div>
           <div>
-            <input type='password' placeholder="비밀번호"/>
+            <input className="loginInput" type='password' placeholder="비밀번호"/>
           </div>
           <div>
             <BigBtn />
