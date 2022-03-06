@@ -4,5 +4,6 @@ module.exports = {
 	logout: require('./users/logout'),
 	signout: require('./users/signout'),
 	writing: require('./board/writing'),
-	detail: require('./board/detail')
+	detail: require('./board/detail'),
+	edit: require('./board/edit')
 };

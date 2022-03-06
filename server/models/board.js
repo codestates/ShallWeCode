@@ -60,5 +60,20 @@ module.exports = {
 
       callback(err, result)
     })
+  },
+  edit: (contentId, title, body, PRorTP, stack, callback) => {
+
+    const queryString = `UPDATE contents INNER JOIN contents_category ON contents.id = contents_category.contents_id 
+    INNER JOIN category ON contents_category.category_id = category.id 
+    SET contents.title = '${title}', contents.body = '${body}', contents.PRorTP = ${PRorTP}, category.stack = '${stack}' 
+    WHERE contents.id = ${contentId}`
+
+    db.query(queryString, (err, result) => {
+      if (err) {
+        return console.log(err)
+      }
+
+      callback(err, result)
+    })
   }
 }
