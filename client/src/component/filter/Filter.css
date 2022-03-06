@@ -1,10 +1,29 @@
-.filterMain{
-  width: 80%;
-  margin-left: 10%;  
+.filterBackgroundSize{
+  width: 100%;
+  background-color: #f7f7f7;
+  box-shadow: 5px 5px 15px rgb(218, 218, 218);
+}
 
+.filterMain{
+  width: 70%;
+  margin-top: 3%;
+  margin: auto;
 }
 
 .filterImg{
   display: flex;
   justify-content: space-between;
+  padding: 35px;
+}
+
+.filterMiniBtn{
+  background-color: #FFFFFF;
+  border: 1px solid #CBCBCB ;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.filterMiniBtn:hover{
+  cursor: pointer;
 }
