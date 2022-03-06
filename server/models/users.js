@@ -37,5 +37,17 @@ module.exports = {
       callback(err, result)
     })
 
+  },
+  userinfo: (userid, password, callback) => {
+
+    const queryString = `UPDATE users SET password='${password}' WHERE userid='${userid}'`
+
+    db.query(queryString, (err, result) => {
+      if (err) {
+        console.log(err)
+      }
+
+      callback(err, result)
+    })
   }
 }

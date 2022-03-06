@@ -5,9 +5,9 @@ module.exports = (req, res) => {
 
   const { userid, password } = req.body
 
-  if (!userid || !password) {
-    return res.status(400).send('모든 항목을 채워주세요')
-  }
+  // if (!userid || !password) {
+  //   return res.status(400).send('모든 항목을 채워주세요')
+  // }
 
   models.loginPost(userid, password, (err, result) => {
     if (err) {

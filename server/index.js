@@ -6,6 +6,7 @@ app.use(express.json())
 app.post('/users/signup', controllers.signup)
 app.post('/users/login', controllers.login)
 app.post('/users/logout', controllers.logout)
+app.patch('/users/userinfo', controllers.userinfo)
 app.delete('/users/signout', controllers.signout)
 
 app.listen(3000, (req, res) => {

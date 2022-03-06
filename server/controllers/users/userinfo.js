@@ -4,11 +4,13 @@ module.exports = (req, res) => {
 
     const { userid, password } = req.body
 
-    models.signoutDelete(userid, password, (err, result) => {
+    models.userinfoPatch(userid, password, (err, result) => {
         if (err) {
             res.status(500).send('서버 에러')
         }
-        res.clearCookie('swcjwt')
-        res.status(200).send('회원탈퇴')
+
+        res.status(200).send('회원정보 변경 성공')
     })
 }
+
+// 닉네임 변경도 필요한가 물어보기
