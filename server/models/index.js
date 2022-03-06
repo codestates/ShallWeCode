@@ -4,5 +4,6 @@ module.exports = {
 	loginPost: require('./users').login,
 	writingPost: require('./board').writing,
 	detailGet: require('./board').detail,
-	editPatch: require('./board').edit
+	editPatch: require('./board').edit,
+	deleteDelete: require('./board').delete
 };
