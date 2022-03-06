@@ -9,6 +9,7 @@ app.post('/users/logout', controllers.logout)
 app.delete('/users/signout', controllers.signout)
 
 app.post('/board/writing', controllers.writing)
+app.get('/board/detail/:contentId', controllers.detail)
 
 app.listen(3000, (req, res) => {
 	console.log('서버 실행 중....')
