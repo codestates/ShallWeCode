@@ -1,0 +1,19 @@
+.thumbnailSection{
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.thumbnailBoxFlax{
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.thumbnailBox{
+    width: 240px;
+    height: 180px;
+    background-color: #FFFFFF;
+    margin-left: 18px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgb(218, 218, 218);
+}
