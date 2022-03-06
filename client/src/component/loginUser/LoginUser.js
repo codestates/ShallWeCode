@@ -13,15 +13,14 @@ function LoginUser() {
           <img className="userImg" src = "/images/bear22.png "/>
       </button>
       <svg 
+        className="userSvg"
         xmlns="http://www.w3.org/2000/svg" 
         width="24" 
         height="24" 
         viewBox="0 0 24 24" 
         fill="none" 
         stroke="#A5A3A4" 
-        stroke-width="2" 
-        stroke-linecap="round" 
-        stroke-linejoin="round">
+        >
           <path d="M6 9l6 6 6-6"/>
       </svg>
       <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>

@@ -9,6 +9,10 @@ body {
   width: 40px;
 }
 
+.userSvg{
+  stroke-width: 2; 
+}
+
 .userName{
   font-size: 18px;
   font-weight: bold;

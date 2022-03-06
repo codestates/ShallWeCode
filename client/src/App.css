@@ -20,6 +20,10 @@
   font-weight: bold;
 }
 
+.regularSizeFont{
+  font-size: 18px;
+}
+
 .largeSizeFont{
   font-size: 28px;
 }
