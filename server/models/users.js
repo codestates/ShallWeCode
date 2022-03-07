@@ -38,16 +38,64 @@ module.exports = {
     })
 
   },
-  userinfo: (userid, password, callback) => {
+  passwordEdit: (userid, password, callback) => {
 
-    const queryString = `UPDATE users SET password='${password}' WHERE userid='${userid}'`
+    const queryString1 = `UPDATE users SET password='${password}' WHERE userid='${userid}'`
 
-    db.query(queryString, (err, result) => {
+    db.query(queryString1, (err, result) => {
       if (err) {
         console.log(err)
       }
 
-      callback(err, result)
+      const queryString2 = `SELECT * FROM users WHERE userid='${userid}'`
+
+      db.query(queryString2, (err, result) => {
+        if (err) {
+          console.log(err)
+        }
+
+        callback(err, result)
+      })
+    })
+  },
+  nicknameEdit: (userid, nickname, callback) => {
+
+    const queryString1 = `UPDATE users SET nickname='${nickname}' WHERE userid='${userid}'`
+
+    db.query(queryString1, (err, result) => {
+      if (err) {
+        console.log(err)
+      }
+
+      const queryString2 = `SELECT * FROM users WHERE userid='${userid}'`
+
+      db.query(queryString2, (err, result) => {
+        if (err) {
+          console.log(err)
+        }
+        
+        callback(err, result)
+      })
+    })
+  },
+  pictureEdit: (userid, picture, callback) => {
+
+    const queryString1 = `UPDATE users SET picture='${picture}' WHERE userid='${userid}'`
+
+    db.query(queryString1, (err, result) => {
+      if (err) {
+        console.log(err)
+      }
+
+      const queryString2 = `SELECT * FROM users WHERE userid='${userid}'`
+
+      db.query(queryString2, (err, result) => {
+        if (err) {
+          console.log(err)
+        }
+        
+        callback(err, result)
+      })
     })
   }
 }
