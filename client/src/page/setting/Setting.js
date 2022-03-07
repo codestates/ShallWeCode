@@ -9,41 +9,41 @@ function Setting() {
     <div>
       <Navbar />
       <Profile />
-      <div className="basicSize section" >
-        
+
+      <div className="settingBox settingSection">
         <form>
-          <h3>기본정보</h3>
-          <div >
-            <label>닉네임</label>
-            <input type='email' />
-            <button>닉네임 변경</button>
-          </div>
-          <div>이미 사용중인 닉네임 입니다</div>
-          
-
-          <div>
-            <label>아이디</label>
-            <input type='password' />
-          </div>
-
+            <div className="largeSizeFont">기본정보</div>
+            <div className="settingLabel" >
+              <label >닉네임</label>
+              <input className="settingInput" type='email' />
+              <button className="nicknameBtn">닉네임 변경</button>
+            </div>
+            {/* <div className="">이미 사용중인 닉네임 입니다</div> */}
+            
+            <div className="settingLabel">
+              <label>아이디</label>
+              <input className="settingInput" type='password' />
+            </div>
         </form>
-
-        
-        <form>
-          <div>
-            <label>비밀번호변경</label>
-            <input type='email' />
-            <button>비밀번호 변경</button>
+      </div>
+      <div className="settingBox settingUnderBox settingSection">
+      <form>
+          <div className="settingLabel">
+            <label>비밀번호 변경</label>
+            <input className="settingInput" type='email' />
+            <button className="passwordBtn">비밀번호 변경</button>
           </div>
           
-          <div>
-            <label>비밀번호변경확인</label>
-            <input type='password' />
+          <div className="settingLabel">
+            <label>비밀번호 확인</label>
+            <input className="settingInput" type='password' />
           </div>
-          <div>비밀번호가 동일하지 않습니다</div>
+          {/* <div>비밀번호가 동일하지 않습니다</div> */}
         </form>
-      <div>회원탈퇴</div>
-      <button>나가기</button>
+        <div className="settingLabel dropOut">회원탈퇴</div>
+      </div>
+      <div className="settingCancel section">
+        <button className="miniBtn smallSizeFont cancelBtn">나가기</button>
       </div>
     </div>
   );
