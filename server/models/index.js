@@ -5,8 +5,12 @@ module.exports = {
 	passwordPatch: require('./users').passwordEdit,
 	nicknamePatch: require('./users').nicknameEdit,
 	picturePatch: require('./users').pictureEdit,
-	writingPost: require('./board').writing,
-	detailGet: require('./board').detail,
-	editPatch: require('./board').edit,
-	deleteDelete: require('./board').delete
+	boardWritingPost: require('./board').writing,
+	boardDetailGet: require('./board').detail,
+	boardEditPatch: require('./board').edit,
+	boardDeleteDelete: require('./board').delete,
+	commentWritingPost: require('./comment').writing,
+	commentDetailGet: require('./comment').detail,
+	commentEditPatch: require('./comment').edit,
+	commentDeleteDelete: require('./comment').delete
 };

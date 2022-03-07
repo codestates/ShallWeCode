@@ -4,14 +4,14 @@ const { sign, verify } = require('jsonwebtoken');
 module.exports = {
   generateAccessToken: (data) => {
     const userinfo = {
-      userid: data.userid,
+      username: data.username,
       picture: data.picture,
       nickname: data.nickname
     }
     return sign(userinfo, process.env.ACCESS_SECRET)
   },
   sendAccessToken: (res, accessToken) => {
-    res.cookie('swcjwt', accessToken, {httpOnly: true})
+    res.cookie('swcjwt', accessToken, { httpOnly: true })
   }
   // isAuthorized: (req) => {
   //   const auth = req.headers.cookie
