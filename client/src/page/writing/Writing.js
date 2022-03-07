@@ -96,7 +96,7 @@ function Writing(props) {
     if(!type || !title || !content || !stack){
       setErrorMessage('모든 항목은 필수입니다')
     }else{
-      axios.post('https://localhost:4000/board/writing', {data:data})
+      axios.post('http://localhost:4000/board/writing', {data:data})
       .then(res=> {
         alert('글쓰기 성공')
         history.push("/");
