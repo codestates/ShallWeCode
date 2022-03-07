@@ -1,15 +1,20 @@
 const models = require('../../../models')
-const { generateAccessToken, sendAccessToken } = require('../../tokenFunctions')
+const { generateAccessToken, sendAccessToken, isAuthorized } = require('../../tokenFunctions')
 
 module.exports = (req, res) => {
 
-  const { username, picture } = req.body
+  const token = isAuthorized(req)
+  if (!token) {
+    return res.status(401).send({ message: '권한 없음' })
+  }
+  
+  const { picture } = req.body
 
   if (!picture) {
     return res.status(400).send({ message: '사용하실 이미지를 첨부해주세요' })
   }
 
-  models.picturePatch(username, picture, (err, result) => {
+  models.picturePatch(token.username, picture, (err, result) => {
     if (err) {
       res.status(500).send({ message: '서버 에러' })
     }

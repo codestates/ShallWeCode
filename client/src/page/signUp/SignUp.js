@@ -31,7 +31,7 @@ function SignUp(props) {
     if(!id || !password || !passwordCheck || !nickname){
       setErrorMessage('모든 항목은 필수입니다')
     }else{
-      axios.post('http://localhost:4000/users/signup', {userid: id, password:password, nickname: nickname})
+      axios.post('http://localhost:4000/users/signup', {username: id, password:password, nickname: nickname})
       .then(res=> {
         console.log('res====',res)
         if(res.status === 200){

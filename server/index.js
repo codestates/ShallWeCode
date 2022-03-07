@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const controllers = require('./controllers')
 const app = express()
 
