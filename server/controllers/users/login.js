@@ -3,27 +3,22 @@ const { generateAccessToken, sendAccessToken } = require('../tokenFunctions')
 
 module.exports = (req, res) => {
 
-  const { userid, password } = req.body
+  const { username, password } = req.body
 
-  if (!userid || !password) {
-    return res.status(400).send('모든 항목을 채워주세요')
+  if (!username || !password) {
+    return res.status(400).send({ message: '모든 항목을 채워주세요' })
   }
 
-  models.loginPost(userid, password, (err, result) => {
+  models.loginPost(username, password, (err, result) => {
     if (err) {
-      res.status(500).send('서버 에러')
+      res.status(500).send({ message: '서버 에러' })
     }
     if (!result.length) {
-      res.status(404).send('로그인 실패(아이디, 비밀번호 불일치)')
+      res.status(404).send({ message: '로그인 실패(아이디, 비밀번호 불일치)' })
     } else {
-      const data = {
-        userid: result[0].userid,
-        picture: result[0].picture,
-        nickname: result[0].nickname
-      }
-      const accessToken = generateAccessToken(data)
+      const accessToken = generateAccessToken(result[0])
       sendAccessToken(res, accessToken)
-      res.status(200).send('로그인 성공')
+      res.status(200).send({data: {accessToken: accessToken}, message: '로그인 성공'})
     }
   })
 }
