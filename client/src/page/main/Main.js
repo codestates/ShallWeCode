@@ -1,6 +1,8 @@
 import React from 'react';
 import Banner from '../../component/banner/Banner';
 import Filter from '../../component/filter/Filter';
+import Footer from '../../component/footer/Footer';
+import Loading from '../../component/loading/Loading';
 import Navbar from '../../component/navbar/Navbar';
 import SelectBtn from '../../component/selectBtn/SelectBtn';
 import Thumbnail from '../../component/thumbnail/Thumbnail';
@@ -15,6 +17,8 @@ function Main(props) {
       <SelectBtn />
       <Filter />
       <Thumbnail />
+      {/* <Loading/> */}
+      <Footer />
     </div>
   );
 }

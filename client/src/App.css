@@ -4,7 +4,7 @@
 
 
 .section {
-  background-color: silver;
+  /* background-color: silver; */
   padding: 80px;
   text-align: left;
   max-width: 1000px;
@@ -26,6 +26,7 @@
 
 .largeSizeFont{
   font-size: 28px;
+  font-weight: bold;
 }
 
 .miniBtn {
