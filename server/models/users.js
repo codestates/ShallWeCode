@@ -14,7 +14,7 @@ module.exports = {
     })
   },
   signout: (userid, password, callback) => {
-    
+
     const queryString = `DELETE FROM users WHERE userid='${userid}' AND password='${password}'`
 
     db.query(queryString, (err, result) => {
