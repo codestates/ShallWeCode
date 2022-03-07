@@ -7,7 +7,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 function Login() {
   const [loginInfo, setLoginInfo] = useState({
-    userid: '',
+    username: '',
     password: ''
   })
   const [errorMessage, setErrorMessage] = useState('')
@@ -16,12 +16,12 @@ function Login() {
     setLoginInfo({ ...loginInfo, [key]: e.target.value });
   };
   const handleLogin = () => {
-    if (!loginInfo.userid && !loginInfo.password) {
+    if (!loginInfo.username && !loginInfo.password) {
       return setErrorMessage("아이디와 비밀번호를 입력하세요");
     }
 
     axios.post("http://localhost:4000/users/login", {
-      userid: loginInfo.userid,
+      username: loginInfo.username,
       password: loginInfo.password
     }).then((res) => {
       console.log("--------then------",res)
@@ -38,7 +38,7 @@ function Login() {
         <h1>Sign In</h1>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
-            <input className="loginInput" type='text' placeholder="아이디" onChange={handleInputValue('userid')} />
+            <input className="loginInput" type='text' placeholder="아이디" onChange={handleInputValue('username')} />
           </div>
           <div>
             <input className="loginInput" type='password' placeholder="비밀번호" onChange={handleInputValue('password')} />
