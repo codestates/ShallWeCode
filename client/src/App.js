@@ -10,6 +10,7 @@ import SignUp from './page/signUp/SignUp';
 import Setting from './page/setting/Setting';
 import Writing from './page/writing/Writing';
 import Detail from './page/detail/Detail';
+import MyPage from './page/mypage/MyPage';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route path="/Detail">
           <Detail />
+        </Route>
+        <Route path="/MyPage">
+          <MyPage/>
         </Route>
     </BrowserRouter>
   );
