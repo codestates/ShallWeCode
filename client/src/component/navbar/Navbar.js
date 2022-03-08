@@ -7,6 +7,7 @@ function Navbar(props) {
 
   const { isLogin, userinfo, handleLogout } = props
   const history = useHistory()
+  // console.log('====',isLogin)
 
   return (
     <nav className="headerNav">

@@ -20,9 +20,9 @@ function Filter(props) {
     'swift',
   ];
   
+
   const [languageFilter, setLanguageFilter] = useState([]);
   // 배열이 선택 languages를 포함하고 있는지에 따라서 removeLanguage , setLanguage 함수 실행
-  // 전체 버튼? 
   console.log('languageFilter===',languageFilter)
 
   const languagesOnClick = (language) => {
@@ -52,9 +52,8 @@ function Filter(props) {
 
 
   return (
-
     <div>      
-      <div className="filterBackgroundSize ">
+      <div className="filterBackgroundSize">
       <div className="filterImg">
         {languages.map((language,i) => {
           return <button 

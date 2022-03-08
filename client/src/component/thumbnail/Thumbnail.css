@@ -1,6 +1,9 @@
 .thumbnailSection{
-    justify-content: space-between;
-    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    padding: 80px;
+    margin: auto;
 }
 
 .thumbnailBoxFlax{
@@ -10,6 +13,7 @@
 }
 
 .thumbnailBox{
+    margin-bottom: 20px;
     width: 240px;
     height: 180px;
     background-color: #FFFFFF;
@@ -20,7 +24,7 @@
 
 .thumbnailBoxTitle{
     text-align: center;
-    padding-top: 20px ;
+    padding-top: 30px ;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 20px;
