@@ -7,39 +7,110 @@ axios.defaults.withCredentials = true;
 
 
 function SignUp(props) {
+
   const [userinfo, setuserinfo] = useState({
-    id: '',
+    username: '',
     password: '',
     passwordCheck: '',
     nickname: ''
-  });
-  const [errorMessage, setErrorMessage] = useState('');
+  })
+  const [message, setMessage] = useState({
+    idMessage: '',
+    passwordMessage: '',
+    passwordCheckMessage: '',
+    nicknameMessage: '',
+    errorMessage: ''
+  })
+  const [validation, setValidation] = useState({
+    idValidation: false,
+    passwordValidation: false,
+    passwordCheckValidation: false,
+    nicknameValidation: false,
+    errorValidation: false
+  })
   const history = useHistory();
+
   const handleInputValue = (key) => (e) => {
-    setuserinfo({ ...userinfo, [key]: e.target.value });
+
+    const usernameRegExp = /^[A-Za-z0-9+]{4,12}$/; 
+    const passwordRegExp = /^[A-Za-z0-9~!@#$%^&*()_+|<>?:{}+]{8,16}$/;
+    const nicknameRegExp = /^[a-zA-Zㄱ-힣0-9]*$/;
+
+    setuserinfo({ ...userinfo, [key]: e.target.value })
+
+    if (key === 'username') {
+      if (!usernameRegExp.test(e.target.value)) {
+        setMessage({ ...message, idMessage: '4~12자의 영문 대 소문자, 숫자만 사용 가능합니다'})
+        setValidation({ ...validation, idValidation: true})
+      } else {
+        axios.post('http://localhost:4000/users/verifyUsername', {username : e.target.value})
+        .then( (res) => {
+          setMessage({ ...message, idMessage: '이미 존재하는 아이디입니다'})
+          setValidation({ ...validation, idValidation: true})
+          if (res.data.data.data[0].count === 0) {
+            setValidation({ ...validation, idValidation: false})
+          }
+        }).catch( (err) => {
+          console.log(err);
+        })
+      }
+    }
+
+    if (key === 'password') {
+      if (!passwordRegExp.test(e.target.value)) {
+        setMessage({ ...message, passwordMessage: '8~16자 영문 대 소문자, 숫자, 특수문자만 사용 가능합니다'})
+        setValidation({ ...validation, passwordValidation: true})
+        console.log(validation)
+      } else {
+        setValidation({ ...validation, passwordValidation: false})
+      }
+    }
+
+    if (key === 'passwordCheck') {
+      if (e.target.value !== userinfo.password) {
+        setMessage({ ...message, passwordCheckMessage: '비밀번호가 일치하지 않습니다'})
+        setValidation({ ...validation, passwordCheckValidation: true})
+      } else {
+        setValidation({ ...validation, passwordCheckValidation: false})
+      }
+    }
+
+    if (key === 'nickname') {
+      if (e.target.value.length < 2 || e.target.value.length > 10 || !nicknameRegExp.test(e.target.value)) {
+        setMessage({ ...message, nicknameMessage: '2~10자 한글, 영어 , 숫자만 사용 가능 합니다'})
+        setValidation({ ...validation, nicknameValidation: true})
+      } else {
+        axios.post('http://localhost:4000/users/verifyNickname', {nickname : e.target.value})
+        .then( (res) => {
+          setMessage({ ...message, nicknameMessage: '이미 존재하는 닉네임입니다'})
+          setValidation({ ...validation, nicknameValidation: true})
+          if (res.data.data.data[0].count === 0) {
+            setValidation({ ...validation, nicknameValidation: false})
+          }
+        }).catch( (err) => {
+          console.log(err)
+        }) 
+      }
+    }
   };
+
   const handleSignup = () => {
-    // TODO : 서버에 회원가입을 요청 후 로그인 페이지로 이동하세요.
-    //        history.push("/");
-    // TODO : 모든 항목을 입력하지 않았을 경우 에러를 표시해야 합니다.
+ 
+    const {username, password, passwordCheck, nickname } = userinfo
 
-    // console.log('userinfo',userinfo)
-    const {id, password, passwordCheck, nickname } = userinfo;
-    console.log(id,password ,passwordCheck, nickname)
-
-
-    if(!id || !password || !passwordCheck || !nickname){
-      setErrorMessage('모든 항목은 필수입니다')
+    if(!username || !password || !passwordCheck || !nickname){
+      setMessage({ ...message, errorMessage: '모든 항목은 필수입니다'})
+      setValidation({ ...validation, errorValidation: true})
     }else{
-      axios.post('http://localhost:4000/users/signup', {username: id, password:password, nickname: nickname})
+      setValidation({ ...validation, errorValidation: false})
+      axios.post('http://localhost:4000/users/signup', {username: username, password:password, nickname: nickname})
       .then(res=> {
-        console.log('res====',res)
         if(res.status === 200){
           alert('회원가입 성공!')
           history.push("/login")
         }
       }).catch((err)=>{
-        console.log('err===', err)
+        console.log(err)
       })
     }
   };
@@ -52,11 +123,10 @@ function SignUp(props) {
           <div>
             <input 
               className="logoutInput" 
-              onChange={handleInputValue('id')} 
+              onChange={handleInputValue('username')} 
               type='text' 
               placeholder="아이디"/>
-            {/* <div className="signUpErr">이미 존재하는 아이디 입니다</div> */}
-            {/* <div className="signUpErr">4~12자의 영문 대 소문자, 숫자만 사용 가능합니다</div> */}
+            {userinfo.username.length > 0 && validation.idValidation ? <div><span className="signUpErr">{message.idMessage}</span></div> : null}
           </div>
           <div>
             <input 
@@ -64,7 +134,7 @@ function SignUp(props) {
               onChange={handleInputValue('password')} 
               type='password' 
               placeholder="비밀번호"/>
-            {/* <div className="signUpErr">8~16자 영문 대 소문자, 숫자, 특수문자만 사용 가능합니다</div> */}
+            {userinfo.password.length > 0 && validation.passwordValidation ? <div><span className="signUpErr">{message.passwordMessage}</span></div> : null}
           </div>
           <div>
             <input 
@@ -72,7 +142,7 @@ function SignUp(props) {
               onChange={handleInputValue('passwordCheck')} 
               type='password' 
               placeholder="비밀번호 확인"/>
-            {/* <div className="signUpErr">비밀번호가 일치하지 않습니다</div> */}
+            {userinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className="signUpErr">{message.passwordCheckMessage}</span></div> : null}
           </div>
           <div>
             <input 
@@ -80,11 +150,10 @@ function SignUp(props) {
               onChange={handleInputValue('nickname')} 
               type='text' 
               placeholder="닉네임"/>
-            {/* <div className="signUpErr"> 2~10자 한글, 영어 , 숫자만 사용 가능 합니다</div> */}
-            {/* <div className="signUpErr">이미 존재하는 닉네임 입니다 </div> */}
+            {userinfo.nickname.length > 0 && validation.nicknameValidation ? <div><span className="signUpErr">{message.nicknameMessage}</span></div> : null}
           </div>
           <div>
-            {/* <div className='alert-box'>{errorMessage}</div> */}
+          {validation.errorValidation ? <div><span className="signUpErr">{message.errorMessage}</span></div> : null}
             <button className="bigBtn1" type='submit' onClick={handleSignup}>회원가입</button>
           </div>
           
