@@ -42,53 +42,13 @@ function Writing(props) {
     const getContentMarkDown = editorInstance.getMarkdown() // 마크다운으로 에디터에 쓰여진 글 받아옴
     setContent(getContentMarkDown)
   }
-  // 이미지 추가 
-  // useEffect(() => {
-  //   if (editorRef.current) {
-  //     // 기존에 Image 를 Import 하는 Hook 을 제거한다.
-  //     editorRef.current.getInstance().removeHook("addImageBlobHook");
-
-  //     // 새롭게 Image 를 Import 하는 Hook 을 생성한다.
-  //     editorRef.current
-  //       .getInstance()
-  //       .addHook("addImageBlobHook", (blob, callback) => {
-  //         (async () => {
-  //           let formData = new FormData();
-  //           formData.append("file", blob);
-
-  //           console.log("이미지가 업로드 됐습니다.");
-
-  //           const { data: filename } = await axios.post(
-  //             "/file/upload",
-  //             formData,
-  //             {
-  //               header: { "content-type": "multipart/formdata" },
-  //             }
-  //           );
-  //           // .then((response) => {
-  //           //   console.log(response);
-  //           // });
-
-  //           const imageUrl = "http://localhost:8080/file/upload/" + filename;
-
-  //           // Image 를 가져올 수 있는 URL 을 callback 메서드에 넣어주면 자동으로 이미지를 가져온다.
-  //           callback(imageUrl, "iamge");
-  //         })();
-
-  //         return false;
-  //       });
-  //   }
-
-  //   return () => {};
-  // }, [editorRef]);
-
   
   // 글 등록 버튼 클릭 
   const handleButtonClick = (event) => {
     const data = {
-      type: type,
+      PRorTP: type,
       title: title,
-      content: content,
+      body: content,
       stack: stack
     }
     console.log('data====',data)  
@@ -113,11 +73,11 @@ function Writing(props) {
       {/* 프로젝트 포트폴리오 선택 */}
       <div className="categoryName">
         <div className="types">
-          <input type="radio" name="type" value="모집글" 
+          <input type="radio" name="type" value="1" 
           className="typeBtn"
           // checked="checked"
           onChange={handleType}/><label className="type" >프로젝트 모집</label>
-          <input type="radio" name="type" value="포트폴리오" className="typeBtn"
+          <input type="radio" name="type" value="2" className="typeBtn"
           onChange={handleType}/><label className="type">포트폴리오</label>
         </div>
       </div>

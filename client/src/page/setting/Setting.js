@@ -15,7 +15,7 @@ function Setting() {
             <div className="largeSizeFont">기본정보</div>
             <div className="settingLabel" >
               <label >닉네임</label>
-              <input className="settingInput" type='email' />
+              <input className="settingInput" type='text' />
               <button className="nicknameBtn">닉네임 변경</button>
             </div>
             {/* <div className="">이미 사용중인 닉네임 입니다</div> */}
@@ -30,7 +30,7 @@ function Setting() {
       <form>
           <div className="settingLabel">
             <label>비밀번호 변경</label>
-            <input className="settingInput" type='email' />
+            <input className="settingInput" type='password' />
             <button className="passwordBtn">비밀번호 변경</button>
           </div>
           
