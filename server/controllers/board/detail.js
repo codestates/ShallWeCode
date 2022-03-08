@@ -15,7 +15,7 @@ module.exports = (req, res) => {
     for (let i of result) {
       stack.push(i.stack)
     }
-    const { title, body, created_at, PRorTP, picture, nickname } = result[0]
+    const { users_id, title, body, created_at, PRorTP, picture, nickname } = result[0]
     const data = {
       title,
       body,
@@ -23,6 +23,7 @@ module.exports = (req, res) => {
       PRorTP,
       picture,
       nickname,
+      userId: users_id,
       stack: stack
     }
     // result 객체로 수정 요망

@@ -1,4 +1,5 @@
 module.exports = {
+	auth: require('./users/auth'),
 	signup: require('./users/signup'),
 	login: require('./users/login'),
 	logout: require('./users/logout'),
@@ -10,6 +11,9 @@ module.exports = {
 	boardDetail: require('./board/detail'),
 	boardEdit: require('./board/edit'),
 	boardDelete: require('./board/delete'),
+	boardFilter: require('./board/filter'),
+	boardUser: require('./board/userboard'),
+	boardThumbnail: require('./board/thumbnail'),
 	commentWriting: require('./comment/writing'),
 	commentDetail: require('./comment/detail'),
 	commentEdit: require('./comment/edit'),

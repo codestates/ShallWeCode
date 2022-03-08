@@ -2,13 +2,12 @@ const models = require('../../models')
 
 module.exports = (req, res) => {
 
-  const { username, password } = req.body
-
-  if (!username || !password) {
-    return res.status(400).send({ message: '모든 항목을 채워주세요' })
+  const token = isAuthorized(req)
+  if (!token) {
+    return res.status(401).send({ message: '권한 없음' })
   }
 
-  models.signoutDelete(username, password, (err, result) => {
+  models.signoutDelete(token.username, (err, result) => {
     if (err) {
       res.status(500).send({ message: '서버 에러' })
     }

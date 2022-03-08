@@ -14,7 +14,7 @@ module.exports = (req, res) => {
     return res.status(400).send({ message: '모든 항목을 채워주세요' })
   }
 
-  models.boardWritingPost(token.userid, title, body, PRorTP, stack, (err, result) => {
+  models.boardWritingPost(token.userId, title, body, PRorTP, stack, (err, result) => {
     if (err) {
       return res.status(500).send({ message: '서버 에러' })
     }

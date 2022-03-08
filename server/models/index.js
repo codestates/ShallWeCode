@@ -1,4 +1,5 @@
 module.exports = {
+	authGet: require('./users').auth,
 	signupPost: require('./users').signup,
 	signoutDelete: require('./users').signout,
 	loginPost: require('./users').login,
@@ -9,6 +10,9 @@ module.exports = {
 	boardDetailGet: require('./board').detail,
 	boardEditPatch: require('./board').edit,
 	boardDeleteDelete: require('./board').delete,
+	boardFilterGet: require('./board').filter,
+	boardUserGet: require('./board').user,
+	boardThumbnailGet: require('./board').thumbnail,
 	commentWritingPost: require('./comment').writing,
 	commentDetailGet: require('./comment').detail,
 	commentEditPatch: require('./comment').edit,

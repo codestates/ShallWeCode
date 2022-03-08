@@ -1,6 +1,18 @@
 const db = require('../db')
 
 module.exports = {
+  auth: (userId, callback) => {
+
+    const queryString = `SELECT id, username, picture, nickname FROM users WHERE id=${userId}`
+
+    db.query(queryString, (err, result) => {
+      if (err) {
+        console.log(err)
+      }
+
+      callback(err, result)
+    })
+  },
   signup: (username, password, nickname, callback) => {
 
     const queryString = `INSERT INTO users (username, password, nickname) VALUES ('${username}', '${password}', '${nickname}')`
@@ -13,9 +25,9 @@ module.exports = {
       callback(err, result)
     })
   },
-  signout: (username, password, callback) => {
+  signout: (username, callback) => {
 
-    const queryString = `DELETE FROM users WHERE username='${username}' AND password='${password}'`
+    const queryString = `DELETE FROM users WHERE username='${username}'`
 
     db.query(queryString, (err, result) => {
       if (err) {

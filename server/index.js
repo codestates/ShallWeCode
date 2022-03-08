@@ -13,6 +13,7 @@ app.use(
   })
 )
 
+app.get('/users/auth', controllers.auth)
 app.post('/users/signup', controllers.signup)
 app.post('/users/login', controllers.login)
 app.post('/users/logout', controllers.logout)
@@ -25,6 +26,9 @@ app.post('/board/writing', controllers.boardWriting)
 app.get('/board/detail', controllers.boardDetail)
 app.patch('/board/edit', controllers.boardEdit)
 app.delete('/board/delete', controllers.boardDelete)
+app.get('/board/filter', controllers.boardFilter)
+app.get('/board/thumbnail', controllers.boardThumbnail)
+app.get('/board/user', controllers.boardUser)
 
 app.post('/comment/writing', controllers.commentWriting)
 app.get('/comment/detail', controllers.commentDetail)
