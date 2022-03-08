@@ -90,60 +90,61 @@ module.exports = {
   },
   filter: (PRorTP, stack, callback) => {
 
-    let queryString2 = ``
-    if (PRorTP) {
-      queryString2 += ` PRorTP=${PRorTP}`
-    }
-    if (stack) {
-      if (PRorTP) {
-        queryString2 += ` AND`
-      }
-      for (let tool1 = 0; tool1 < stack.length; tool1 += 2) {
-        queryString2 += ` category.id=${stack[tool1] + stack[tool1 + 1]} OR`
-      }
-      queryString2 = queryString2.substring(0, queryString2.length - 3)
-    }
+    if (!PRorTP && !stack) {
 
-    const queryString1 = `SELECT contents.id FROM contents
-      INNER JOIN contents_category ON contents.id=contents_category.contents_id
-      INNER JOIN category ON contents_category.category_id=category.id
-      WHERE` + queryString2 + ` ORDER BY contents.id DESC`
+      const queryString = `SELECT * FROM contents ORDER BY id DESC`
 
-    db.query(queryString1, (err, result) => {
-      if (err) {
-        return console.log(err)
-      }
-
-      let queryString4 = ``
-      for (let tool2 of result) {
-        queryString4 += ` contents.id=${tool2.id} OR`
-      }
-      queryString4 = queryString4.substring(0, queryString4.length - 3)
-      const queryString3 = `SELECT contents.id, contents.title, category.stack FROM contents
-      INNER JOIN contents_category ON contents.id=contents_category.contents_id
-      INNER JOIN category ON contents_category.category_id=category.id
-      WHERE` + queryString4 + ` ORDER BY contents.id DESC`
-
-      db.query(queryString3, (err, result) => {
+      db.query(queryString, (err, result) => {
         if (err) {
           return console.log(err)
         }
 
         callback(err, result)
       })
-    })
-  },
-  thumbnail: (callback) => {
-
-    const queryString = `SELECT * FROM contents ORDER BY id DESC`
-
-    db.query(queryString, (err, result) => {
-      if (err) {
-        return console.log(err)
+    } else {
+      let queryString2 = ``
+      if (PRorTP) {
+        queryString2 += ` PRorTP=${PRorTP}`
+      }
+      if (stack) {
+        if (PRorTP) {
+          queryString2 += ` AND`
+        }
+        for (let tool1 = 0; tool1 < stack.length; tool1 += 2) {
+          queryString2 += ` category.id=${stack[tool1] + stack[tool1 + 1]} OR`
+        }
+        queryString2 = queryString2.substring(0, queryString2.length - 3)
       }
 
-      callback(err,result)
-    })
+      const queryString1 = `SELECT contents.id FROM contents
+        INNER JOIN contents_category ON contents.id=contents_category.contents_id
+        INNER JOIN category ON contents_category.category_id=category.id
+        WHERE` + queryString2 + ` ORDER BY contents.id DESC`
+
+      db.query(queryString1, (err, result) => {
+        if (err) {
+          return console.log(err)
+        }
+
+        let queryString4 = ``
+        for (let tool2 of result) {
+          queryString4 += ` contents.id=${tool2.id} OR`
+        }
+        queryString4 = queryString4.substring(0, queryString4.length - 3)
+        const queryString3 = `SELECT contents.id, contents.title, category.stack FROM contents
+        INNER JOIN contents_category ON contents.id=contents_category.contents_id
+        INNER JOIN category ON contents_category.category_id=category.id
+        WHERE` + queryString4 + ` ORDER BY contents.id DESC`
+
+        db.query(queryString3, (err, result) => {
+          if (err) {
+            return console.log(err)
+          }
+
+          callback(err, result)
+        })
+      })
+    }
   },
   user: (PRorTP, userId, callback) => {
 

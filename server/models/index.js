@@ -12,7 +12,6 @@ module.exports = {
 	boardDeleteDelete: require('./board').delete,
 	boardFilterGet: require('./board').filter,
 	boardUserGet: require('./board').user,
-	boardThumbnailGet: require('./board').thumbnail,
 	commentWritingPost: require('./comment').writing,
 	commentDetailGet: require('./comment').detail,
 	commentEditPatch: require('./comment').edit,
