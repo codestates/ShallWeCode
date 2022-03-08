@@ -1,0 +1,19 @@
+.commentContent{
+  margin-top: 20px;
+  /* background-color: coral; */
+  width: 95%;
+  margin-left: 2.8%;
+  margin-bottom: 15px;
+}
+
+.commentListBox{
+  margin-bottom: 30px;
+  border-bottom: solid 1px  #CBCBCB;
+}
+
+.commentEditDelete{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

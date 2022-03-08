@@ -21,12 +21,42 @@
 .detailProfileImg{
   display: flex;
   align-items: center;
-  
 }
 
 .detailName{
   margin-left: 18px;
 }
+
 .detailLanguageMargin{
   margin-right: 18px;
+}
+
+.detailComment{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.commentBox{
+  border: solid 1px  #CBCBCB;
+
+}
+
+.commentName{
+  margin-left: 10px;
+}
+
+.commentInput{
+  width: 95%;
+  margin-left: 2.8%;
+  margin-bottom: 15px;
+}
+.commentBox input:focus {
+  border-radius: 4px;
+  outline:2px solid #8CD8AB ;}
+
+.commentBtn{
+  margin-top: 10px;
+  text-align: right;
 }
