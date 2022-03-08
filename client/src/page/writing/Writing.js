@@ -86,9 +86,9 @@ function Writing(props) {
   // 글 등록 버튼 클릭 
   const handleButtonClick = (event) => {
     const data = {
-      type: type,
+      PRorTP: type,
       title: title,
-      content: content,
+      body: content,
       stack: stack
     }
     console.log('data====',data)  
