@@ -7,6 +7,8 @@ module.exports = {
 	nickname: require('./users/edit/nickname'),
 	password: require('./users/edit/password'),
 	picture: require('./users/edit/picture'),
+	verifyUsername: require('./users/verify/username'),
+	verifyNickname: require('./users/verify/nickname'),
 	boardWriting: require('./board/writing'),
 	boardDetail: require('./board/detail'),
 	boardEdit: require('./board/edit'),
