@@ -33,6 +33,11 @@ function Login({ handleResponseSuccess }) {
       console.log(err);
     })
   }
+
+  const handleLoginSignUp = () => {
+    history.push('/SignUp')
+  }
+
   return (
     <div >
       <center>
@@ -51,7 +56,7 @@ function Login({ handleResponseSuccess }) {
             </div>
           </div>
           <div>
-            <BigBtn1 />
+            <button onClick={handleLoginSignUp} className="bigBtn1">회원가입</button>
           </div>
           <div className='alert-box'>{errorMessage}</div>
         </form>

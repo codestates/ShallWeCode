@@ -49,7 +49,7 @@ function App() {
   }
   useEffect(() => {
     loadingThumbnail()
-    // isAuthenticated()
+    isAuthenticated()
   }, []);
 
   return (
