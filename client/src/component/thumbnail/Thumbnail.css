@@ -17,3 +17,25 @@
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgb(218, 218, 218);
 }
+
+.thumbnailBoxTitle{
+    text-align: center;
+    padding-top: 20px ;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    height: 70px;
+    font-size: 18px;
+}
+
+.thumbnailBoxTag{
+    margin-top: 25px;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.thumbnailTagBtn{
+    background-color: #298854;
+    color: white;
+}
