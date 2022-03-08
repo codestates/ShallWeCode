@@ -6,6 +6,8 @@ module.exports = {
 	passwordPatch: require('./users').passwordEdit,
 	nicknamePatch: require('./users').nicknameEdit,
 	picturePatch: require('./users').pictureEdit,
+	verifyUsername : require('./users').username,
+	verifyNickname : require('./users').nickname,
 	boardWritingPost: require('./board').writing,
 	boardDetailGet: require('./board').detail,
 	boardEditPatch: require('./board').edit,
