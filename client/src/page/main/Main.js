@@ -10,13 +10,15 @@ import "./Main.css"
 
 
 function Main(props) {
+  const { isLogin, handleLogout, thumbnail } = props
+  console.log(isLogin)
   return (
     <div className="basicBackground">
-      <Navbar />
+      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
       <Banner />
       <SelectBtn />
       <Filter />
-      <Thumbnail />
+      <Thumbnail thumbnail={thumbnail}/>
       {/* <Loading/> */}
       <Footer />
     </div>

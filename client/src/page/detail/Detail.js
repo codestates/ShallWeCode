@@ -12,6 +12,7 @@ import CommentList from '../../component/commentList/CommentList';
 
 function Detail(props) {
 
+  const { isLogin, handleLogout } = props
   const markdown = 
   `
   프로젝트 설명 : 프로젝트 할 팀원을 구했는데 마음에 안드셨던 경험이 있으신가요?\n - 먼저 개발자들이 작성해둔 포트폴리오를 확인해주세요\n \n모집 인원: 1명\n        \n          
@@ -34,7 +35,7 @@ function Detail(props) {
 
   return (
     <div>
-      <Navbar/>
+      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
       <div className="section">
         <div className="largeSizeFont detailTitle">개발자들을 위한 Shall We Code에서 마음에 드는 팀원을 구해보세요!</div>
         <div className="detailProfile">

@@ -12,6 +12,7 @@ import { Editor } from '@toast-ui/react-editor';
 
 
 function Writing(props) {
+  const { isLogin, handleLogout } = props
   const [type, setType] = useState('') // 글의 타입 지정, 클릭시 변경, 1번 2번으로 구분
   const [title, setTitle] = useState(''); // 제목
   const [stack, setStack] = useState({languageList}) // 기본 스택 목록
@@ -67,7 +68,7 @@ function Writing(props) {
   return (
     
     <div>
-      <Navbar />
+      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
 
     <div className="writingSection">
       {/* 프로젝트 포트폴리오 선택 */}

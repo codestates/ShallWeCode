@@ -2,6 +2,7 @@ const models = require('../../models')
 const { isAuthorized } = require('../tokenFunctions')
 
 module.exports = (req, res) => {
+  
   const accessTokenData = isAuthorized(req)
   if (!accessTokenData) {
     return res.status(401).send({ data: null, message: '권한 없음' })
