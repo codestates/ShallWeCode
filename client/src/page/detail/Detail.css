@@ -1,0 +1,32 @@
+.detailProfile{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailTitle{
+  margin-bottom: 30px;
+}
+
+.detailBtn{
+  text-align: right;
+}
+
+.detailStack{
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.detailProfileImg{
+  display: flex;
+  align-items: center;
+  
+}
+
+.detailName{
+  margin-left: 18px;
+}
+.detailLanguageMargin{
+  margin-right: 18px;
+}
