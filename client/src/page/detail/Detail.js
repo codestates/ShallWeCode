@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import "./Detail.css"
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { Viewer } from '@toast-ui/react-editor';
+import CommentList from '../../component/commentList/CommentList';
 
 
 
@@ -52,10 +53,21 @@ function Detail(props) {
           <div className="detailLanguageMargin">사용언어</div>
           <button className="miniBtn filterMiniBtn">Javascript</button>
         </div>
-        
+
         <div>
           <Viewer initialValue={markdown} />
-        </div>     
+        </div> 
+        <CommentList/>
+        <div className="commentBox">
+          <div className="detailComment">
+            <div style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
+            <div className="commentName">닉네임</div>
+          </div>
+          <input className="commentInput" type="text" placeholder="입력하세요!" />
+        </div> 
+        <div className="commentBtn">
+          <button className="miniBtn writingCancelBtn smallSizeFont" >취소</button>
+        </div>
       </div> 
     </div>
   );
