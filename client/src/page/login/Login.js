@@ -5,7 +5,7 @@ import "./Login.css"
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
-function Login() {
+function Login({ handleResponseSuccess }) {
   const [loginInfo, setLoginInfo] = useState({
     username: '',
     password: ''
@@ -26,6 +26,7 @@ function Login() {
     }).then((res) => {
       console.log("--------then------",res)
       if (res.status === 200) {
+        handleResponseSuccess()
         history.push('/');
       }
     }).catch((err) => {

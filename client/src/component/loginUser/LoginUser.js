@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "./LoginUser.css"
 
-function LoginUser() {
+function LoginUser({ handleLogout }) {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
@@ -25,9 +25,9 @@ function LoginUser() {
       </svg>
       <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
         <ul>
-          <li><a href="/messages">마이페이지</a></li>
-          <li><a href="/trips">설정</a></li>
-          <li><a href="/saved">로그아웃</a></li>
+          <li><a href="/MyPage">마이페이지</a></li>
+          <li><a href="/Setting">설정</a></li>
+          <li onClick={handleLogout}><a href="/">로그아웃</a></li>
         </ul>
       </nav>
     </div>

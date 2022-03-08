@@ -6,9 +6,12 @@ import Thumbnail from '../../component/thumbnail/Thumbnail';
 import "./MyPage.css"
 
 function MyPage(props) {
+
+  const { isLogin, handleLogout } = props
+
   return (
     <div>
-      <Navbar/>
+      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
       <div className="detailProfile section">
           <div className="detailProfileImg ">
             <div style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></div>

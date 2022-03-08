@@ -1,7 +1,6 @@
 const models = require('../../models')
 
 module.exports = (req, res) => {
-
   const { PRorTP, stack } = req.query
 
   models.boardFilterGet(PRorTP, stack, (err, result) => {

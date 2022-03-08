@@ -4,10 +4,13 @@ import Profile from '../../component/profile/Profile';
 import "./Setting.css"
 
 
-function Setting() {
+function Setting(props) {
+
+  const { isLogin, handleLogout } = props
+
   return (
     <div>
-      <Navbar />
+      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
       <Profile />
 
       <div className="settingBox settingSection">
