@@ -2,7 +2,6 @@ const models = require('../../models')
 
 module.exports = (req, res) => {
   const { PRorTP, stack } = req.query
-  console.log(req.query)
   models.boardFilterGet(PRorTP, stack, (err, result) => {
     if (err) {
       return res.status(500).send({ message: '서버 에러' })

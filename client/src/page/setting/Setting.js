@@ -5,6 +5,7 @@ import "./Setting.css"
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { components } from 'react-select';
+import { useLocation } from 'react-router';
 import Swal from 'sweetalert2'
 import NewProfile from '../../component/newprofile/NewProfile';
 
@@ -12,7 +13,8 @@ import NewProfile from '../../component/newprofile/NewProfile';
 
 function Setting(props) {
 
-  const { isLogin, handleLogout } = props
+  const location = useLocation()
+  const { isLogin, handleLogout, userinfo } = props
   const history = useHistory();
 
   const [nickname, setNickName] = useState('');
@@ -183,9 +185,8 @@ function Setting(props) {
 
   return (
     <div>
-      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
+      <Navbar isLogin={isLogin} handleLogout={handleLogout} userinfo={userinfo}/>
       <NewProfile/>
-      {/* <Profile /> */}
 
       <div className="settingBox settingSection">
         <form onSubmit={(e) => e.preventDefault()} >

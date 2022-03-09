@@ -4,7 +4,8 @@ import axios from 'axios'
 
 function Filter(props) {
 
-  const { thumbnail, filteredThumbnail } = props
+  const { thumbnail, filteredThumbnail, PRorTP, languageFilter, filterOfLanguage } = props
+
   const languages = [
     { value: "01", label: "JavaScript" },
     { value: "02", label: "TypeScript" },
@@ -23,13 +24,13 @@ function Filter(props) {
   ];
   
 
-  const [languageFilter, setLanguageFilter] = useState([]);
+  // const [languageFilter, setLanguageFilter] = useState([]);
   // 배열이 선택 languages를 포함하고 있는지에 따라서 removeLanguage , setLanguage 함수 실행
   
   const languagesOnClick = (language) => {
     languageFilter.includes(language)
     ? removeLanguage(language)
-    : setLanguageFilter([...languageFilter, language]);
+    : filterOfLanguage([...languageFilter, language]);
   };
   
   // console.log('languageFilter===',languageFilter.join(''))
@@ -50,20 +51,20 @@ function Filter(props) {
   const removeLanguage = (language) => {
     const index = languageFilter.findIndex((lan) => lan === language);
     languageFilter.splice(index, 1);
-    setLanguageFilter([...languageFilter]);
+    filterOfLanguage([...languageFilter]);
   };
 
-  useEffect(() => {
-    axios.get("http://localhost:4000/board/filter", { params: {stack: languageFilter.join('') }}).then((res) => {
-      if (res.data.message === '필터에 맞는 게시물이 존재하지 않습니다') {
-        console.log(res.data.message)
-      }
-      else if (res.status === 200) {
-        filteredThumbnail(res.data.data.data)
-      }
-    }).catch((err) => {
-      console.log(err);
-    })  }, [languageFilter]);
+  // useEffect(() => {
+  //   axios.get("http://localhost:4000/board/filter", { params: {stack: languageFilter.join(''), PRorTP }}).then((res) => {
+  //     if (res.data.message === '필터에 맞는 게시물이 존재하지 않습니다') {
+  //       console.log(res.data.message)
+  //     }
+  //     else if (res.status === 200) {
+  //       filteredThumbnail(res.data.data.data)
+  //     }
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })  }, [languageFilter]);
 
   return (
     <div>      

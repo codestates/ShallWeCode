@@ -163,10 +163,7 @@ function Profile(props) {
         {/* <img 
         style={{"backgroundColor": "#C4C4C4", "width":"150px", "height" : "150px", "border-radius" : "50%"}} 
         src={previewImg ? previewImg : Bear} />  */}
-        <img className='profileImg' src={test ? test : Bear} /> 
-        <img className='profileImg' src='images/bear'/> 
-        
-        
+        <img className='profileImg' src={test ? test : Bear} />        
 
         <div className="profileText">
         <form encType='multipart/form-data'>

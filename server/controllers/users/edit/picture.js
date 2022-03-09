@@ -2,7 +2,6 @@ const models = require('../../../models')
 const { generateAccessToken, sendAccessToken, isAuthorized } = require('../../tokenFunctions')
 
 module.exports = (req, res) => {
-  console.log(req.file)
   const token = isAuthorized(req)
   if (!token) {
     return res.status(401).send({ message: '권한 없음' })
