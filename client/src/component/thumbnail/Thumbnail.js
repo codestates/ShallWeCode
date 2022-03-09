@@ -5,7 +5,6 @@ import "./Thumbnail.css"
 function Thumbnail(props) {
 
     const { thumbnail } = props
-    console.log(thumbnail)
     return (
         <div className="thumbnailSection ">
                 {!thumbnail ? <Loading/>

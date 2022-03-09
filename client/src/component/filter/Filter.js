@@ -3,53 +3,67 @@ import "./Filter.css"
 import axios from 'axios'
 
 function Filter(props) {
+
+  const { thumbnail, filteredThumbnail } = props
   const languages = [
-    'javascript',
-    'typescript',
-    'react',
-    'vue',
-    'node.js',
-    'java',
-    'spring',
-    'kotlin',
-    'c++',
-    'go',
-    'python',
-    'django',
-    'flutter',
-    'swift',
+    { value: "01", label: "JavaScript" },
+    { value: "02", label: "TypeScript" },
+    { value: "03", label: "React.js" },
+    { value: "04", label: "Node.js" },
+    { value: "05", label: "Vue.js" },
+    { value: "06", label: "Flutter" },
+    { value: "07", label: "Java" },
+    { value: "08", label: "C" },
+    { value: "09", label: "C++" },
+    { value: "10", label: "C#" },
+    { value: "11", label: "Spring" },
+    { value: "12", label: "Angular.js" },
+    { value: "13", label: "Swift" },
+    { value: "14", label: "Python" }
   ];
   
 
   const [languageFilter, setLanguageFilter] = useState([]);
   // 배열이 선택 languages를 포함하고 있는지에 따라서 removeLanguage , setLanguage 함수 실행
-  console.log('languageFilter===',languageFilter)
-
+  
   const languagesOnClick = (language) => {
     languageFilter.includes(language)
-      ? removeLanguage(language)
-      : setLanguage(language);
-
-    axios.get("http://localhost:4000/board/filter", languageFilter).then((res) => {
-      console.log("--------then------",res)
-      if (res.status === 200) {
-        
-      }
-    }).catch((err) => {
-      console.log(err);
-    })
-
+    ? removeLanguage(language)
+    : setLanguageFilter([...languageFilter, language]);
   };
-  const setLanguage = (language) => {
-    setLanguageFilter([...languageFilter, language]);
-  };
+  
+  // console.log('languageFilter===',languageFilter.join(''))
+  // const loadFilter = () => {
+    // axios.get("http://localhost:4000/board/filter", { params: {stack: languageFilter.join('') }}).then((res) => {
+    //   console.log("--------then------",res.data.data.data)
+    //   if (res.status === 200) {
+    //     filteredThumbnail(res.data.data.data)
+    //   }
+    // }).catch((err) => {
+    //   console.log(err);
+    // })
+
+  // }
+  // const setLanguage = (language) => {
+  //   setLanguageFilter([...languageFilter, language]);
+  // };
   const removeLanguage = (language) => {
     const index = languageFilter.findIndex((lan) => lan === language);
     languageFilter.splice(index, 1);
     setLanguageFilter([...languageFilter]);
   };
 
-
+  useEffect(() => {
+    axios.get("http://localhost:4000/board/filter", { params: {stack: languageFilter.join('') }}).then((res) => {
+      if (res.data.message === '필터에 맞는 게시물이 존재하지 않습니다') {
+        console.log(res.data.message)
+      }
+      else if (res.status === 200) {
+        filteredThumbnail(res.data.data.data)
+      }
+    }).catch((err) => {
+      console.log(err);
+    })  }, [languageFilter]);
 
   return (
     <div>      
@@ -58,9 +72,9 @@ function Filter(props) {
         {languages.map((language,i) => {
           return <button 
           key = {i}
-          onClick={()=>{languagesOnClick(language)}} 
-          className={`${languageFilter.includes(language) ? "active miniBtn filterMiniBtn" : "miniBtn filterMiniBtn"}`}
-          >{language}</button>
+          onClick={()=>{languagesOnClick(language.value)}} 
+          className={`${languageFilter.includes(language.value) ? "active miniBtn filterMiniBtn" : "miniBtn filterMiniBtn"}`}
+          >{language.label}</button>
         })}
       </div>
     </div>

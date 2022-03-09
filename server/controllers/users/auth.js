@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   
   const accessTokenData = isAuthorized(req)
   if (!accessTokenData) {
-    return res.status(401).send({ data: null, message: '권한 없음' })
+    return res.status(204).send({ data: null, message: '권한 없음' })
   }
 
   const { userId } = accessTokenData

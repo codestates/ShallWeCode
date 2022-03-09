@@ -13,11 +13,7 @@ const languageList = [
   { value: "11", label: "Spring" },
   { value: "12", label: "Angular.js" },
   { value: "13", label: "Swift" },
-  { value: "14", label: "Python" },
-  { value: "15", label: "Django" },
-  { value: "16", label: "Go" },
-  { value: "17", label: "Kotlin" },
-  { value: "18", label: "Ruby" },
+  { value: "14", label: "Python" }
 ];
 
 export default languageList;
