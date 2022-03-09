@@ -72,6 +72,7 @@ function Detail(props) {
     })
 
   }, []);
+
   return (
     <div>
       <Navbar isLogin={isLogin} userinfo={userinfo} handleLogout={handleLogout}/>
@@ -112,6 +113,7 @@ function Detail(props) {
         </div> 
         <div className="commentBtn">
           <button className="miniBtn writingCancelBtn smallSizeFont" onClick={createComment}>입력</button>
+
         </div>
       </div> 
       }

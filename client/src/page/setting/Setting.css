@@ -63,9 +63,26 @@
   font-size: 18px;
 }
 
+.settingId{
+  display: flex;
+}
+
+.settingIdDiv{
+  margin-left: 55px;
+
+  margin-bottom: 20px;
+}
+
 .dropOut{
+  width: 60px;
+  margin-left: 14px;
   margin-top: 30px;
   margin-bottom: 20px;
+}
+
+.dropOut:hover {
+  color: red;
+  cursor: pointer;
 }
 
 .cancelBtn{
