@@ -15,12 +15,7 @@ function Detail(props) {
   const [ boardinfo, setBoardinfo ] = useState("")
   const [ comment, setComment ] = useState("")
   const location = useLocation()
-  const { isLogin, handleLogout } = props
-
-  const clickCommentBtn = () => {
-
-  }
-
+  const { isLogin, handleLogout, userinfo } = props
   const markdown = 
   `
   프로젝트 설명 : 프로젝트 할 팀원을 구했는데 마음에 안드셨던 경험이 있으신가요?\n - 먼저 개발자들이 작성해둔 포트폴리오를 확인해주세요\n \n모집 인원: 1명\n        \n          
@@ -80,7 +75,7 @@ function Detail(props) {
 
   return (
     <div>
-      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
+      <Navbar isLogin={isLogin} userinfo={userinfo} handleLogout={handleLogout}/>
       { !boardinfo ? <div className="section">잘못된 요청입니다.</div>
         :
       <div className="section">
