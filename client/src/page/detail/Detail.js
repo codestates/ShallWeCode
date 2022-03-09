@@ -13,6 +13,11 @@ function Detail(props) {
   const [ boardinfo, setBoardinfo ] = useState("")
   const location = useLocation()
   const { isLogin, handleLogout } = props
+
+  const clickCommentBtn = () => {
+
+  }
+
   const markdown = 
   `
   프로젝트 설명 : 프로젝트 할 팀원을 구했는데 마음에 안드셨던 경험이 있으신가요?\n - 먼저 개발자들이 작성해둔 포트폴리오를 확인해주세요\n \n모집 인원: 1명\n        \n          
@@ -40,6 +45,7 @@ function Detail(props) {
     })
 
   }, []);
+
   return (
     <div>
       <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
@@ -79,7 +85,7 @@ function Detail(props) {
           <input className="commentInput" type="text" placeholder="입력하세요!" />
         </div> 
         <div className="commentBtn">
-          <button className="miniBtn writingCancelBtn smallSizeFont" >취소</button>
+          <button onClick={clickCommentBtn} className="miniBtn writingCancelBtn smallSizeFont" >등록</button>
         </div>
       </div> 
       }

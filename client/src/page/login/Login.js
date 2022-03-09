@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import BigBtn1 from '../../component/bigBtn1/BigBtn1';
+import BigBtn from '../../component/bigBtn/BigBtn';
 import "./Login.css"
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
@@ -42,7 +43,7 @@ function Login({ handleResponseSuccess }) {
   return (
     <div >
       <center>
-        <h1>Sign In</h1>
+        <img className="signUpImg" src="/images/logo3.png"/>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
             <input className="loginInput" type='text' placeholder="아이디" onChange={handleInputValue('username')} />
