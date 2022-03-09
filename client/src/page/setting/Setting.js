@@ -87,12 +87,12 @@ function Setting(props) {
               rgba(0,0,0,0.4)
             `
           })
-
         }
       }).catch((err)=>{
         console.log(err)
       })
     }
+    window.location.replace("/Setting") 
   }
 
   const settingPasswordOnchange = (key) => (e) => {
@@ -145,6 +145,7 @@ function Setting(props) {
       }).catch((err)=>{
         console.log(err)
       })
+     
     }
   }
 
