@@ -29,12 +29,11 @@ function SignUp(props) {
     errorValidation: false
   })
   const history = useHistory();
+  const usernameRegExp = /^[A-Za-z0-9+]{4,12}$/; 
+  const passwordRegExp = /^[A-Za-z0-9~!@#$%^&*()_+|<>?:{}+]{8,16}$/;
+  const nicknameRegExp = /^[a-zA-Zㄱ-힣0-9]*$/;
 
   const handleInputValue = (key) => (e) => {
-
-    const usernameRegExp = /^[A-Za-z0-9+]{4,12}$/; 
-    const passwordRegExp = /^[A-Za-z0-9~!@#$%^&*()_+|<>?:{}+]{8,16}$/;
-    const nicknameRegExp = /^[a-zA-Zㄱ-힣0-9]*$/;
 
     setuserinfo({ ...userinfo, [key]: e.target.value })
 
