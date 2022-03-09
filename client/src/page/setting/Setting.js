@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { components } from 'react-select';
 import Swal from 'sweetalert2'
+import NewProfile from '../../component/newprofile/NewProfile';
 
 
 
@@ -73,8 +74,17 @@ function Setting(props) {
       axios.patch("http://localhost:4000/users/nicknameEdit", {nickname: nickname})
       .then((res)=>{
         if(res.status===200){
-          // alert('닉네임 변경이 성공했습니다')
-          Swal.fire('닉네임 변경이 성공했습니다')
+          Swal.fire({
+            title: '닉네임 변경이 성공했습니다',
+            width: 600,
+            padding: '3em',
+            confirmButtonColor: '#298854',
+            color: 'black',
+            background: '#fff ',
+            backdrop: ` 
+              rgba(0,0,0,0.4)
+            `
+          })
 
         }
       }).catch((err)=>{
@@ -118,8 +128,17 @@ function Setting(props) {
       axios.patch("http://localhost:4000/users/passwordEdit", {password: userinfo.password})
       .then((res)=>{
         if(res.status===200){
-          Swal.fire('비밀번호 변경이 성공했습니다')
-          // alert('비밀번호 변경이 성공했습니다')
+          Swal.fire({
+            title: '비밀번호 변경이 성공했습니다',
+            width: 600,
+            padding: '3em',
+            confirmButtonColor: '#298854',
+            color: 'black',
+            background: '#fff ',
+            backdrop: ` 
+              rgba(0,0,0,0.4)
+            `
+          })
         }
       }).catch((err)=>{
         console.log(err)
@@ -131,14 +150,13 @@ function Setting(props) {
  // 확인을 누른다면 요청 보내기 ->  
   const clickDropOut = () => {
     Swal.fire({
-      title: '회원탈퇴 하시겠습니까??',
+      title: '회원탈퇴 하시겠습니까?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#298854',
       cancelButtonColor: '#d33',
       confirmButtonText: 'ok'
     }).then((result) => {
-      // console.log(result)
       if(result.isConfirmed){
         axios.delete("http://localhost:4000/users/signout")
         .then((res)=>{
@@ -166,7 +184,8 @@ function Setting(props) {
   return (
     <div>
       <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
-      <Profile />
+      <NewProfile/>
+      {/* <Profile /> */}
 
       <div className="settingBox settingSection">
         <form onSubmit={(e) => e.preventDefault()} >
