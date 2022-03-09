@@ -2,6 +2,7 @@ const models = require('../../models')
 
 module.exports = (req, res) => {
 
+  console.log("test : ",req.query)
   const contentId = req.query.contentId
 
   models.boardDetailGet(contentId, (err, result) => {
