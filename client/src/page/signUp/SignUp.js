@@ -95,7 +95,7 @@ function SignUp(props) {
   };
 
   const handleSignup = () => {
- 
+
     const {username, password, passwordCheck, nickname } = userinfo
 
     if(!username || !password || !passwordCheck || !nickname){
