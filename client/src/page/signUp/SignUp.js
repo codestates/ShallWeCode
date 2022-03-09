@@ -105,7 +105,7 @@ function SignUp(props) {
       setValidation({ ...validation, errorValidation: false})
       axios.post('http://localhost:4000/users/signup', {username: username, password:password, nickname: nickname})
       .then(res=> {
-        if(res.status === 200){
+        if(res.status === 201){
           alert('회원가입 성공!')
           history.push("/login")
         }
