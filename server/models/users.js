@@ -109,5 +109,29 @@ module.exports = {
         callback(err, result)
       })
     })
+  },
+  username: (username, callback) => {
+
+    const queryString = `SELECT COUNT (username) AS count FROM users WHERE username = '${username}'`
+
+    db.query(queryString, (err, result) => {
+      if (err) {
+        return console.log(err)
+      }
+
+      callback(err, result)
+    })
+  },
+  nickname: (nickname, callback) => {
+
+    const queryString = `SELECT COUNT (nickname) AS count FROM users WHERE nickname = '${nickname}'`
+
+    db.query(queryString, (err, result) => {
+      if (err) {
+        return console.log(err)
+      }
+
+      callback(err, result)
+    })
   }
 }

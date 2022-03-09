@@ -14,7 +14,7 @@ module.exports = (req, res) => {
       res.status(500).send({ message: '서버 에러' })
     }
     if (!result.length) {
-      res.status(404).send({ message: '로그인 실패(아이디, 비밀번호 불일치)' })
+      res.send({ message: '로그인 실패(아이디, 비밀번호 불일치)' })
     } else {
       console.log(result[0])
       const accessToken = generateAccessToken(result[0])

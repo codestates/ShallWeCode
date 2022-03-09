@@ -12,6 +12,7 @@ import { Editor } from '@toast-ui/react-editor';
 
 
 function Writing(props) {
+  const { isLogin, handleLogout } = props
   const [type, setType] = useState('') // 글의 타입 지정, 클릭시 변경, 1번 2번으로 구분
   const [title, setTitle] = useState(''); // 제목
   const [stack, setStack] = useState({languageList}) // 기본 스택 목록
@@ -64,10 +65,14 @@ function Writing(props) {
     }
   }
 
+  const handleWritingCancelClick = () => {
+    history.push('/')
+  }
+
   return (
     
     <div>
-      <Navbar />
+      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
 
     <div className="writingSection">
       {/* 프로젝트 포트폴리오 선택 */}
@@ -103,9 +108,7 @@ function Writing(props) {
       {/* 글쓰기 */}
       <Editor
         initialValue={
-        `프로젝트 설명: \n프로젝트 진행 방식: \n모집 인원:
-        
-        `}
+        `프로젝트 설명: \n프로젝트 진행 방식: \n모집 인원:`}
         previewStyle="vertical"
         height="1000px"
         initialEditType="markdown"
@@ -113,11 +116,12 @@ function Writing(props) {
         ref={editorRef}
         onChange={handleChangeEditor}
       />
+      
       <div className="writingBtnDiv">
         <div className='alertBox'>{errorMessage}</div>  
         <button onClick={()=>{handleChangeEditor(); handleButtonClick()}} className="miniBtn saveBtn smallSizeFont">글 등록</button>
-        <button className="miniBtn writingCancelBtn smallSizeFont" >취소</button>
-        </div>
+        <button onClick={handleWritingCancelClick} className="miniBtn writingCancelBtn smallSizeFont">취소</button>
+      </div>
     </div>
   );
 }
