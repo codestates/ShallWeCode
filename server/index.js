@@ -1,9 +1,12 @@
 const express = require('express')
 const cors = require('cors')
 const controllers = require('./controllers')
+const multer = require('multer')
+const path = require('path')
 const app = express()
 
 app.use(express.json())
+app.use(express.static('public'))
 app.use(
   cors({
     origin: ['http://localhost:3000'],
@@ -13,13 +16,25 @@ app.use(
   })
 )
 
+const storage = multer.diskStorage({
+  destination: "../public/img/",
+  filename: function (req, file, cb) {
+    cb(null, "imgfile" + Date.now() + path.extname(file.originalname))
+  }
+})
+
+const upload = multer({
+  storage: storage, 
+  limits: { fileSize: 1000000 }
+})
+
 app.get('/users/auth', controllers.auth)
 app.post('/users/signup', controllers.signup)
 app.post('/users/login', controllers.login)
 app.post('/users/logout', controllers.logout)
 app.post('/users/verifyUsername', controllers.verifyUsername)
 app.post('/users/verifyNickname', controllers.verifyNickname)
-app.patch('/users/pictureEdit', controllers.picture)
+app.post('/users/pictureEdit', upload.single("file"), controllers.picture)
 app.patch('/users/nicknameEdit', controllers.nickname)
 app.patch('/users/passwordEdit', controllers.password)
 app.delete('/users/signout', controllers.signout)

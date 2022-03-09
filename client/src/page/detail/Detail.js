@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../component/navbar/Navbar';
 import ReactMarkdown from 'react-markdown'
 import "./Detail.css"
 import '@toast-ui/editor/dist/toastui-editor-viewer.css';
 import { Viewer } from '@toast-ui/react-editor';
 import CommentList from '../../component/commentList/CommentList';
-
-
-
-
+import axios from 'axios';
+import { useLocation } from 'react-router';
 
 function Detail(props) {
 
+  const [ boardinfo, setBoardinfo ] = useState("")
+  const location = useLocation()
   const { isLogin, handleLogout } = props
   const markdown = 
   `
@@ -30,20 +30,29 @@ function Detail(props) {
   | a | b |
   | - | - |
   `
-  
+  let data;
+  useEffect(() => {
+    axios.get('http://localhost:4000/board/detail', { params: {contentId: location.state.contentId }})
+    .then((res) => {
+      // const { PRorTP, body, created_at, nickname, picture, stack, title, userId } = res.data.data
+      // data = { PRorTP, body, created_at, nickname, picture, stack, title, userId }
+      setBoardinfo(res.data.data)
+    })
 
-
+  }, []);
   return (
     <div>
       <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
+      { !boardinfo ? <div className="section">잘못된 요청입니다.</div>
+        :
       <div className="section">
-        <div className="largeSizeFont detailTitle">개발자들을 위한 Shall We Code에서 마음에 드는 팀원을 구해보세요!</div>
+        <div className="largeSizeFont detailTitle">{boardinfo.title}</div>
         <div className="detailProfile">
           <div className="detailProfileImg">
             <div style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></div>
-            <div className="detailName">닉네임</div>
+            <div className="detailName">{boardinfo.nickname}</div>
           </div>
-          <div>글 작성 날짜</div>
+          <div>{boardinfo.created_at}</div>
         </div>
 
         <div className="detailBtn">
@@ -52,13 +61,16 @@ function Detail(props) {
         </div>
         <div className="detailStack">
           <div className="detailLanguageMargin">사용언어</div>
-          <button className="miniBtn filterMiniBtn">Javascript</button>
+          {boardinfo.stack.map((data, i) => {
+            return <button key={i} className="miniBtn filterMiniBtn">{data}</button>
+          })
+        }
         </div>
 
         <div>
-          <Viewer initialValue={markdown} />
+          <Viewer initialValue={boardinfo.body} />
         </div> 
-        <CommentList/>
+        <CommentList contentId={location.state.contentId}/>
         <div className="commentBox">
           <div className="detailComment">
             <div style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
@@ -70,6 +82,7 @@ function Detail(props) {
           <button className="miniBtn writingCancelBtn smallSizeFont" >취소</button>
         </div>
       </div> 
+      }
     </div>
   );
 }
