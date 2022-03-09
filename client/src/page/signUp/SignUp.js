@@ -101,15 +101,28 @@ function SignUp(props) {
     if(!username || !password || !passwordCheck || !nickname){
       setMessage({ ...message, errorMessage: '모든 항목은 필수입니다'})
       setValidation({ ...validation, errorValidation: true})
-    }else{
-      setValidation({ ...validation, errorValidation: false})
-      axios.post('http://localhost:4000/users/signup', {username: username, password:password, nickname: nickname})
-      .then(res=> {
-        if(res.status === 200){
-          alert('회원가입 성공!')
-          history.push("/login")
+    } else if (usernameRegExp.test(username) && passwordRegExp.test(password) && nicknameRegExp.test(nickname) && password === passwordCheck) {
+      axios.post('http://localhost:4000/users/verifyUsername', { username: username })
+      .then( (res) => {
+        if (res.data.data.data[0].count === 0) {
+          axios.post('http://localhost:4000/users/verifyNickname', { nickname: nickname })
+          .then( (res) => {
+            if (res.data.data.data[0].count === 0) {
+              axios.post('http://localhost:4000/users/signup', { username: username, password: password, nickname: nickname })
+              .then( (res) => {
+                if (res.status === 201) {
+                  alert('회원가입 성공!')
+                  history.push("/login")
+                }
+              }).catch( (err) => {
+                console.log(err)
+              })
+            }
+          }).catch( (err) => {
+            console.log(err)
+          })
         }
-      }).catch((err)=>{
+      }).catch( (err) => {
         console.log(err)
       })
     }
