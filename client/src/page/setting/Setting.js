@@ -118,7 +118,8 @@ function Setting(props) {
       axios.patch("http://localhost:4000/users/passwordEdit", {password: userinfo.password})
       .then((res)=>{
         if(res.status===200){
-          alert('비밀번호 변경이 성공했습니다')
+          Swal.fire('비밀번호 변경이 성공했습니다')
+          // alert('비밀번호 변경이 성공했습니다')
         }
       }).catch((err)=>{
         console.log(err)
@@ -129,21 +130,32 @@ function Setting(props) {
  // 회원탈퇴 클릭시 alert 창 먼저 띄워주고 확인 취소 가능
  // 확인을 누른다면 요청 보내기 ->  
   const clickDropOut = () => {
-    if (window.confirm("회원탈퇴 하시겠습니까?")) {
-      axios.delete("http://localhost:4000/users/signout")
-      .then((res)=>{
-        if(res.status===200){
-          alert("탈퇴 되었습니다 ");
-          window.location.replace("/") 
-          // history.push("/")
-        }
-      }).catch((err)=>{
-        console.log(err)
-      })
-    } else {
-      alert("회원탈퇴를 취소합니다");
-    }
-
+    Swal.fire({
+      title: '회원탈퇴 하시겠습니까??',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ok'
+    }).then((result) => {
+      // console.log(result)
+      if(result.isConfirmed){
+        axios.delete("http://localhost:4000/users/signout")
+        .then((res)=>{
+          if(res.status===200){
+            Swal.fire(
+              '탈퇴되었습니다',
+              'Your file has been deleted.',
+              'success'
+            )
+            window.location.replace("/") 
+            // history.push("/")
+          }
+        }).catch((err)=>{
+          console.log(err)
+        })
+      }
+    })
   }
 
   const clickCancelBtn = () => {
