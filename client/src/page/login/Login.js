@@ -4,7 +4,7 @@ import "./Login.css"
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
-function Login() {
+function Login({ handleResponseSuccess }) {
   const [loginInfo, setLoginInfo] = useState({
     username: '',
     password: ''
@@ -23,7 +23,9 @@ function Login() {
       username: loginInfo.username,
       password: loginInfo.password
     }).then((res) => {
+
       if (res.data.message === '로그인 성공') {
+        handleResponseSuccess()
         history.push('/')
       } else {
         return setErrorMessage('아이디 또는 비밀번호를 잘못 입력했습니다')
@@ -31,6 +33,10 @@ function Login() {
     }).catch((err) => {
       console.log(err)
     })
+  }
+  
+  const handleLoginSignUp = () => {
+    history.push('/SignUp')
   }
 
   return (
@@ -51,7 +57,7 @@ function Login() {
             </div>
           </div>
           <div>
-            <BigBtn1 />
+            <button onClick={handleLoginSignUp} className="bigBtn1">회원가입</button>
           </div>
         </form>
       </center>

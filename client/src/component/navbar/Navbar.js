@@ -1,8 +1,30 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'
 import LoginUser from '../loginUser/LoginUser';
 import "./Navbar.css"
+import axios from 'axios'
 
 function Navbar(props) {
+
+  const { isLogin, userinfo, handleLogout } = props
+  const history = useHistory()
+  // console.log('navBar_isLogin',isLogin)
+
+  const writingOnClick = () => {
+    history.push('/writing')
+
+    axios.get("http://localhost:4000/board/filter")
+    .then((res) => {
+      if (res.status === 200) {
+        history.push('/writing')
+      }else if(res.status === 401){
+        history.push('/login')
+      }
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
   return (
     <nav className="headerNav">
       <a href="/">
@@ -12,8 +34,8 @@ function Navbar(props) {
       </a>
 
       <div>
-        <button className="btnNewPost">글 쓰기</button>
-        <LoginUser />
+        <button onClick={writingOnClick} className="btnNewPost">글 쓰기</button>
+        {isLogin ? <LoginUser handleLogout={handleLogout}/> : <button onClick={() => {history.push('/login')}} className="btnNewPost">로그인</button>}
       </div>
     </nav>
   );

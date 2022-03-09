@@ -89,10 +89,11 @@ module.exports = {
     })
   },
   filter: (PRorTP, stack, callback) => {
-
     if (!PRorTP && !stack) {
-
-      const queryString = `SELECT * FROM contents ORDER BY id DESC`
+      // console.log("테스트테스트")
+      const queryString = `SELECT contents.id, contents.title, category.stack FROM contents
+      INNER JOIN contents_category ON contents.id=contents_category.contents_id
+      INNER JOIN category ON contents_category.category_id=category.id`
 
       db.query(queryString, (err, result) => {
         if (err) {

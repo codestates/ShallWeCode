@@ -1,5 +1,6 @@
 import React, { useState,Component, useRef, useEffect } from 'react'
 import "./Filter.css"
+import axios from 'axios'
 
 function Filter(props) {
   const languages = [
@@ -19,9 +20,9 @@ function Filter(props) {
     'swift',
   ];
   
-  const [languageFilter, setLanguageFilter] = useState("");
+
+  const [languageFilter, setLanguageFilter] = useState([]);
   // 배열이 선택 languages를 포함하고 있는지에 따라서 removeLanguage , setLanguage 함수 실행
-  // 전체 버튼? 
   console.log('languageFilter===',languageFilter)
 
   const languagesOnClick = (language) => {
@@ -29,14 +30,14 @@ function Filter(props) {
       ? removeLanguage(language)
       : setLanguage(language);
 
-    // axios.post("http://localhost:4000/", languageFilter).then((res) => {
-    //   console.log("--------then------",res)
-    //   if (res.status === 200) {
+    axios.get("http://localhost:4000/board/filter", languageFilter).then((res) => {
+      console.log("--------then------",res)
+      if (res.status === 200) {
         
-    //   }
-    // }).catch((err) => {
-    //   console.log(err);
-    // })
+      }
+    }).catch((err) => {
+      console.log(err);
+    })
 
   };
   const setLanguage = (language) => {
@@ -51,9 +52,8 @@ function Filter(props) {
 
 
   return (
-
     <div>      
-      <div className="filterBackgroundSize ">
+      <div className="filterBackgroundSize">
       <div className="filterImg">
         {languages.map((language,i) => {
           return <button 
