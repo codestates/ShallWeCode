@@ -134,7 +134,8 @@ function Setting(props) {
       .then((res)=>{
         if(res.status===200){
           alert("탈퇴 되었습니다 ");
-          history.push("/")
+          window.location.replace("/") 
+          // history.push("/")
         }
       }).catch((err)=>{
         console.log(err)

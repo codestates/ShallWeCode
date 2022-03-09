@@ -131,7 +131,7 @@ function SignUp(props) {
   return (
     <div >
       <center>
-        <h1>Sign In</h1>
+        <img className="signUpImg" src="/images/logo3.png"/>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
             <input 
