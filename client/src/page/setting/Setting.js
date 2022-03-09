@@ -24,7 +24,7 @@ function Setting(props) {
   const nicknameRegExp = /^[a-zA-Zㄱ-힣0-9]*$/;
   const passwordRegExp = /^[A-Za-z0-9~!@#$%^&*()_+|<>?:{}+]{8,16}$/;
 
-  const [userinfo, setuserinfo] = useState({
+  const [inuserinfo, setuserinfo] = useState({
     password: '',
     passwordCheck: '',
   })
@@ -97,7 +97,7 @@ function Setting(props) {
 
   const settingPasswordOnchange = (key) => (e) => {
 
-    setuserinfo({ ...userinfo, [key]: e.target.value })
+    setuserinfo({ ...inuserinfo, [key]: e.target.value })
 
     if (key === 'password') {
       if (!passwordRegExp.test(e.target.value)) {
@@ -109,7 +109,7 @@ function Setting(props) {
       }
     }
     if (key === 'passwordCheck') {
-      if (e.target.value !== userinfo.password) {
+      if (e.target.value !== inuserinfo.password) {
         setMessage({ ...message, passwordCheckMessage: '비밀번호가 일치하지 않습니다'})
         setValidation({ ...validation, passwordCheckValidation: true})
       } else {
@@ -124,10 +124,10 @@ function Setting(props) {
   const settingPasswordOnClick = () => {
     const passwordMessageLength = message.passwordCheckMessage.length
     const passwordCheckMessageLength = message.passwordMessage.length
-    const passwordLength = userinfo.password
-    const passwordCheckLength = userinfo.passwordCheckMessage
+    const passwordLength = inuserinfo.password
+    const passwordCheckLength = inuserinfo.passwordCheckMessage
     if( passwordMessageLength <= 0 && passwordCheckMessageLength <= 0 && passwordLength !== ''  && passwordCheckLength !== '' ){
-      axios.patch("http://localhost:4000/users/passwordEdit", {password: userinfo.password})
+      axios.patch("http://localhost:4000/users/passwordEdit", {password: inuserinfo.password})
       .then((res)=>{
         if(res.status===200){
           Swal.fire({
@@ -214,7 +214,7 @@ function Setting(props) {
               type='password' />
             <button type="submit" disabled={passwordBtnActive} onClick={settingPasswordOnClick} className="passwordBtn">비밀번호 변경</button>
           </div>
-          {userinfo.password.length > 0 && validation.passwordValidation ? <div><span className="signUpErr">{message.passwordMessage}</span></div> : null}
+          {inuserinfo.password.length > 0 && validation.passwordValidation ? <div><span className="signUpErr">{message.passwordMessage}</span></div> : null}
 
           
           <div className="settingLabel">
@@ -224,7 +224,7 @@ function Setting(props) {
               className="settingInput" 
               type='password' />
           </div>
-          {userinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className="signUpErr">{message.passwordCheckMessage}</span></div> : null}
+          {inuserinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className="signUpErr">{message.passwordCheckMessage}</span></div> : null}
         </form>
         <div onClick={clickDropOut} className=" dropOut">회원탈퇴</div>
       </div>
