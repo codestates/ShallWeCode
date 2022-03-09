@@ -2,13 +2,13 @@ const models = require('../../models')
 
 module.exports = (req, res) => {
   const { PRorTP, stack } = req.query
-
+  console.log(req.query)
   models.boardFilterGet(PRorTP, stack, (err, result) => {
     if (err) {
       return res.status(500).send({ message: '서버 에러' })
     }
     if (result.length === 0) {
-      return res.status(404).send({ message: '필터에 맞는 게시물이 존재하지 않습니다' })
+      return res.status(200).send({ message: '필터에 맞는 게시물이 존재하지 않습니다' })
     }
     let trimResult = [];
     for (let d of result) {

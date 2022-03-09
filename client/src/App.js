@@ -23,9 +23,11 @@ function App() {
   const isAuthenticated = () => {
     axios.get('http://localhost:4000/users/auth')
     .then(data => {
-      setUserinfo(data.data.data.data)
-      setIsLogin(true)
-      history.push('/')
+      if (data.status === 200) {
+        setUserinfo(data.data.data.data)
+        setIsLogin(true)
+      }
+      // history.push('/')
       // console.log(isLogin, userinfo)
     })
     .catch(err => console.log("주 에러 : ",err))
@@ -47,6 +49,9 @@ function App() {
       setThumbnail(res.data.data.data)
     })
   }
+  const filteredThumbnail = (boards) => {
+    setThumbnail(boards)
+  }
   useEffect(() => {
     loadingThumbnail()
     isAuthenticated()
@@ -55,7 +60,7 @@ function App() {
   return (
     <BrowserRouter>
         <Route exact path="/">
-          <Main isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout} thumbnail={thumbnail}/>
+          <Main isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout} thumbnail={thumbnail} filteredThumbnail={filteredThumbnail}/>
         </Route>
         <Route path="/Login">
           <Login handleResponseSuccess={handleResponseSuccess}/>
