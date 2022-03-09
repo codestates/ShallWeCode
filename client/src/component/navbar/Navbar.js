@@ -8,13 +8,15 @@ function Navbar(props) {
 
   const { isLogin, userinfo, handleLogout } = props
   const history = useHistory()
-  console.log(userinfo)
 
   const writingOnClick = () => {
     if(isLogin === false){
       history.push('./Login')
     }else{
-      history.push('/writing')
+      history.push({
+        pathname: '/writing',
+        state: { userinfo: userinfo }
+      })
 
       axios.get("http://localhost:4000/board/filter")
       .then((res) => {
