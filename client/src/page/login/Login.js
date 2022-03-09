@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import BigBtn from '../../component/bigBtn/BigBtn';
 import BigBtn1 from '../../component/bigBtn1/BigBtn1';
 import "./Login.css"
 import axios from 'axios';
@@ -13,27 +12,29 @@ function Login({ handleResponseSuccess }) {
   const [errorMessage, setErrorMessage] = useState('')
   const history = useHistory();
   const handleInputValue = (key) => (e) => {
-    setLoginInfo({ ...loginInfo, [key]: e.target.value });
-  };
+    setLoginInfo({ ...loginInfo, [key]: e.target.value })
+  }
   const handleLogin = () => {
-    if (!loginInfo.username && !loginInfo.password) {
-      return setErrorMessage("아이디와 비밀번호를 입력하세요");
-    }
+    if (!loginInfo.username || !loginInfo.password) {
+      return setErrorMessage('아이디와 비밀번호를 입력하세요')
+    }  
 
-    axios.post("http://localhost:4000/users/login", {
+    axios.post('http://localhost:4000/users/login', {
       username: loginInfo.username,
       password: loginInfo.password
     }).then((res) => {
-      console.log("--------then------",res)
-      if (res.status === 200) {
+
+      if (res.data.message === '로그인 성공') {
         handleResponseSuccess()
-        history.push('/');
+        history.push('/')
+      } else {
+        return setErrorMessage('아이디 또는 비밀번호를 잘못 입력했습니다')
       }
     }).catch((err) => {
-      console.log(err);
+      console.log(err)
     })
   }
-
+  
   const handleLoginSignUp = () => {
     history.push('/SignUp')
   }
@@ -49,7 +50,7 @@ function Login({ handleResponseSuccess }) {
           <div>
             <input className="loginInput" type='password' placeholder="비밀번호" onChange={handleInputValue('password')} />
           </div>
-          <div className='alert-box'>{errorMessage}</div>
+          <div><span className="signUpErr">{errorMessage}</span></div>
           <div>
             <div>
               <button className="bigBtn" type='submit' onClick={handleLogin}>로그인</button>
@@ -58,7 +59,6 @@ function Login({ handleResponseSuccess }) {
           <div>
             <button onClick={handleLoginSignUp} className="bigBtn1">회원가입</button>
           </div>
-          <div className='alert-box'>{errorMessage}</div>
         </form>
       </center>
     </div>
