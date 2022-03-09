@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, useHistory, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, useHistory, Route, Switch, Link , useLocation} from "react-router-dom";
 import LoginUser from './component/loginUser/LoginUser';
 import Navbar from './component/navbar/Navbar';
 import Main from './page/main/Main';
@@ -12,6 +12,8 @@ import Writing from './page/writing/Writing';
 import Detail from './page/detail/Detail';
 import MyPage from './page/mypage/MyPage';
 import axios from 'axios';
+
+
 
 function App() {
 
