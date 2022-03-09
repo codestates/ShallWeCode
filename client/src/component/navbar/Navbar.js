@@ -8,7 +8,7 @@ function Navbar(props) {
 
   const { isLogin, userinfo, handleLogout } = props
   const history = useHistory()
-  // console.log('navBar_isLogin',isLogin)
+  console.log(userinfo)
 
   const writingOnClick = () => {
     if(isLogin === false){
@@ -39,7 +39,7 @@ function Navbar(props) {
 
       <div>
         <button onClick={writingOnClick} className="btnNewPost">글 쓰기</button>
-        {isLogin ? <LoginUser handleLogout={handleLogout}/> : <button onClick={() => {history.push('/login')}} className="btnNewPost">로그인</button>}
+        {isLogin ? <LoginUser userinfo={userinfo} handleLogout={handleLogout}/> : <button onClick={() => {history.push('/login')}} className="btnNewPost">로그인</button>}
       </div>
     </nav>
   );

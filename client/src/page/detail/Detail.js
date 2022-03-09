@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../../component/navbar/Navbar';
 import ReactMarkdown from 'react-markdown'
 import "./Detail.css"
@@ -10,7 +11,9 @@ import { useLocation } from 'react-router';
 
 function Detail(props) {
 
+  const history = useHistory()
   const [ boardinfo, setBoardinfo ] = useState("")
+  const [ comment, setComment ] = useState("")
   const location = useLocation()
   const { isLogin, handleLogout } = props
   const markdown = 
@@ -30,7 +33,36 @@ function Detail(props) {
   | a | b |
   | - | - |
   `
-  let data;
+  // let data;
+
+  const createComment = () => {
+    axios.post('http://localhost:4000/comment/writing', {
+      contentId: location.state.contentId,
+      body: comment
+    })
+    .then((res) => {
+      console.log(res)
+      if (res.status === 201) {
+        alert('댓글 작성 완료')
+      }
+    })
+    window.location.replace('/Detail')
+    
+    // (location || window.location || document.location).reload()
+  }
+
+  const handleInputValue = (key) => (e) => {
+
+    setComment({ ...comment, [key]: e.target.value })
+
+  }
+
+  const handleMypage = () => {
+    history.push({
+      pathname: '/Mypage',
+      state: { userId: boardinfo.userId }
+  })  }
+
   useEffect(() => {
     axios.get('http://localhost:4000/board/detail', { params: {contentId: location.state.contentId }})
     .then((res) => {
@@ -49,8 +81,8 @@ function Detail(props) {
         <div className="largeSizeFont detailTitle">{boardinfo.title}</div>
         <div className="detailProfile">
           <div className="detailProfileImg">
-            <div style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></div>
-            <div className="detailName">{boardinfo.nickname}</div>
+            <button onClick={handleMypage} style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></button>
+            <button onClick={handleMypage} className="detailName">{boardinfo.nickname}</button>
           </div>
           <div>{boardinfo.created_at}</div>
         </div>
@@ -76,10 +108,10 @@ function Detail(props) {
             <div style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
             <div className="commentName">닉네임</div>
           </div>
-          <input className="commentInput" type="text" placeholder="입력하세요!" />
+          <input className="commentInput" type="text" placeholder="입력하세요!" onChange={handleInputValue('comment')}/>
         </div> 
         <div className="commentBtn">
-          <button className="miniBtn writingCancelBtn smallSizeFont" >취소</button>
+          <button className="miniBtn writingCancelBtn smallSizeFont" onClick={createComment}>입력</button>
         </div>
       </div> 
       }

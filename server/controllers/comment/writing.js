@@ -8,8 +8,8 @@ module.exports = (req, res) => {
     return res.status(401).send({ message: '권한 없음' })
   }
   
-  const contentId = req.query.contentId
-  const { body } = req.body
+  const contentId = req.body.contentId
+  const body = req.body.body.comment
 
   if (!body) {
     return res.status(400).send({ message: '내용을 채워주세요' })

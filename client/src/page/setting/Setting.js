@@ -5,12 +5,14 @@ import "./Setting.css"
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import { components } from 'react-select';
+import { useLocation } from 'react-router';
 
 
 
 function Setting(props) {
 
-  const { isLogin, handleLogout } = props
+  const location = useLocation()
+  const { isLogin, handleLogout, userinfo } = props
   const history = useHistory();
 
   const [nickname, setNickName] = useState('');
@@ -76,7 +78,7 @@ function Setting(props) {
 
   return (
     <div>
-      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
+      <Navbar isLogin={isLogin} handleLogout={handleLogout} userinfo={userinfo}/>
       <Profile />
 
       <div className="settingBox settingSection">

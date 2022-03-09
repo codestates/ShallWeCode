@@ -153,6 +153,8 @@ module.exports = {
   user: (PRorTP, userId, callback) => {
 
     const queryString = `SELECT contents.id, contents.title, category.stack FROM contents
+      INNER JOIN contents_category ON contents.id=contents_category.contents_id
+      INNER JOIN category ON category.id=contents_category.category_id
       WHERE PRorTP=${PRorTP} AND users_id=${userId}`
 
       db.query(queryString, (err, result) => {

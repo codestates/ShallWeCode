@@ -17,7 +17,6 @@ module.exports = (req, res) => {
     if (!result.length) {
       res.status(401).send({ data: null, message: '권한 없음' })
     } else {
-      console.log(result)
       res.status(200).send({ data: { data: result }, message: '권한 부여 완료'})
     }
   })

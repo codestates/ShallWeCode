@@ -1,10 +1,9 @@
 const models = require('../../models')
 
 module.exports = (req, res) => {
-
   const { PRorTP, userId } = req.query
 
-  models.boarduserGet(PRorTP, userId, (err, result) => {
+  models.boardUserGet(PRorTP, userId, (err, result) => {
     if (err) {
       return res.status(500).send({ message: '서버 에러' })
     }
