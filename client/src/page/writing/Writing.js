@@ -65,6 +65,10 @@ function Writing(props) {
     }
   }
 
+  const handleWritingCancelClick = () => {
+    history.push('/')
+  }
+
   return (
     
     <div>
@@ -104,9 +108,7 @@ function Writing(props) {
       {/* 글쓰기 */}
       <Editor
         initialValue={
-        `프로젝트 설명: \n프로젝트 진행 방식: \n모집 인원:
-        
-        `}
+        `프로젝트 설명: \n프로젝트 진행 방식: \n모집 인원:`}
         previewStyle="vertical"
         height="1000px"
         initialEditType="markdown"
@@ -114,11 +116,12 @@ function Writing(props) {
         ref={editorRef}
         onChange={handleChangeEditor}
       />
+      
       <div className="writingBtnDiv">
         <div className='alertBox'>{errorMessage}</div>  
         <button onClick={()=>{handleChangeEditor(); handleButtonClick()}} className="miniBtn saveBtn smallSizeFont">글 등록</button>
-        <button className="miniBtn writingCancelBtn smallSizeFont" >취소</button>
-        </div>
+        <button onClick={handleWritingCancelClick} className="miniBtn writingCancelBtn smallSizeFont">취소</button>
+      </div>
     </div>
   );
 }

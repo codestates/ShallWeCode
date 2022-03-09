@@ -11,18 +11,22 @@ function Navbar(props) {
   // console.log('navBar_isLogin',isLogin)
 
   const writingOnClick = () => {
-    history.push('/writing')
+    if(isLogin === false){
+      history.push('./Login')
+    }else{
+      history.push('/writing')
 
-    axios.get("http://localhost:4000/board/filter")
-    .then((res) => {
-      if (res.status === 200) {
-        history.push('/writing')
-      }else if(res.status === 401){
-        history.push('/login')
-      }
-    }).catch((err) => {
-      console.log(err);
-    })
+      axios.get("http://localhost:4000/board/filter")
+      .then((res) => {
+        if (res.status === 200) {
+          history.push('/writing')
+        }else if(res.status === 401){
+          history.push('/login')
+        }
+      }).catch((err) => {
+        console.log(err);
+      })
+    }
   }
 
   return (
