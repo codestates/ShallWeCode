@@ -142,7 +142,7 @@ function Writing(props) {
       />
       
       <div className="writingBtnDiv">
-        <div className='alertBox'>{errorMessage}</div>  
+        <div className='writingErrMessage alertBox'>{errorMessage}</div>  
         <button onClick={()=>{handleChangeEditor(); handleButtonClick()}} className="miniBtn saveBtn smallSizeFont">글 등록</button>
         <button onClick={handleWritingCancelClick} className="miniBtn writingCancelBtn smallSizeFont">취소</button>
       </div>

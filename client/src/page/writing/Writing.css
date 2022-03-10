@@ -102,3 +102,9 @@
 .saveBtn:hover{
   cursor: pointer;
 }
+
+.writingErrMessage{
+  color: red;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
