@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './NewProfile.css'
 import Swal from 'sweetalert2'
 
@@ -16,6 +16,11 @@ function NewProfile(props) {
     clickImg(img)
   }
 
+  useEffect(() => {
+    if (userinfo) {
+      clickImg(userinfo[0].picture)
+    }
+  },[userinfo])
   const handleProfileSelect = () => {
     axios.patch('http://localhost:4000/users/pictureEdit', {picture: curImg})
     .then((res)=>{

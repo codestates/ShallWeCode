@@ -12,11 +12,9 @@ function Detail(props) {
 
   const [ boardinfo, setBoardinfo ] = useState("")
   const location = useLocation()
-  const { isLogin, handleLogout } = props
 
-  const clickCommentBtn = () => {
-
-  }
+  const { isLogin, handleLogout, userinfo } = props
+  const [ loadUserinfo, setLoadUserinfo ] = useState([{id:"", picture:"", nickname:""}])
 
   const markdown = 
   `
@@ -41,29 +39,55 @@ function Detail(props) {
     .then((res) => {
       // const { PRorTP, body, created_at, nickname, picture, stack, title, userId } = res.data.data
       // data = { PRorTP, body, created_at, nickname, picture, stack, title, userId }
+      const changeDate = new Date(res.data.data.created_at) 
+      res.data.data.created_at = changeDate.toLocaleString("ko-KR", {timeZone: "Asia/Seoul"})    
       setBoardinfo(res.data.data)
     })
 
   }, []);
 
+
+  // const editContent = () => {
+  //   history.push({
+  //     pathname: '/Writing',
+  //     state: {contentId: location.state.contentId}
+  //   })
+  // }
+
+  const deleteContent = () => {
+    axios.delete('http://localhost:4000/board/delete', { params: {contentId: location.state.contentId}}).then((res) => {
+      alert('게시글 삭제가 완료되었습니다')
+      history.push('/')
+    })
+  }
+
+  useEffect(() => {
+    if (userinfo) {
+    setLoadUserinfo(userinfo)
+    }
+  },[userinfo])
+
   return (
     <div>
-      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
+      <Navbar isLogin={isLogin} userinfo={userinfo} handleLogout={handleLogout}/>
       { !boardinfo ? <div className="section">잘못된 요청입니다.</div>
         :
       <div className="section">
         <div className="largeSizeFont detailTitle">{boardinfo.title}</div>
         <div className="detailProfile">
-          <div className="detailProfileImg">
-            <div style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></div>
+
+          <div className="detailProfileImg" onClick={handleMyPage}>
+            <img src={boardinfo.picture} style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}/>
             <div className="detailName">{boardinfo.nickname}</div>
           </div>
           <div className="detailDate">{boardinfo.created_at}</div>
         </div>
 
-        <div className="detailBtn">
-          <button className="commentEditDeleteButton">수정</button>
-          <button className="commentEditDeleteButton">삭제</button>
+        {boardinfo.userId === loadUserinfo[0].id
+        ? <div className="detailBtn">
+          {/* <button onClick={editContent}>수정</button> */}
+          <button onClick={deleteContent}>삭제</button>
+
         </div>
         
         
@@ -83,8 +107,10 @@ function Detail(props) {
         <h2>댓글</h2>
         <div className="commentBox">
           <div className="detailComment">
-            <div style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
-            <div className="commentName">닉네임</div>
+
+            <img src={loadUserinfo[0].picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
+            <div className="commentName">{loadUserinfo[0].nickname}</div>
+
           </div>
           <input className="commentInput" type="text" placeholder="입력하세요!" />
         </div> 

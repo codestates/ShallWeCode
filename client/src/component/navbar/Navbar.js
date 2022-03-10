@@ -15,7 +15,6 @@ function Navbar(props) {
     }else{
       history.push({
         pathname: '/writing',
-        state: { userinfo: userinfo }
       })
 
       axios.get("http://localhost:4000/board/filter")
