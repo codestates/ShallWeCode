@@ -65,6 +65,7 @@
 
 .settingId{
   display: flex;
+  margin-top: 10px;
 }
 
 .settingIdDiv{
@@ -98,4 +99,21 @@
 .settingCancel{
   text-align: right;
   padding: 20px;
+}
+
+.settingErrMessage{
+  color: red;
+  margin-left: 120px;
+}
+
+.settingPassErr{
+  margin-left: 170px;
+}
+
+.loginErrMsg{
+  margin-top: 50px;
+}
+
+.underLoginInput{
+  margin-bottom: 10px;
 }

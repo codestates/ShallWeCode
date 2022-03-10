@@ -95,3 +95,8 @@
   font-weight: bold;
 }
 
+.writingErrMessage{
+  color: red;
+  margin-bottom: 20px;
+  font-weight: bold;
+}

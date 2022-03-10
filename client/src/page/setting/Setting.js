@@ -194,7 +194,7 @@ function Setting(props) {
               <input onChange={settingNameOnChange} className="settingInput" type='text' />
               <button type="submit" disabled={btnActive} onClick={settingNameOnClick} className="nicknameBtn">닉네임 변경</button>
             </div>
-            {nickname.length > 0 && validation.nicknameValidation ? <div><span className="signUpErr">{message.nicknameMessage}</span></div> : null}
+            {nickname.length > 0 && validation.nicknameValidation ? <div><span className="settingErrMessage ">{message.nicknameMessage}</span></div> : null}
             
             <div className="settingLabel settingId">
               <div>아이디</div>
@@ -212,7 +212,7 @@ function Setting(props) {
               type='password' />
             <button type="submit" disabled={passwordBtnActive} onClick={settingPasswordOnClick} className="passwordBtn">비밀번호 변경</button>
           </div>
-          {inuserinfo.password.length > 0 && validation.passwordValidation ? <div><span className="signUpErr">{message.passwordMessage}</span></div> : null}
+          {inuserinfo.password.length > 0 && validation.passwordValidation ? <div><span className="settingPassErr signUpErr">{message.passwordMessage}</span></div> : null}
 
           
           <div className="settingLabel">
@@ -222,7 +222,7 @@ function Setting(props) {
               className="settingInput" 
               type='password' />
           </div>
-          {inuserinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className="signUpErr">{message.passwordCheckMessage}</span></div> : null}
+          {inuserinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className="settingPassErr signUpErr">{message.passwordCheckMessage}</span></div> : null}
         </form>
         <div onClick={clickDropOut} className=" dropOut">회원탈퇴</div>
       </div>
