@@ -9,6 +9,7 @@ function CommentList(props) {
   const [ edit ,setEdit ] = useState(false)
   const [ comment, setComment] = useState("")
   const [ editId, setEditId ] = useState(null)
+  const [ getUserinfo, setGetUserinfo ] = useState([{id: "", username: "", picture: "", nickname: ""}])
 
   const deleteComment = (e) => {
     axios.delete('http://localhost:4000/comment/delete', {params: { commentId: e.target.value }})
@@ -54,6 +55,12 @@ function CommentList(props) {
     })
   }, []);
 
+  useEffect(() => {
+    if (userinfo) {
+      setGetUserinfo(userinfo)
+    }
+  }, [userinfo])
+
   return (
     <div >
         <div className=" commentListBox">
@@ -66,7 +73,7 @@ function CommentList(props) {
         <img src={data.picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
               <div className="commentName">{data.nickname}</div>
             </div>
-            <div> {!(userinfo[0].nickname === data.nickname) ? <div></div>
+            <div> {!(getUserinfo[0].nickname === data.nickname) ? <div></div>
               : <div><button onClick={handleCommentBox} value={data.id}>수정</button>
               <button value={data.id} onClick={deleteComment}>삭제</button></div>}
             </div>

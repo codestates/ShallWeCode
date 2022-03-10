@@ -131,13 +131,19 @@ function Detail(props) {
         <CommentList contentId={location.state.contentId} userinfo={userinfo}/>
         <div className="commentBox">
           <div className="detailComment">
-            <img src={loadUserinfo[0].picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
-            <div className="commentName">{loadUserinfo[0].nickname}</div>
+            <img src={!loadUserinfo[0].picture ? '/images/1.png' : loadUserinfo[0].picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
+            <div className="commentName">{!loadUserinfo[0].nickname ? "Guest 님" : loadUserinfo[0].nickname}</div>
           </div>
+          {loadUserinfo[0].nickname ?
           <input className="commentInput" type="text" placeholder="입력하세요!" onChange={handleInputValue('comment')}/>
+          : <input className="commentInput" type="text" placeholder="로그인 후 이용 가능합니다." onChange={handleInputValue('comment')} disabled/>
+        }
         </div> 
         <div className="commentBtn">
+          {loadUserinfo[0].nickname ?
           <button className="miniBtn writingCancelBtn smallSizeFont" onClick={createComment}>입력</button>
+          : <div></div>
+        }
 
         </div>
       </div> 
