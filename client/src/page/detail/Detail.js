@@ -108,7 +108,7 @@ function Detail(props) {
             <img src={boardinfo.picture} style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}/>
             <div className="detailName">{boardinfo.nickname}</div>
           </div>
-          <div>{boardinfo.created_at}</div>
+          <div className="detailDate">{boardinfo.created_at}</div>
         </div>
         {boardinfo.userId === loadUserinfo[0].id
         ? <div className="detailBtn">
@@ -124,7 +124,7 @@ function Detail(props) {
           })
         }
         </div>
-
+        <div className="thinLine"></div>
         <div>
           <Viewer initialValue={boardinfo.body} />
         </div> 
