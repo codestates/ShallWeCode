@@ -5,6 +5,7 @@ import "./Writing.css"
 import languageList from './LanguageList';
 import axios from 'axios';
 import { useHistory } from "react-router";
+import Swal from 'sweetalert2'
 
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
@@ -59,7 +60,17 @@ function Writing(props) {
     }else{
       axios.post('http://localhost:4000/board/writing', data)
       .then(res=> {
-        alert('글쓰기 성공')
+        Swal.fire({
+          title: '글쓰기 성공',
+          width: 600,
+          padding: '3em',
+          confirmButtonColor: '#298854',
+          color: 'black',
+          background: '#fff ',
+          backdrop: ` 
+            rgba(0,0,0,0.4)
+          `
+        })
         history.push("/");
       })
     }
