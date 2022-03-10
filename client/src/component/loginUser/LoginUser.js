@@ -40,7 +40,7 @@ function LoginUser({ userinfo, handleLogout }) {
         >
           <path d="M6 9l6 6 6-6"/>
       </svg>
-      <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
+      <nav ref={dropdownRef} className={`loginMenu ${isActive ? 'active' : 'inactive'}`}>
         <ul>
           <li onClick={handleMyPage}><a href="/MyPage">마이페이지</a></li>
           <li onClick={handleSetting}><a href="/Setting">설정</a></li>

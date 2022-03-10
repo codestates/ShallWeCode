@@ -19,10 +19,11 @@
   border-radius: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  margin-left: 10px;
 }
 
 .filterMiniBtn:hover{
   cursor: pointer;
 }
 
-.active { background-color: #298854; color: #fff; }
+.active { background-color: #298854; color: #fff; font-weight: bold;}

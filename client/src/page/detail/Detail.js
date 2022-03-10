@@ -120,15 +120,21 @@ function Detail(props) {
         <div className="detailStack">
           <div className="detailLanguageMargin">사용언어</div>
           {boardinfo.stack.map((data, i) => {
-            return <button key={i} className="miniBtn filterMiniBtn">{data}</button>
+            return <button key={i} className="miniBtn filterMiniBtn detailFilterBtn">{data}</button>
           })
         }
         </div>
-
-        <div>
+        {/* 본문 내용을 구분하기 위한 선 */}
+        <div className="thinLine"></div>
+        <div className="detailText">
           <Viewer initialValue={boardinfo.body} />
         </div> 
+
+
+
+
         <CommentList contentId={location.state.contentId} userinfo={userinfo}/>
+        <h2>댓글</h2>
         <div className="commentBox">
           <div className="detailComment">
             <img src={!loadUserinfo[0].picture ? '/images/1.png' : loadUserinfo[0].picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
@@ -141,6 +147,8 @@ function Detail(props) {
         </div> 
         <div className="commentBtn">
           {loadUserinfo[0].nickname ?
+          // 여기가 조금 다름
+          // <button onClick={clickCommentBtn} className="miniBtn writingCancelBtn smallSizeFont" >등록</button>
           <button className="miniBtn writingCancelBtn smallSizeFont" onClick={createComment}>입력</button>
           : <div></div>
         }
