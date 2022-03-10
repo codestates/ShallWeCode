@@ -2,9 +2,8 @@ const models = require('../../models')
 
 module.exports = (req, res) => {
 
-  const commentId = req.query.commentId
-  const { body } = req.body
-
+  const commentId = req.body.commentId
+  const body = req.body.body.comment
   if (!body) {
     return res.status(400).send({ message: '내용을 작성해주세요' })
   }
