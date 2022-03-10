@@ -166,7 +166,7 @@ function SignUp(props) {
           </div>
           <div>
           {validation.errorValidation ? <div><span className="signUpErr">{message.errorMessage}</span></div> : null}
-            <button className="bigBtn1" type='submit' onClick={handleSignup}>회원가입</button>
+            <button className="SignUpBigBtn" type='submit' onClick={handleSignup}>회원가입</button>
           </div>
           
         </form>
