@@ -18,7 +18,7 @@ function LoginUser({ userinfo, handleLogout }) {
 
   const handleSetting = () => {
     history.push({
-      pathname: '/Setting',
+      pathname: '/Setting', 
       state: {userinfo: userinfo}
     })
   }
