@@ -6,6 +6,7 @@
 
 .detailTitle{
   margin-bottom: 30px;
+  font-size: 45px;
 }
 
 .detailBtn{
@@ -34,6 +35,12 @@
 
 .detailName{
   margin-left: 18px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.detailDate{
+  color: rgb(160, 160, 160);
 }
 
 .detailLanguageMargin{
@@ -66,6 +73,8 @@
   width: 95%;
   margin-left: 2.8%;
   margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 400;
 }
 .commentBox input:focus {
   border-radius: 4px;

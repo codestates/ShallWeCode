@@ -6,6 +6,7 @@ import languageList from './LanguageList';
 import axios from 'axios';
 import { useHistory } from "react-router";
 import { useLocation } from 'react-router';
+import Swal from 'sweetalert2'
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 import Swal from 'sweetalert2'
