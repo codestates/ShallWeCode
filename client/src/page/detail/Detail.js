@@ -85,13 +85,15 @@ function Detail(props) {
             <button onClick={handleMypage} style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></button>
             <button onClick={handleMypage} className="detailName">{boardinfo.nickname}</button>
           </div>
-          <div>{boardinfo.created_at}</div>
+          <div className="detailDate">{boardinfo.created_at}</div>
         </div>
 
         <div className="detailBtn">
-          <button>수정</button>
-          <button>삭제</button>
+          <button className="commentEditDeleteButton">수정</button>
+          <button className="commentEditDeleteButton">삭제</button>
         </div>
+        
+        
         <div className="detailStack">
           <div className="detailLanguageMargin">사용언어</div>
           {boardinfo.stack.map((data, i) => {
@@ -99,7 +101,7 @@ function Detail(props) {
           })
         }
         </div>
-
+        <div className="thinLine"></div>
         <div>
           <Viewer initialValue={boardinfo.body} />
         </div> 

@@ -11,9 +11,30 @@
   border-bottom: solid 1px  #CBCBCB;
 }
 
+.thinLine{
+  width: 840px;
+  height: 1px;
+  background-color: #CBCBCB;
+}
+
+.commentName{
+  font-size: 14px;
+  font-weight: bold;
+}
+
 .commentEditDelete{
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.commentEditDeleteButton{
+  border: 0;
+  outline: 0;
+  background-color: white;
+  color:rgb(173, 173, 173);
+}
+
+.commentContent{
+  padding: 5px 0 30px 0px;
+}

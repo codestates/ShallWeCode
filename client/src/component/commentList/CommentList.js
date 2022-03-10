@@ -22,14 +22,15 @@ function CommentList(props) {
       : commentinfo.map((data, i) => {
         return (
         <div key={i}>
+        <div className="thinLine"></div>
         <div className="commentEditDelete">
         <div className="detailComment">
         <div style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
               <div className="commentName">{data.nickname}</div>
             </div>
             <div>
-              <button>수정</button>
-              <button>삭제</button>
+              <button className="commentEditDeleteButton">수정</button>
+              <button className="commentEditDeleteButton">삭제</button>
             </div>
           </div>
           <div className="commentContent"><aside>{data.body}</aside></div>
