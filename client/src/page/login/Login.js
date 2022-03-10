@@ -54,7 +54,7 @@ function Login({ handleResponseSuccess }) {
           <div><span className="signUpErr loginErrMsg">{errorMessage}</span></div>
           <div>
             <div>
-              <button className="bigBtn" type='submit' onClick={handleLogin}>로그인</button>
+              <button className="LoginBigBtn" type='submit' onClick={handleLogin}>로그인</button>
             </div>
           </div>
           <div>
