@@ -161,11 +161,11 @@ function Setting(props) {
         axios.delete("http://localhost:4000/users/signout")
         .then((res)=>{
           if(res.status===200){
-            Swal.fire(
-              '탈퇴되었습니다',
-              'Your file has been deleted.',
-              'success'
-            )
+            // Swal.fire(
+            //   '탈퇴되었습니다',
+            //   'Your file has been deleted.',
+            //   'success'
+            // )
             window.location.replace("/") 
             // history.push("/")
           }
