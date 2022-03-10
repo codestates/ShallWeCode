@@ -86,6 +86,10 @@
   font-weight: bold;
 }
 
+.writingCancelBtn:hover{
+  cursor: pointer;
+}
+
 .saveBtn {
   background-color: #298854;
   color: white;
@@ -95,3 +99,6 @@
   font-weight: bold;
 }
 
+.saveBtn:hover{
+  cursor: pointer;
+}

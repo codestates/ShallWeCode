@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom'
 import "./LoginUser.css"
 
 function LoginUser({ userinfo, handleLogout }) {
-
   const history = useHistory()
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);

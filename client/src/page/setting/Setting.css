@@ -58,6 +58,15 @@
   margin-left: 20px;
 }
 
+.nicknameBtn:hover{
+  cursor: pointer;
+}
+
+
+.passwordBtn:hover{
+  cursor: pointer;
+}
+
 .settingLabel{
   margin-left: 15px;
   font-size: 18px;
@@ -69,7 +78,7 @@
 
 .settingIdDiv{
   margin-left: 55px;
-
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
@@ -93,6 +102,10 @@
   border: none;
   padding: 0 20px;
   font-weight: bold;
+}
+
+.cancelBtn:hover{
+  cursor: pointer;
 }
 
 .settingCancel{
