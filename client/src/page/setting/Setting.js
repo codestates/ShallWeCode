@@ -85,7 +85,6 @@ function Setting(props) {
           //   `
           // })
           window.location.replace("/Setting") 
-
         }
       }).catch((err)=>{
         console.log(err)
@@ -143,6 +142,7 @@ function Setting(props) {
       }).catch((err)=>{
         console.log(err)
       })
+     
     }
   }
 

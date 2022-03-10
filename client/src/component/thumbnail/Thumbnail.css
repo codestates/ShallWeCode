@@ -15,7 +15,7 @@
 .thumbnailBox{
     margin-bottom: 20px;
     width: 240px;
-    height: 180px;
+    height: 240px;
     background-color: #FFFFFF;
     margin-left: 18px;
     border-radius: 10px;
@@ -30,6 +30,7 @@
     padding-bottom: 20px;
     height: 70px;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .thumbnailBoxTag{
@@ -40,6 +41,10 @@
 }
 
 .thumbnailTagBtn{
-    background-color: #298854;
-    color: white;
+    background-color: #ffffff;
+    color: #298854;
+    font-weight: bold;
+    border: solid 1px #298854;
+    margin-top: 5px;
+    margin-left: 6px;
 }
