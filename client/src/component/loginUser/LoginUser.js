@@ -18,7 +18,7 @@ function LoginUser({ userinfo, handleLogout }) {
 
   const handleSetting = () => {
     history.push({
-      pathname: '/Setting',
+      pathname: '/Setting', 
       state: {userinfo: userinfo}
     })
   }
@@ -27,7 +27,7 @@ function LoginUser({ userinfo, handleLogout }) {
     <div className="menuContainer">
       <button onClick={onClick} className="menuTrigger">
         <p className="userName" >{userinfo[0].nickname + " 님"}</p>
-          <img className="userImg" src = "/images/bear22.png "/>
+          <img className="userImg" src = {!userinfo ? "/images/bear22.png" : userinfo[0].picture}/>
       </button>
       <svg 
         className="userSvg"

@@ -76,23 +76,23 @@ function Setting(props) {
       axios.patch("http://localhost:4000/users/nicknameEdit", {nickname: nickname})
       .then((res)=>{
         if(res.status===200){
-          Swal.fire({
-            title: '닉네임 변경이 성공했습니다',
-            width: 600,
-            padding: '3em',
-            confirmButtonColor: '#298854',
-            color: 'black',
-            background: '#fff ',
-            backdrop: ` 
-              rgba(0,0,0,0.4)
-            `
-          })
+          // Swal.fire({
+          //   title: '닉네임 변경이 성공했습니다',
+          //   width: 600,
+          //   padding: '3em',
+          //   confirmButtonColor: '#298854',
+          //   color: 'black',
+          //   background: '#fff ',
+          //   backdrop: ` 
+          //     rgba(0,0,0,0.4)
+          //   `
+          // })
+          window.location.replace("/Setting") 
         }
       }).catch((err)=>{
         console.log(err)
       })
     }
-    window.location.replace("/Setting") 
   }
 
   const settingPasswordOnchange = (key) => (e) => {

@@ -15,7 +15,7 @@ module.exports = {
   },
   signup: (username, password, nickname, callback) => {
 
-    const queryString = `INSERT INTO users (username, password, nickname) VALUES ('${username}', '${password}', '${nickname}')`
+    const queryString = `INSERT INTO users (username, password, nickname, picture) VALUES ('${username}', '${password}', '${nickname}', '/images/1.png')`
 
     db.query(queryString, (err, result) => {
       if (err) {
