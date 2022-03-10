@@ -3,7 +3,6 @@
     height: 50px;
     background-color: #FFFFFF;
     padding-bottom: 50px;
-
 }
 
 .selectBtnSize{
@@ -16,7 +15,6 @@
     text-align: left;
     width: 67%;
     margin-left: 9%;
-    
 }
 
 .selectBtn{
@@ -30,6 +28,10 @@
     font-size: 18px;
     font-weight: bold;
     color: #7c7c7c;
+}
+
+.selectBtn:hover{
+    color:black;
 }
 
 .selectBtn:hover{
