@@ -41,7 +41,6 @@ function Detail(props) {
       body: comment
     })
     .then((res) => {
-      console.log(res)
       if (res.status === 201) {
         alert('댓글 작성 완료')
       }
@@ -57,10 +56,10 @@ function Detail(props) {
 
   }
 
-  const handleMypage = () => {
+  const handleMyPage = () => {
     history.push({
       pathname: '/Mypage',
-      state: { userId: boardinfo.userId }
+      state: { userinfo: [{id: boardinfo.userId, nickname: boardinfo.nickname, picture: boardinfo.picture}] }
   })  }
 
   useEffect(() => {
@@ -73,25 +72,29 @@ function Detail(props) {
 
   }, []);
 
+  // console.log(boardinfo.created_at.toLocaleString("ko-KR", {timeZone: "Asia/Seoul"}))
+
   return (
     <div>
       <Navbar isLogin={isLogin} userinfo={userinfo} handleLogout={handleLogout}/>
-      { !boardinfo ? <div className="section">잘못된 요청입니다.</div>
+      { !boardinfo || !userinfo ? <div className="section">잘못된 요청입니다.</div>
         :
       <div className="section">
         <div className="largeSizeFont detailTitle">{boardinfo.title}</div>
         <div className="detailProfile">
-          <div className="detailProfileImg">
-            <button onClick={handleMypage} style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></button>
-            <button onClick={handleMypage} className="detailName">{boardinfo.nickname}</button>
+          <div className="detailProfileImg" onClick={handleMyPage}>
+            <img src={boardinfo.picture} style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></img>
+            <div className="detailName">{boardinfo.nickname}</div>
           </div>
           <div>{boardinfo.created_at}</div>
         </div>
-
-        <div className="detailBtn">
+        {boardinfo.userId === userinfo[0].id
+        ? <div className="detailBtn">
           <button>수정</button>
           <button>삭제</button>
         </div>
+        : <div></div>
+        }
         <div className="detailStack">
           <div className="detailLanguageMargin">사용언어</div>
           {boardinfo.stack.map((data, i) => {
@@ -103,11 +106,11 @@ function Detail(props) {
         <div>
           <Viewer initialValue={boardinfo.body} />
         </div> 
-        <CommentList contentId={location.state.contentId}/>
+        <CommentList contentId={location.state.contentId} userinfo={userinfo}/>
         <div className="commentBox">
           <div className="detailComment">
-            <div style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
-            <div className="commentName">닉네임</div>
+            <img src={userinfo[0].picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
+            <div className="commentName">{userinfo[0].nickname}</div>
           </div>
           <input className="commentInput" type="text" placeholder="입력하세요!" onChange={handleInputValue('comment')}/>
         </div> 

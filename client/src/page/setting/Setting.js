@@ -45,10 +45,8 @@ function Setting(props) {
     errorValidation: false
   })
 
-
   const settingNameOnChange = (e) => { 
     setNickName(e.target.value)
-    // console.log('e',e.target.value)
     if(e.target.value.length < 2 || e.target.value.length > 10 || !nicknameRegExp.test(e.target.value)){
       setMessage({ ...message, nicknameMessage: '2~10자 한글, 영어 , 숫자만 사용 가능 합니다'})
       setValidation({ ...validation, nicknameValidation: true})
@@ -67,7 +65,6 @@ function Setting(props) {
       }) 
       
     }
-  console.log('message',message.nicknameMessage)  
   };
 
 
@@ -187,7 +184,7 @@ function Setting(props) {
   return (
     <div>
       <Navbar isLogin={isLogin} handleLogout={handleLogout} userinfo={userinfo}/>
-      <NewProfile/>
+      <NewProfile userinfo={userinfo}/>
 
       <div className="settingBox settingSection">
         <form onSubmit={(e) => e.preventDefault()} >
@@ -201,7 +198,7 @@ function Setting(props) {
             
             <div className="settingLabel settingId">
               <div>아이디</div>
-              <div className="settingIdDiv"> 아이디입니다 </div>
+              <div className="settingIdDiv">{!location.state.userinfo ? "" : location.state.userinfo[0].username}</div>
             </div>
         </form>
       </div>

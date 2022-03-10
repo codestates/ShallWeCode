@@ -15,7 +15,7 @@ module.exports = {
   },
   detail: (contentId, callback) => {
 
-    const queryString = `SELECT users.nickname, users.picture, body, created_at FROM comments INNER JOIN users ON comments.users_id = users.id WHERE contents_id=${contentId}`
+    const queryString = `SELECT users.nickname, users.picture, comments.id, body, created_at FROM comments INNER JOIN users ON comments.users_id = users.id WHERE contents_id=${contentId}`
 
     db.query(queryString, (err, result) => {
       if (err) {

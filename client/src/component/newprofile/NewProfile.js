@@ -7,6 +7,8 @@ import Swal from 'sweetalert2'
 
 
 function NewProfile(props) {
+
+  const { userinfo } = props
   const [curImg, clickImg] = useState("/images/1.png");
 
   const handleProfileClick = (e) => {
@@ -42,7 +44,7 @@ function NewProfile(props) {
       <div className="newProfileImgs">
         <img className="profileBigImg" value = "1" src={curImg}/> 
         <div className="newProfileTextBtn">
-          <div className='newProfileText'>닉네임</div>
+          <div className='newProfileText'>{!userinfo ? "닉네임" : userinfo[0].nickname}</div>
           <button className="miniBtn smallSizeFont newProfileBtn" onClick={handleProfileSelect}>이미지 적용</button>
         </div>
       </div>
