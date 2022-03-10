@@ -60,7 +60,6 @@ function SignUp(props) {
       if (!passwordRegExp.test(e.target.value)) {
         setMessage({ ...message, passwordMessage: '8~16자 영문 대 소문자, 숫자, 특수문자만 사용 가능합니다'})
         setValidation({ ...validation, passwordValidation: true})
-        console.log(validation)
       } else {
         setValidation({ ...validation, passwordValidation: false})
       }

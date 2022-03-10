@@ -5,20 +5,24 @@ import "./Writing.css"
 import languageList from './LanguageList';
 import axios from 'axios';
 import { useHistory } from "react-router";
-
+import { useLocation } from 'react-router';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
 
 
 
 function Writing(props) {
-  const { isLogin, handleLogout } = props
+
+  const location = useLocation()
+  const { isLogin, handleLogout, userinfo } = props
   const [type, setType] = useState('') // 글의 타입 지정, 클릭시 변경, 1번 2번으로 구분
   const [title, setTitle] = useState(''); // 제목
   const [stack, setStack] = useState({languageList}) // 기본 스택 목록
   const [content, setContent] = useState(""); // 에디터에 적혀진 글로 변경
+  const [editBoard, setEditBoard] = useState("")
   const [errorMessage, setErrorMessage] = useState('');
   const history = useHistory();
+
 
 
   const handleType = (event) => {
@@ -52,7 +56,6 @@ function Writing(props) {
       body: content,
       stack: stack
     }
-    console.log('data====',data)  
 
     if(!type || !title || !content || !stack){
       setErrorMessage('모든 항목은 필수입니다')
@@ -69,10 +72,20 @@ function Writing(props) {
     history.push('/')
   }
 
+  // useEffect(() => {
+  //   if (location.state) {
+  //     axios.get('http://localhost:4000/board/detail', {
+  //       params: {contentId: location.state.contentId}
+  //     }).then((res) => {
+  //       setEditBoard(res.data.data)
+  //     })
+  //   }
+  // }, [location.state])
+
   return (
     
     <div>
-      <Navbar isLogin={isLogin} handleLogout={handleLogout}/>
+      <Navbar isLogin={isLogin} handleLogout={handleLogout} userinfo={userinfo}/>
 
     <div className="writingSection">
       {/* 프로젝트 포트폴리오 선택 */}

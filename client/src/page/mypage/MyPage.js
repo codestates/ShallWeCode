@@ -14,8 +14,6 @@ function MyPage(props) {
   const [ PRorTP, setPRorTP ] = useState("1")
   const { isLogin, handleLogout, userinfo } = props
 
-  console.log(location.state)
-
   const filterOfPRorTP = (PRorTP) => {
     setPRorTP(PRorTP)
   }
@@ -30,7 +28,6 @@ function MyPage(props) {
     })
 
   }, [location, PRorTP]);
-  console.log(boardinfo)
 
   return (
     <div>
