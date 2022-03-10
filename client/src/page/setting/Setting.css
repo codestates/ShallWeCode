@@ -58,6 +58,15 @@
   margin-left: 20px;
 }
 
+.nicknameBtn:hover{
+  cursor: pointer;
+}
+
+
+.passwordBtn:hover{
+  cursor: pointer;
+}
+
 .settingLabel{
   margin-left: 15px;
   font-size: 18px;
@@ -65,11 +74,12 @@
 
 .settingId{
   display: flex;
+  margin-top: 10px;
 }
 
 .settingIdDiv{
   margin-left: 55px;
-
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
@@ -95,7 +105,28 @@
   font-weight: bold;
 }
 
+.cancelBtn:hover{
+  cursor: pointer;
+}
+
 .settingCancel{
   text-align: right;
   padding: 20px;
+}
+
+.settingErrMessage{
+  color: red;
+  margin-left: 120px;
+}
+
+.settingPassErr{
+  margin-left: 170px;
+}
+
+.loginErrMsg{
+  margin-top: 50px;
+}
+
+.underLoginInput{
+  margin-bottom: 10px;
 }

@@ -43,18 +43,18 @@ function Login({ handleResponseSuccess }) {
   return (
     <div >
       <center>
-        <img className="signUpImg" src="/images/logo3.png"/>
+        <img className="signUpImg" src="/images/loginlogo1.png"/>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
             <input className="loginInput" type='text' placeholder="아이디" onChange={handleInputValue('username')} />
           </div>
           <div>
-            <input className="loginInput" type='password' placeholder="비밀번호" onChange={handleInputValue('password')} />
+            <input className="loginInput underLoginInput" type='password' placeholder="비밀번호" onChange={handleInputValue('password')} />
           </div>
-          <div><span className="signUpErr">{errorMessage}</span></div>
+          <div><span className="signUpErr loginErrMsg">{errorMessage}</span></div>
           <div>
             <div>
-              <button className="bigBtn" type='submit' onClick={handleLogin}>로그인</button>
+              <button className="LoginBigBtn" type='submit' onClick={handleLogin}>로그인</button>
             </div>
           </div>
           <div>

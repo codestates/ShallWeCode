@@ -68,6 +68,7 @@ function CommentList(props) {
       : commentinfo.map((data, i) => {
         return (
         <div key={i}>
+        <div className="thinLine"></div>
         <div className="commentEditDelete">
         <div className="detailComment">
         <img src={data.picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
