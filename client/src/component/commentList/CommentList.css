@@ -4,37 +4,41 @@
   width: 95%;
   margin-left: 2.8%;
   margin-bottom: 15px;
-}
-
-.commentListBox{
+  }
+  
+  .commentListBox{
   margin-bottom: 30px;
-  border-bottom: solid 1px  #CBCBCB;
-}
-
-.thinLine{
+  border-bottom: solid 1px #CBCBCB;
+  }
+  
+  .thinLine{
   width: 840px;
   height: 1px;
   background-color: #CBCBCB;
-}
-
-.commentName{
+  }
+  
+  .commentName{
   font-size: 14px;
   font-weight: bold;
-}
-
-.commentEditDelete{
+  }
+  
+  .commentEditDelete{
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.commentEditDeleteButton{
+  }
+  
+  .commentEditDeleteButton{
   border: 0;
   outline: 0;
   background-color: white;
   color:rgb(173, 173, 173);
-}
+  }
 
-.commentContent{
+  .commentEditDeleteButton:hover{
+    color: black;
+  }
+  
+  .commentContent{
   padding: 5px 0 30px 0px;
-}
+  } 
