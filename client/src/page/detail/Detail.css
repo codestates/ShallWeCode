@@ -19,6 +19,15 @@
   align-items: center;
 }
 
+.detailFilterBtn{
+  margin-left: 15px;
+  background-color: #298854;
+  color:#FFFFFF;
+  font-weight: bold;
+  border: 0;
+  outline: 0;
+}
+
 .detailProfileImg{
   display: flex;
   align-items: center;
@@ -36,6 +45,8 @@
 
 .detailLanguageMargin{
   margin-right: 18px;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .detailComment{
@@ -52,6 +63,10 @@
 
 .commentName{
   margin-left: 10px;
+}
+
+.detailText{
+  padding: 60px 10px 100px 25px;
 }
 
 .commentInput{

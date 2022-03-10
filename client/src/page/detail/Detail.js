@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import Navbar from '../../component/navbar/Navbar';
 import ReactMarkdown from 'react-markdown'
 import "./Detail.css"
@@ -11,10 +10,9 @@ import { useLocation } from 'react-router';
 
 function Detail(props) {
 
-  const history = useHistory()
   const [ boardinfo, setBoardinfo ] = useState("")
-  const [ comment, setComment ] = useState("")
   const location = useLocation()
+
   const { isLogin, handleLogout, userinfo } = props
   const [ loadUserinfo, setLoadUserinfo ] = useState([{id:"", picture:"", nickname:""}])
 
@@ -35,35 +33,7 @@ function Detail(props) {
   | a | b |
   | - | - |
   `
-  // let data;
-
-  const createComment = () => {
-    axios.post('http://localhost:4000/comment/writing', {
-      contentId: location.state.contentId,
-      body: comment
-    })
-    .then((res) => {
-      if (res.status === 201) {
-        alert('댓글 작성 완료')
-      }
-    })
-    window.location.replace('/Detail')
-    
-    // (location || window.location || document.location).reload()
-  }
-
-  const handleInputValue = (key) => (e) => {
-
-    setComment({ ...comment, [key]: e.target.value })
-
-  }
-
-  const handleMyPage = () => {
-    history.push({
-      pathname: '/Mypage',
-      state: { userinfo: [{id: boardinfo.userId, nickname: boardinfo.nickname, picture: boardinfo.picture}] }
-  })  }
-
+  let data;
   useEffect(() => {
     axios.get('http://localhost:4000/board/detail', { params: {contentId: location.state.contentId }})
     .then((res) => {
@@ -75,6 +45,7 @@ function Detail(props) {
     })
 
   }, []);
+
 
   // const editContent = () => {
   //   history.push({
@@ -104,41 +75,47 @@ function Detail(props) {
       <div className="section">
         <div className="largeSizeFont detailTitle">{boardinfo.title}</div>
         <div className="detailProfile">
+
           <div className="detailProfileImg" onClick={handleMyPage}>
             <img src={boardinfo.picture} style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}/>
             <div className="detailName">{boardinfo.nickname}</div>
           </div>
           <div className="detailDate">{boardinfo.created_at}</div>
         </div>
+
         {boardinfo.userId === loadUserinfo[0].id
         ? <div className="detailBtn">
           {/* <button onClick={editContent}>수정</button> */}
           <button onClick={deleteContent}>삭제</button>
+
         </div>
-        : <div></div>
-        }
+        
+        
         <div className="detailStack">
-          <div className="detailLanguageMargin">사용언어</div>
+          <div className="detailLanguageMargin">사용언어:</div>
           {boardinfo.stack.map((data, i) => {
-            return <button key={i} className="miniBtn filterMiniBtn">{data}</button>
+            return <button key={i} className="miniBtn filterMiniBtn detailFilterBtn">{data}</button>
           })
         }
         </div>
         <div className="thinLine"></div>
-        <div>
+        <div className="detailText">
           <Viewer initialValue={boardinfo.body} />
         </div> 
-        <CommentList contentId={location.state.contentId} userinfo={userinfo}/>
+        
+        <CommentList contentId={location.state.contentId}/>
+        <h2>댓글</h2>
         <div className="commentBox">
           <div className="detailComment">
+
             <img src={loadUserinfo[0].picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
             <div className="commentName">{loadUserinfo[0].nickname}</div>
+
           </div>
-          <input className="commentInput" type="text" placeholder="입력하세요!" onChange={handleInputValue('comment')}/>
+          <input className="commentInput" type="text" placeholder="입력하세요!" />
         </div> 
         <div className="commentBtn">
-          <button className="miniBtn writingCancelBtn smallSizeFont" onClick={createComment}>입력</button>
-
+          <button onClick={clickCommentBtn} className="miniBtn writingCancelBtn smallSizeFont" >등록</button>
         </div>
       </div> 
       }

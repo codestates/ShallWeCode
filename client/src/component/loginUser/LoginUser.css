@@ -56,10 +56,12 @@ body {
   border-radius: 90px;
 } 
 
-.menu {
+.loginMenu {
   background: #ffffff;
+  color: #333333;
   border-radius: 8px;
   position: absolute;
+  font-weight: bold;
   top: 60px;
   right: 0;
   width: 200px;
@@ -70,22 +72,23 @@ body {
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
 }
 
-.menu.active {
+.loginMenu.active {
   opacity: 1;
+  background: #ffffff;
   visibility: visible;
   transform: translateY(0);
 }
 
-.menu ul {
+.loginMenu ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.menu li {
+.loginMenu li {
   border-bottom: 1px solid #dddddd;
 }
-.menu li a {
+.loginMenu li a {
   text-decoration: none;
   color: #333333;
   padding: 15px 20px;
