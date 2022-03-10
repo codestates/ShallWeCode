@@ -131,7 +131,7 @@ function SignUp(props) {
   return (
     <div >
       <center>
-        <img className="signUpImg" src="/images/logo3.png"/>
+        <img className="signUpImg" src="/images/loginlogo1.png"/>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
             <input 

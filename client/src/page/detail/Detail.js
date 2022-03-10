@@ -86,12 +86,13 @@ function Detail(props) {
             <img src={boardinfo.picture} style={{"backgroundColor": "#F7F7F7", "width":"100px", "height" : "100px", "border-radius": "50%"}}></img>
             <div className="detailName">{boardinfo.nickname}</div>
           </div>
-          <div>{boardinfo.created_at}</div>
+          <div className="detailDate">{boardinfo.created_at}</div>
         </div>
+
         {boardinfo.userId === userinfo[0].id
         ? <div className="detailBtn">
-          <button>수정</button>
-          <button>삭제</button>
+          <button className="commentEditDeleteButton">수정</button>
+          <button className="commentEditDeleteButton">삭제</button>
         </div>
         : <div></div>
         }
@@ -102,7 +103,7 @@ function Detail(props) {
           })
         }
         </div>
-
+        <div className="thinLine"></div>
         <div>
           <Viewer initialValue={boardinfo.body} />
         </div> 

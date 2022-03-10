@@ -61,14 +61,15 @@ function CommentList(props) {
       : commentinfo.map((data, i) => {
         return (
         <div key={i}>
+        <div className="thinLine"></div>
         <div className="commentEditDelete">
         <div className="detailComment">
         <img src={data.picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
               <div className="commentName">{data.nickname}</div>
             </div>
             <div> {!(userinfo[0].nickname === data.nickname) ? <div></div>
-              : <div><button onClick={handleCommentBox} value={data.id}>수정</button>
-              <button value={data.id} onClick={deleteComment}>삭제</button></div>}
+              : <div><button onClick={handleCommentBox} className="commentEditDeleteButton" value={data.id}>수정</button>
+              <button value={data.id} className="commentEditDeleteButton" onClick={deleteComment}>삭제</button></div>}
             </div>
           </div>
           { !(edit && Number(editId) === data.id) ? <div className="commentContent"><aside>{data.body}</aside></div>
