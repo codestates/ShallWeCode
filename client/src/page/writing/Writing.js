@@ -9,6 +9,7 @@ import { useLocation } from 'react-router';
 import Swal from 'sweetalert2'
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
+import Swal from 'sweetalert2'
 
 
 
@@ -142,7 +143,7 @@ function Writing(props) {
       />
       
       <div className="writingBtnDiv">
-        <div className='writingErrMessage alertBox'>{errorMessage}</div>  
+      <div className='writingErrMessage alertBox'>{errorMessage}</div>   
         <button onClick={()=>{handleChangeEditor(); handleButtonClick()}} className="miniBtn saveBtn smallSizeFont">글 등록</button>
         <button onClick={handleWritingCancelClick} className="miniBtn writingCancelBtn smallSizeFont">취소</button>
       </div>

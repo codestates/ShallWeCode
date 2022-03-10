@@ -111,17 +111,17 @@ function SignUp(props) {
               axios.post('http://localhost:4000/users/signup', { username: username, password: password, nickname: nickname })
               .then( (res) => {
                 if (res.status === 201) {
-                      Swal.fire({
-                      title: '회원가입 성공!',
-                      width: 600,
-                      padding: '3em',
-                      confirmButtonColor: '#298854',
-                      color: 'black',
-                      background: '#fff ',
-                      backdrop: ` 
-                        rgba(0,0,0,0.4)
-                      `
-                    })
+                  Swal.fire({
+                    title: '회원가입 성공!',
+                    width: 600,
+                    padding: '3em',
+                    confirmButtonColor: '#298854',
+                    color: 'black',
+                    background: '#fff ',
+                    backdrop: ` 
+                      rgba(0,0,0,0.4)
+                    `
+                  })
                   history.push("/login")
                 }
               }).catch( (err) => {
@@ -177,7 +177,7 @@ function SignUp(props) {
           </div>
           <div>
           {validation.errorValidation ? <div><span className="signUpErr">{message.errorMessage}</span></div> : null}
-            <button className="SignUpBigBtn" type='submit' onClick={handleSignup}>회원가입</button>
+          <button className="SignUpBigBtn" type='submit' onClick={handleSignup}>회원가입</button>
           </div>
           
         </form>
