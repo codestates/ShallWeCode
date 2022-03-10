@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import "./SignUp.css"
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 axios.defaults.withCredentials = true;
 
@@ -110,7 +111,17 @@ function SignUp(props) {
               axios.post('http://localhost:4000/users/signup', { username: username, password: password, nickname: nickname })
               .then( (res) => {
                 if (res.status === 201) {
-                  alert('회원가입 성공!')
+                      Swal.fire({
+                      title: '회원가입 성공!',
+                      width: 600,
+                      padding: '3em',
+                      confirmButtonColor: '#298854',
+                      color: 'black',
+                      background: '#fff ',
+                      backdrop: ` 
+                        rgba(0,0,0,0.4)
+                      `
+                    })
                   history.push("/login")
                 }
               }).catch( (err) => {
