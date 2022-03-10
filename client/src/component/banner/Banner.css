@@ -1,0 +1,38 @@
+.banner{
+  /* background-color: #ECECEC; */
+  /* margin-top: 40px; */
+  background-color: white;
+;
+}
+
+
+.bannerImg{
+  /* width: 100%; */
+  /* background-color: aqua; */
+  display : block ;
+  text-align : center ;
+}
+
+.mainImg{
+  /* width: 35%; */
+  /* margin-left:40%;   */
+  display : inline;
+
+}
+
+.banner_comment{
+  text-align: center;
+  font-size: 28px;
+}
+
+.imgBox{
+  width: 100%;
+  height: 450px;
+}
+
+.imgBox1{
+  background-image: url("../../../public/images/banner2.png") ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}

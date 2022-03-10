@@ -1,0 +1,23 @@
+.headerNav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+}
+
+.headerImg{
+  margin: 30px;
+}
+
+
+.btnNewPost{
+  float:left;
+  margin-top: 44px;
+  margin-right: 20px;
+  font-size: 19;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}

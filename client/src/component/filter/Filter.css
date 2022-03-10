@@ -1,0 +1,28 @@
+.filterBackgroundSize{
+  width: 100%;
+  background-color: #f7f7f7;
+  box-shadow: 5px 5px 15px rgb(218, 218, 218);
+}
+
+.filterImg{
+  display: flex;
+  justify-content: center;
+  padding: 35px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+
+.filterMiniBtn{
+  background-color: #FFFFFF;
+  border: 1px solid #CBCBCB ;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.filterMiniBtn:hover{
+  cursor: pointer;
+}
+
+.active { background-color: #298854; color: #fff; }

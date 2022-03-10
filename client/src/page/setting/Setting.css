@@ -1,0 +1,101 @@
+/* .basicSize{
+  width: 55%;
+  height: 100%;
+  background-color: #ECECEC;
+  text-align: center; 
+  margin: 0 auto; 
+  font-size: 18px;
+  font-weight: bold;
+} */
+
+.settingSection {
+  /* background-color: silver; */
+  padding: 20px 80px 20px 80px ;
+  text-align: left;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.settingBox{
+  background-color: white;
+  box-shadow: 5px 5px 15px rgb(218, 218, 218);
+  border-radius: 10px;
+}
+
+.settingUnderBox{
+  margin-top: 30px;
+}
+
+.settingInput{
+  margin-left: 55px;
+  border: 1px solid #CBCBCB ;
+  margin-bottom: 20px;
+}
+
+.nicknameBtn{
+  width: 180px;
+  height: 55px;
+  background-color: #298854;
+  color: white;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.passwordBtn{
+  width: 180px;
+  height: 55px;
+  background-color: #38555A;
+  color: white;
+  border: 0;
+  outline: 0;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.settingLabel{
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+.settingId{
+  display: flex;
+}
+
+.settingIdDiv{
+  margin-left: 55px;
+
+  margin-bottom: 20px;
+}
+
+.dropOut{
+  width: 60px;
+  margin-left: 14px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.dropOut:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.cancelBtn{
+  margin-left: 20px;
+  background-color: #565656;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+.settingCancel{
+  text-align: right;
+  padding: 20px;
+}

@@ -1,0 +1,45 @@
+.thumbnailSection{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    padding: 80px;
+    margin: auto;
+}
+
+.thumbnailBoxFlax{
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.thumbnailBox{
+    margin-bottom: 20px;
+    width: 240px;
+    height: 180px;
+    background-color: #FFFFFF;
+    margin-left: 18px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgb(218, 218, 218);
+}
+
+.thumbnailBoxTitle{
+    text-align: center;
+    padding-top: 30px ;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    height: 70px;
+    font-size: 18px;
+}
+
+.thumbnailBoxTag{
+    margin-top: 25px;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.thumbnailTagBtn{
+    background-color: #298854;
+    color: white;
+}
