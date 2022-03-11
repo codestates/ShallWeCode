@@ -27,9 +27,9 @@
  
 # 주요 기능별 시연 GIF 
  
- - 회원가입
+- 회원가입
     
-    ![최종회원가입.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/03c5d0b5-dcae-47ad-9e49-0efb86af3afc/최종회원가입.gif)
+    안녕
  
  
 # 팀원 소개 
