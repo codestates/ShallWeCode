@@ -25,16 +25,6 @@
 # 제작기간 
 - 2022년 2월 28일 ~ 2022년 3월 11일(12일)
  
-# 주요 기능별 시연 GIF 
-
-<details>
-<summary>회원가입</summary>
-<div markdown="1">    
-![최종회원가입](https://user-images.githubusercontent.com/86206374/157779497-32660b57-ee74-4872-bfe0-2615e3606fc8.gif)
-
-</div>
-</details>
- 
  
 # 팀원 소개 
 <details>
