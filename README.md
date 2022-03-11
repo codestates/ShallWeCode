@@ -30,8 +30,7 @@
 <details>
 <summary>회원가입</summary>
 <div markdown="1">    
-   ![최종회원가입](https://user-images.githubusercontent.com/86206374/157779016-fc28204a-2d17-43e3-a1df-2205e7e45df4.gif)
- ![최종회원가입](https://user-images.githubusercontent.com/86206374/157779206-afb276fb-e25b-4f43-9f74-0ac3f3ba2beb.gif)
+![최종회원가입](https://user-images.githubusercontent.com/86206374/157779497-32660b57-ee74-4872-bfe0-2615e3606fc8.gif)
 
 </div>
 </details>
