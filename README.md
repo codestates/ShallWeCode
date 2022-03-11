@@ -26,10 +26,13 @@
 - 2022년 2월 28일 ~ 2022년 3월 11일(12일)
  
 # 주요 기능별 시연 GIF 
- 
-- 회원가입
-    
-    안녕
+
+<details>
+<summary>회원가입</summary>
+<div markdown="1">    
+   ![최종회원가입](https://user-images.githubusercontent.com/86206374/157779016-fc28204a-2d17-43e3-a1df-2205e7e45df4.gif)
+</div>
+</details>
  
  
 # 팀원 소개 
