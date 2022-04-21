@@ -8,7 +8,7 @@ module.exports = (req, res) => {
       return res.status(500).send({ message: '서버 에러' })
     }
     if (result.length === 0) {
-      return res.status(404).send({ message: '게시물이 존재하지 않습니다' })
+      return res.send({ message: '게시물이 존재하지 않습니다' })
     }
     let trimResult = [];
     for (let d of result) {

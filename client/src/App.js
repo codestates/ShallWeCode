@@ -29,7 +29,7 @@ function App() {
         setUserinfo(data.data.data.data)
         setIsLogin(true)
       }
-      // history.push('/')
+      history.push('/')
       // console.log(isLogin, userinfo)
     })
     .catch(err => console.log("주 에러 : ",err))
