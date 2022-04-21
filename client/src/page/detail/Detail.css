@@ -19,13 +19,31 @@
   align-items: center;
 }
 
+.filterMiniBtn{
+  background-color: #FFFFFF;
+  border: 1px solid #CBCBCB ;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+}
+
 .detailFilterBtn{
   margin-left: 15px;
+  border-radius: 10px;
   background-color: #298854;
   color:#FFFFFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
   font-weight: bold;
   border: 0;
   outline: 0;
+}
+
+.postDelete{
+  border: none;
+  background-color: white;
 }
 
 .detailProfileImg{
@@ -84,3 +102,4 @@
   margin-top: 10px;
   text-align: right;
 }
+

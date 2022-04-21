@@ -18,25 +18,6 @@ function Detail(props) {
   const { isLogin, handleLogout, userinfo } = props
   const [ loadUserinfo, setLoadUserinfo ] = useState([{id:"", picture:"", nickname:""}])
 
-  const markdown = 
-  `
-  프로젝트 설명 : 프로젝트 할 팀원을 구했는데 마음에 안드셨던 경험이 있으신가요?\n - 먼저 개발자들이 작성해둔 포트폴리오를 확인해주세요\n \n모집 인원: 1명\n        \n          
-  `
-  const markdown1 = `A paragraph with *emphasis* and **strong importance**.
-
-  > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
-  
-  * Lists
-  * [ ] todo
-  * [x] done
-  
-  A table:
-  
-  | a | b |
-  | - | - |
-  `
-  // let data;
-
   const createComment = () => {
     axios.post('http://localhost:4000/comment/writing', {
       contentId: location.state.contentId,
@@ -99,7 +80,7 @@ function Detail(props) {
   return (
     <div>
       <Navbar isLogin={isLogin} userinfo={userinfo} handleLogout={handleLogout}/>
-      { !boardinfo ? <div className="section">잘못된 요청입니다.</div>
+      { !boardinfo ? null
         :
       <div className="section">
         <div className="largeSizeFont detailTitle">{boardinfo.title}</div>
@@ -113,14 +94,14 @@ function Detail(props) {
         {boardinfo.userId === loadUserinfo[0].id
         ? <div className="detailBtn">
           {/* <button onClick={editContent}>수정</button> */}
-          <button onClick={deleteContent}>삭제</button>
+          <button className="postDelete" onClick={deleteContent}>삭제</button>
         </div>
         : <div></div>
         }
         <div className="detailStack">
           <div className="detailLanguageMargin">사용언어</div>
           {boardinfo.stack.map((data, i) => {
-            return <button key={i} className="miniBtn filterMiniBtn detailFilterBtn">{data}</button>
+            return <button key={i} className="miniBtn detailFilterBtn">{data}</button>
           })
         }
         </div>

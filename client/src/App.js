@@ -19,7 +19,6 @@ function App() {
 
   const [isLogin, setIsLogin] = useState(false);
   const [userinfo, setUserinfo] = useState(null);
-  const [thumbnail, setThumbnail] = useState(null);
   const history = useHistory();
 
   const isAuthenticated = () => {
@@ -44,24 +43,14 @@ function App() {
     });
   };
 
-  const loadingThumbnail = () => {
-    axios.get('http://localhost:4000/board/filter')
-    .then((res) => {
-      setThumbnail(res.data.data.data)
-    })
-  }
-  const filteredThumbnail = (boards) => {
-    setThumbnail(boards)
-  }
   useEffect(() => {
-    loadingThumbnail()
     isAuthenticated()
   }, []);
 
   return (
     <BrowserRouter>
         <Route exact path="/">
-          <Main isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout} thumbnail={thumbnail} filteredThumbnail={filteredThumbnail}/>
+          <Main isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout} />
         </Route>
         <Route path="/Login">
           <Login handleResponseSuccess={handleResponseSuccess}/>
