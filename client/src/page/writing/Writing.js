@@ -9,8 +9,6 @@ import { useLocation } from 'react-router';
 import Swal from 'sweetalert2'
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor } from '@toast-ui/react-editor';
-import Swal from 'sweetalert2'
-
 
 
 function Writing(props) {

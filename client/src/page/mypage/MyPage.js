@@ -24,6 +24,7 @@ function MyPage(props) {
       // const { PRorTP, body, created_at, nickname, picture, stack, title, userId } = res.data.data
       // data = { PRorTP, body, created_at, nickname, picture, stack, title, userId }
       // setBoardinfo(res.data.data)
+      console.log('res',res)
       setBoardinfo(res.data.data.data)
     })
 

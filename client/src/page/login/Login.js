@@ -19,12 +19,11 @@ function Login({ handleResponseSuccess }) {
     if (!loginInfo.username || !loginInfo.password) {
       return setErrorMessage('아이디와 비밀번호를 입력하세요')
     }  
-
+    console.log('loginInfo',loginInfo)
     axios.post('http://localhost:4000/users/login', {
       username: loginInfo.username,
       password: loginInfo.password
     }).then((res) => {
-
       if (res.data.message === '로그인 성공') {
         handleResponseSuccess()
         history.push('/')
