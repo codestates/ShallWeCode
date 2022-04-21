@@ -1,34 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Filter from '../../component/filter/Filter';
 import Navbar from '../../component/navbar/Navbar';
-import SelectBtn from '../../component/selectBtn/SelectBtn';
-import Thumbnail from '../../component/thumbnail/Thumbnail';
 import { useLocation } from 'react-router';
 import "./MyPage.css"
-import axios from 'axios';
+import MyContents from '../../component/Mycontents/MyContents';
 
 function MyPage(props) {
 
   const location = useLocation()
-  const [ boardinfo, setBoardinfo ] = useState("")
-  const [ PRorTP, setPRorTP ] = useState("1")
   const { isLogin, handleLogout, userinfo } = props
-
-  const filterOfPRorTP = (PRorTP) => {
-    setPRorTP(PRorTP)
-  }
-
-  useEffect(() => {
-    axios.get('http://localhost:4000/board/user', { params: {PRorTP: PRorTP, userId: location.state.userinfo[0].id }})
-    .then((res) => {
-      // const { PRorTP, body, created_at, nickname, picture, stack, title, userId } = res.data.data
-      // data = { PRorTP, body, created_at, nickname, picture, stack, title, userId }
-      // setBoardinfo(res.data.data)
-      console.log('res',res)
-      setBoardinfo(res.data.data.data)
-    })
-
-  }, [location, PRorTP]);
 
   return (
     <div>
@@ -42,9 +21,7 @@ function MyPage(props) {
         <div></div>
       </div>
       }
-      <SelectBtn filterOfPRorTP={filterOfPRorTP}/>
-      {/* <Filter/> */}
-      <Thumbnail thumbnail={boardinfo}/>  
+      <MyContents/>
     </div>
   );
 }
