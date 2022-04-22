@@ -1,0 +1,110 @@
+.selectLanguage{
+  display: flex;
+  margin: auto;
+  
+}
+.writingSection{
+
+  /* background-color: silver; */
+  padding: 20px 80px 40px 80px;
+  text-align: left;
+  max-width: 1200px;
+  min-width: 480px;
+  margin: auto;
+}
+
+.basic-multi-select{
+  width: 90%;
+  margin-left: 35px;
+}
+
+/* 제목 */
+.writingTitle{
+  display: block;
+  width: 90%;
+  border: 1px solid #CBCBCB;
+  margin-left: 15px;
+  border-radius: 2.5px;
+}
+
+.categoryName{
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+.types {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  margin-left: 105px;
+}
+
+.type {
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+
+.typeBtn {
+  width: 20px;
+  transform: translate(-10%, -10%) 
+}
+
+.writingBtnDiv{
+  text-align: right;
+  padding: 20px;
+}
+
+.categorySelectLanguage{
+  text-align: center;
+  /* line-height: 70px; */
+  margin: 20px 0;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+
+}
+
+.writingTitleMainDiv{
+  display: flex;
+}
+
+.writingTitleDiv{
+  min-width: 90PX;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  margin: 24px 0 16px 0;
+}
+
+.writingCancelBtn{
+  margin-left: 20px;
+  background-color: #565656;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+.writingCancelBtn:hover{
+  cursor: pointer;
+}
+
+.saveBtn {
+  background-color: #298854;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+.saveBtn:hover{
+  cursor: pointer;
+}
+
+.writingErrMessage{
+  color: red;
+  margin-bottom: 20px;
+  font-weight: bold;
+}

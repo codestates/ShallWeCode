@@ -1,0 +1,110 @@
+
+.selectBtnBackgroundSize{
+  display: flex;
+  max-width: 1200px;
+  padding-left: 100px;
+  padding-right: 80px;
+  margin: auto;
+}
+
+.selectBtnSize{
+  flex-wrap: nowrap;
+  display: flex;
+}
+
+.selectBtn{
+  white-space:nowrap;
+  display: flex;
+  padding: 10px;
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #7c7c7c;
+}
+
+.selectBtn:hover{
+  color:black;
+}
+
+.filterBackgroundSize{
+  width: 100%;
+  background-color: #f7f7f7;
+  box-shadow: 5px 5px 15px rgb(218, 218, 218);
+}
+
+.filterImg{
+  display: flex;
+  justify-content: center;
+  padding: 35px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+
+.filterMiniBtn{
+  background-color: #FFFFFF;
+  border: 1px solid #CBCBCB ;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+}
+
+.filterMiniBtn:hover{
+  cursor: pointer;
+}
+
+.active { background-color: #298854; color: #fff; font-weight: bold;}
+
+
+.thumbnailSection{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  padding: 80px;
+  margin: auto;
+}
+
+.thumbnailBoxFlax{
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.thumbnailBox{
+  margin-bottom: 20px;
+  width: 240px;
+  height: 240px;
+  background-color: #FFFFFF;
+  margin-left: 18px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgb(218, 218, 218);
+}
+
+.thumbnailBoxTitle{
+  text-align: center;
+  padding-top: 30px ;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  height: 70px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.thumbnailBoxTag{
+  margin-top: 25px;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.thumbnailTagBtn{
+  background-color: #ffffff;
+  color: #298854;
+  font-weight: bold;
+  border: solid 1px #298854;
+  margin-top: 5px;
+  margin-left: 6px;
+}

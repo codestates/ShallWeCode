@@ -1,0 +1,105 @@
+.detailProfile{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detailTitle{
+  margin-bottom: 30px;
+  font-size: 45px;
+}
+
+.detailBtn{
+  text-align: right;
+}
+
+.detailStack{
+  display: flex;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.filterMiniBtn{
+  background-color: #FFFFFF;
+  border: 1px solid #CBCBCB ;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+}
+
+.detailFilterBtn{
+  margin-left: 15px;
+  border-radius: 10px;
+  background-color: #298854;
+  color:#FFFFFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+  border: 0;
+  outline: 0;
+}
+
+.postDelete{
+  border: none;
+  background-color: white;
+}
+
+.detailProfileImg{
+  display: flex;
+  align-items: center;
+}
+
+.detailName{
+  margin-left: 18px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.detailDate{
+  color: rgb(160, 160, 160);
+}
+
+.detailLanguageMargin{
+  margin-right: 18px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.detailComment{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.commentBox{
+  border: solid 1px  #CBCBCB;
+
+}
+
+.commentName{
+  margin-left: 10px;
+}
+
+.detailText{
+  padding: 60px 10px 100px 25px;
+}
+
+.commentInput{
+  width: 95%;
+  margin-left: 2.8%;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 400;
+}
+.commentBox input:focus {
+  border-radius: 4px;
+  outline:2px solid #8CD8AB ;}
+
+.commentBtn{
+  margin-top: 10px;
+  text-align: right;
+}
+
