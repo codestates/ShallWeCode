@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../../component/navbar/Navbar';
-import Profile from '../../component/profile/Profile';
-import "./Setting.css"
-import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
-import { components } from 'react-select';
-import { useLocation } from 'react-router';
+import Navbar from '../../component/navbar/Navbar'
+import Profile from '../../component/profile/Profile'
+import './Setting.css'
+import axios from 'axios'
+import { Link, useHistory } from 'react-router-dom'
+import { components } from 'react-select'
+import { useLocation } from 'react-router'
 import Swal from 'sweetalert2'
-import NewProfile from '../../component/newprofile/NewProfile';
+import NewProfile from '../../component/newprofile/NewProfile'
 
 
 
@@ -15,14 +15,14 @@ function Setting(props) {
 
   const location = useLocation()
   const { isLogin, handleLogout, userinfo } = props
-  const history = useHistory();
+  const history = useHistory()
 
-  const [nickname, setNickName] = useState('');
-  const [btnActive, setBtnActive] = useState(true);
-  const [passwordBtnActive, setPasswordBtnActive] = useState();
+  const [nickname, setNickName] = useState('')
+  const [btnActive, setBtnActive] = useState(true)
+  const [passwordBtnActive, setPasswordBtnActive] = useState()
 
-  const nicknameRegExp = /^[a-zA-Zㄱ-힣0-9]*$/;
-  const passwordRegExp = /^[A-Za-z0-9~!@#$%^&*()_+|<>?:{}+]{8,16}$/;
+  const nicknameRegExp = /^[a-zA-Zㄱ-힣0-9]*$/
+  const passwordRegExp = /^[A-Za-z0-9~!@#$%^&*()_+|<>?:{}+]{8,16}$/
 
   const [inuserinfo, setuserinfo] = useState({
     password: '',
@@ -51,7 +51,7 @@ function Setting(props) {
       setMessage({ ...message, nicknameMessage: '2~10자 한글, 영어 , 숫자만 사용 가능 합니다'})
       setValidation({ ...validation, nicknameValidation: true})
     }else{
-      axios.post("http://localhost:4000/users/verifyNickname" , {nickname : e.target.value})
+      axios.post(`${process.env.REACT_APP_API_URL}/users/verifyNickname` , {nickname : e.target.value})
       .then((res)=>{
         setMessage({ ...message, nicknameMessage: '이미 존재하는 닉네임입니다'})
         setValidation({ ...validation, nicknameValidation: true})
@@ -65,12 +65,11 @@ function Setting(props) {
       }) 
       
     }
-  };
-
+  }
 
   const settingNameOnClick = () => {
     if(message.nicknameMessage.length <= 0 ){
-      axios.patch("http://localhost:4000/users/nicknameEdit", {nickname: nickname})
+      axios.patch(`${process.env.REACT_APP_API_URL}/users/nicknameEdit`, {nickname: nickname})
       .then((res)=>{
         if(res.status===200){
           // Swal.fire({
@@ -84,7 +83,7 @@ function Setting(props) {
           //     rgba(0,0,0,0.4)
           //   `
           // })
-          window.location.replace("/Setting") 
+          window.location.replace('/Setting') 
         }
       }).catch((err)=>{
         console.log(err)
@@ -124,7 +123,7 @@ function Setting(props) {
     const passwordLength = inuserinfo.password
     const passwordCheckLength = inuserinfo.passwordCheckMessage
     if( passwordMessageLength <= 0 && passwordCheckMessageLength <= 0 && passwordLength !== ''  && passwordCheckLength !== '' ){
-      axios.patch("http://localhost:4000/users/passwordEdit", {password: inuserinfo.password})
+      axios.patch(`${process.env.REACT_APP_API_URL}/users/passwordEdit`, {password: inuserinfo.password})
       .then((res)=>{
         if(res.status===200){
           Swal.fire({
@@ -139,7 +138,8 @@ function Setting(props) {
             `
           })
         }
-      }).catch((err)=>{
+      })
+      .catch((err)=>{
         console.log(err)
       })
      
@@ -158,7 +158,7 @@ function Setting(props) {
       confirmButtonText: 'ok'
     }).then((result) => {
       if(result.isConfirmed){
-        axios.delete("http://localhost:4000/users/signout")
+        axios.delete(`${process.env.REACT_APP_API_URL}/users/signout`)
         .then((res)=>{
           if(res.status===200){
             // Swal.fire(
@@ -166,8 +166,8 @@ function Setting(props) {
             //   'Your file has been deleted.',
             //   'success'
             // )
-            window.location.replace("/") 
-            // history.push("/")
+            window.location.replace('/') 
+            // history.push('/')
           }
         }).catch((err)=>{
           console.log(err)
@@ -177,60 +177,59 @@ function Setting(props) {
   }
 
   const clickCancelBtn = () => {
-    history.push("/")
+    history.push('/')
   }
-
 
   return (
     <div>
       <Navbar isLogin={isLogin} handleLogout={handleLogout} userinfo={userinfo}/>
       <NewProfile userinfo={userinfo}/>
 
-      <div className="settingBox settingSection">
+      <div className='settingBox settingSection'>
         <form onSubmit={(e) => e.preventDefault()} >
-            <div className="largeSizeFont">기본정보</div>
-            <div className="settingLabel" >
+            <div className='largeSizeFont'>기본정보</div>
+            <div className='settingLabel' >
               <label>닉네임</label>
-              <input onChange={settingNameOnChange} className="settingInput" type='text' />
-              <button type="submit" disabled={btnActive} onClick={settingNameOnClick} className="nicknameBtn">닉네임 변경</button>
+              <input onChange={settingNameOnChange} className='settingInput' type='text' />
+              <button type='submit' disabled={btnActive} onClick={settingNameOnClick} className='nicknameBtn'>닉네임 변경</button>
             </div>
-            {nickname.length > 0 && validation.nicknameValidation ? <div><span className="settingErrMessage ">{message.nicknameMessage}</span></div> : null}
+            {nickname.length > 0 && validation.nicknameValidation ? <div><span className='settingErrMessage '>{message.nicknameMessage}</span></div> : null}
             
-            <div className="settingLabel settingId">
+            <div className='settingLabel settingId'>
               <div>아이디</div>
-              <div className="settingIdDiv">{!location.state.userinfo ? "" : location.state.userinfo[0].username}</div>
+              <div className='settingIdDiv'>{!location.state.userinfo ? '' : location.state.userinfo[0].username}</div>
             </div>
         </form>
       </div>
-      <div className="settingBox settingUnderBox settingSection">
+      <div className='settingBox settingUnderBox settingSection'>
       <form onSubmit={(e) => e.preventDefault()}>
-          <div className="settingLabel">
+          <div className='settingLabel'>
             <label>비밀번호 변경</label>
             <input 
               onChange={settingPasswordOnchange('password')} 
-              className="settingInput" 
+              className='settingInput' 
               type='password' />
-            <button type="submit" disabled={passwordBtnActive} onClick={settingPasswordOnClick} className="passwordBtn">비밀번호 변경</button>
+            <button type='submit' disabled={passwordBtnActive} onClick={settingPasswordOnClick} className='passwordBtn'>비밀번호 변경</button>
           </div>
-          {inuserinfo.password.length > 0 && validation.passwordValidation ? <div><span className="settingPassErr signUpErr">{message.passwordMessage}</span></div> : null}
+          {inuserinfo.password.length > 0 && validation.passwordValidation ? <div><span className='settingPassErr signUpErr'>{message.passwordMessage}</span></div> : null}
 
           
-          <div className="settingLabel">
+          <div className='settingLabel'>
             <label>비밀번호 확인</label>
             <input 
               onChange={settingPasswordOnchange('passwordCheck')} 
-              className="settingInput" 
+              className='settingInput' 
               type='password' />
           </div>
-          {inuserinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className="settingPassErr signUpErr">{message.passwordCheckMessage}</span></div> : null}
+          {inuserinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className='settingPassErr signUpErr'>{message.passwordCheckMessage}</span></div> : null}
         </form>
-        <div onClick={clickDropOut} className=" dropOut">회원탈퇴</div>
+        <div onClick={clickDropOut} className=' dropOut'>회원탈퇴</div>
       </div>
-      <div className="settingCancel section">
-        <button onClick={clickCancelBtn} className="miniBtn smallSizeFont cancelBtn">나가기</button>
+      <div className='settingCancel section'>
+        <button onClick={clickCancelBtn} className='miniBtn smallSizeFont cancelBtn'>나가기</button>
       </div>
     </div>
-  );
+  )
 }
 
-export default Setting;
+export default Setting
