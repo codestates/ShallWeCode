@@ -1,32 +1,52 @@
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 const express = require('express')
 const cors = require('cors')
 const controllers = require('./controllers')
-// const multer = require('multer')
 const path = require('path')
 const app = express()
 
+// app.all('*', (req, res, next) => {
+//   let protocol = req.headers['x-forwarded-proto'] || req.protocol;
+//   if (protocol === 'https') next()
+//   else {
+//     let from = `${protocol}://${req.hostname}${req.url}`;
+//     let to = `https://${req.hostname}${req.url}`;
+
+//     console.log(`[${req.method}]: ${from} -> ${to}`)
+//     res.redirect(to)
+//   };
+// });
+
+// const privateKey = fs.readFileSync('/etc/letsencrypt/live/www.shallwecode.kro.kr/privkey.pem', 'utf-8');
+// const certificate = fs.readFileSync('/etc/letsencrypt/live/www.shallwecode.kro.kr/cert.pem', 'utf-8');
+// const ca = fs.readFileSync('/etc/letsencrypt/live/www.shallwecode.kro.kr/chain.pem', 'utf-8');
+
+// const credentials = {
+//   key : privateKey,
+//   cert : certificate,
+//   ca : ca
+// };
+
+// const httpsServer = https.createServer(credentials, app);
+
+const httpServer = http.createServer(app);
+
 app.use(express.json())
-app.use(express.static('public'))
+// app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, '../client/build')))
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'http://www.shallwecode.kro.kr', 'https://www.shallwecode.kro.kr'],
     credentials: true,
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
-    // exposedHeaders: ['Authorization']
   })
 )
 
-// const storage = multer.diskStorage({
-//   destination: "../public/img/",
-//   filename: function (req, file, cb) {
-//     cb(null, "imgfile" + Date.now() + path.extname(file.originalname))
-//   }
-// })
-
-// const upload = multer({
-//   storage: storage, 
-//   limits: { fileSize: 1000000 }
-// })
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 app.get('/users/auth', controllers.auth)
 app.post('/users/signup', controllers.signup)
@@ -51,6 +71,14 @@ app.get('/comment/detail', controllers.commentDetail)
 app.patch('/comment/edit', controllers.commentEdit)
 app.delete('/comment/delete', controllers.commentDelete)
 
-app.listen(4000, (req, res) => {
-	console.log('서버 실행 중....')
-})
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+httpServer.listen(80, () => {
+  console.log(`HTTP Server running on port 80`)
+});
+
+// httpsServer.listen(443, () => {
+//   console.log('HTTPS Server running on port 443')
+// });
