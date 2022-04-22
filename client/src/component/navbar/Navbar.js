@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { useHistory } from 'react-router-dom'
-import LoginUser from '../loginUser/LoginUser';
-import "./Navbar.css"
+import LoginUser from '../loginUser/LoginUser'
+import './Navbar.css'
 import axios from 'axios'
 
 function Navbar(props) {
@@ -17,7 +17,7 @@ function Navbar(props) {
         pathname: '/writing',
       })
 
-      axios.get("http://localhost:4000/board/filter")
+      axios.get(`${process.env.REACT_APP_API_URL}/board/filter`)
       .then((res) => {
         if (res.status === 200) {
           history.push('/writing')
@@ -25,25 +25,25 @@ function Navbar(props) {
           history.push('/login')
         }
       }).catch((err) => {
-        console.log(err);
+        console.log(err)
       })
     }
   }
 
   return (
-    <nav className="headerNav">
-      <a href="/">
+    <nav className='headerNav'>
+      <a href='/'>
         <img
-          className="headerImg"
-          src="/images/logo2.png"/>
+          className='headerImg'
+          src='/images/logo2.png'/>
       </a>
 
       <div>
-        <button onClick={writingOnClick} className="btnNewPost">글 쓰기</button>
-        {isLogin ? <LoginUser userinfo={userinfo} handleLogout={handleLogout}/> : <button onClick={() => {history.push('/login')}} className="btnNewPost">로그인</button>}
+        <button onClick={writingOnClick} className='btnNewPost'>글 쓰기</button>
+        {isLogin ? <LoginUser userinfo={userinfo} handleLogout={handleLogout}/> : <button onClick={() => {history.push('/login')}} className='btnNewPost'>로그인</button>}
       </div>
     </nav>
   );
 }
 
-export default Navbar;
+export default Navbar

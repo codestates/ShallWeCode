@@ -18,7 +18,7 @@ function Main(props) {
       <Contents/>
       <Footer />
     </div>
-  );
+  )
 }
 
-export default Main;
+export default Main

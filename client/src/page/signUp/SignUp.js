@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import "./SignUp.css"
-import axios from 'axios';
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import './SignUp.css'
+import axios from 'axios'
 import Swal from 'sweetalert2'
 
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true
 
 
 function SignUp(props) {
@@ -29,11 +29,11 @@ function SignUp(props) {
     nicknameValidation: false,
     errorValidation: false
   })
-  const history = useHistory();
+  const history = useHistory()
 
-  const usernameRegExp = /^[A-Za-z0-9+]{4,12}$/; 
-  const passwordRegExp = /^[A-Za-z0-9~!@#$%^&*()_+|<>?:{}+]{8,16}$/;
-  const nicknameRegExp = /^[a-zA-Zㄱ-힣0-9]*$/;
+  const usernameRegExp = /^[A-Za-z0-9+]{4,12}$/ 
+  const passwordRegExp = /^[A-Za-z0-9~!@#$%^&*()_+|<>?:{}+]{8,16}$/
+  const nicknameRegExp = /^[a-zA-Zㄱ-힣0-9]*$/
 
   const handleInputValue = (key) => (e) => {
 
@@ -44,7 +44,7 @@ function SignUp(props) {
         setMessage({ ...message, idMessage: '4~12자의 영문 대 소문자, 숫자만 사용 가능합니다'})
         setValidation({ ...validation, idValidation: true})
       } else {
-        axios.post('http://localhost:4000/users/verifyUsername', {username : e.target.value})
+        axios.post(`${process.env.REACT_APP_API_URL}/users/verifyUsername`, {username : e.target.value})
         .then( (res) => {
           setMessage({ ...message, idMessage: '이미 존재하는 아이디입니다'})
           setValidation({ ...validation, idValidation: true})
@@ -52,7 +52,7 @@ function SignUp(props) {
             setValidation({ ...validation, idValidation: false})
           }
         }).catch( (err) => {
-          console.log(err);
+          console.log(err)
         })
       }
     }
@@ -80,7 +80,7 @@ function SignUp(props) {
         setMessage({ ...message, nicknameMessage: '2~10자 한글, 영어 , 숫자만 사용 가능 합니다'})
         setValidation({ ...validation, nicknameValidation: true})
       } else {
-        axios.post('http://localhost:4000/users/verifyNickname', {nickname : e.target.value})
+        axios.post(`${process.env.REACT_APP_API_URL}/users/verifyNickname`, {nickname : e.target.value})
         .then( (res) => {
           setMessage({ ...message, nicknameMessage: '이미 존재하는 닉네임입니다'})
           setValidation({ ...validation, nicknameValidation: true})
@@ -92,7 +92,7 @@ function SignUp(props) {
         }) 
       }
     }
-  };
+  }
 
   const handleSignup = () => {
 
@@ -102,13 +102,13 @@ function SignUp(props) {
       setMessage({ ...message, errorMessage: '모든 항목은 필수입니다'})
       setValidation({ ...validation, errorValidation: true})
     } else if (usernameRegExp.test(username) && passwordRegExp.test(password) && nicknameRegExp.test(nickname) && password === passwordCheck) {
-      axios.post('http://localhost:4000/users/verifyUsername', { username: username })
+      axios.post(`${process.env.REACT_APP_API_URL}/users/verifyUsername`, { username: username })
       .then( (res) => {
         if (res.data.data.data[0].count === 0) {
-          axios.post('http://localhost:4000/users/verifyNickname', { nickname: nickname })
+          axios.post(`${process.env.REACT_APP_API_URL}/users/verifyNickname`, { nickname: nickname })
           .then( (res) => {
             if (res.data.data.data[0].count === 0) {
-              axios.post('http://localhost:4000/users/signup', { username: username, password: password, nickname: nickname })
+              axios.post(`${process.env.REACT_APP_API_URL}/users/signup`, { username: username, password: password, nickname: nickname })
               .then( (res) => {
                 if (res.status === 201) {
                   Swal.fire({
@@ -122,7 +122,7 @@ function SignUp(props) {
                       rgba(0,0,0,0.4)
                     `
                   })
-                  history.push("/login")
+                  history.push('/login')
                 }
               }).catch( (err) => {
                 console.log(err)
@@ -136,54 +136,54 @@ function SignUp(props) {
         console.log(err)
       })
     }
-  };
+  }
 
   return (
     <div >
       <center>
-        <img className="signUpImg" src="/images/loginlogo1.png"/>
+        <img className='signUpImg' src='/images/loginlogo1.png'/>
         <form onSubmit={(e) => e.preventDefault()}>
           <div>
             <input 
-              className="logoutInput" 
+              className='logoutInput' 
               onChange={handleInputValue('username')} 
               type='text' 
-              placeholder="아이디"/>
-            {userinfo.username.length > 0 && validation.idValidation ? <div><span className="signUpErr">{message.idMessage}</span></div> : null}
+              placeholder='아이디'/>
+            {userinfo.username.length > 0 && validation.idValidation ? <div><span className='signUpErr'>{message.idMessage}</span></div> : null}
           </div>
           <div>
             <input 
-              className="logoutInput" 
+              className='logoutInput' 
               onChange={handleInputValue('password')} 
               type='password' 
-              placeholder="비밀번호"/>
-            {userinfo.password.length > 0 && validation.passwordValidation ? <div><span className="signUpErr">{message.passwordMessage}</span></div> : null}
+              placeholder='비밀번호'/>
+            {userinfo.password.length > 0 && validation.passwordValidation ? <div><span className='signUpErr'>{message.passwordMessage}</span></div> : null}
           </div>
           <div>
             <input 
-              className="logoutInput" 
+              className='logoutInput' 
               onChange={handleInputValue('passwordCheck')} 
               type='password' 
-              placeholder="비밀번호 확인"/>
-            {userinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className="signUpErr">{message.passwordCheckMessage}</span></div> : null}
+              placeholder='비밀번호 확인'/>
+            {userinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className='signUpErr'>{message.passwordCheckMessage}</span></div> : null}
           </div>
           <div>
             <input 
-              className="logoutInput signUpInput" 
+              className='logoutInput signUpInput' 
               onChange={handleInputValue('nickname')} 
               type='text' 
-              placeholder="닉네임"/>
-            {userinfo.nickname.length > 0 && validation.nicknameValidation ? <div><span className="signUpErr">{message.nicknameMessage}</span></div> : null}
+              placeholder='닉네임'/>
+            {userinfo.nickname.length > 0 && validation.nicknameValidation ? <div><span className='signUpErr'>{message.nicknameMessage}</span></div> : null}
           </div>
           <div>
-          {validation.errorValidation ? <div><span className="signUpErr">{message.errorMessage}</span></div> : null}
-          <button className="SignUpBigBtn" type='submit' onClick={handleSignup}>회원가입</button>
+          {validation.errorValidation ? <div><span className='signUpErr'>{message.errorMessage}</span></div> : null}
+          <button className='SignUpBigBtn' type='submit' onClick={handleSignup}>회원가입</button>
           </div>
           
         </form>
         </center>
     </div>
-  );
+  )
 }
 
-export default SignUp;
+export default SignUp
