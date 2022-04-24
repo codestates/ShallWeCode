@@ -58,7 +58,7 @@ return (
                 )
             } else{
               return (
-                thumbnail.map((data, i) => {
+                (thumbnail ?? []).map((data, i) => {
                   return (
                   <div key={i} className='thumbnailBox' onClick={() => boardClick(data.id)}>
                       <div className='thumbnailBoxTitle'>

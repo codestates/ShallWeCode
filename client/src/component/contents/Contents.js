@@ -30,6 +30,7 @@ function Contents() {
     axios.get(`${process.env.REACT_APP_API_URL}/board/filter`, { params: {stack: languageFilter.join(''), PRorTP }}, {withCredentials: true})
     .then((res) => {
       if (res.data.message === '필터에 맞는 게시물이 존재하지 않습니다') {
+        filteredThumbnail(null)
       }
       else if (res.status === 200) {
         filteredThumbnail(res.data.data.data)
@@ -111,22 +112,36 @@ function Contents() {
       </div>
       {/* 게시물 */}
       <div className='thumbnailSection'>
-                {!thumbnail ? <Loading/>
-                    : thumbnail.map((data, i) => {
-                        return (
-                        <div key={i} className='thumbnailBox' onClick={() => boardClick(data.id)}>
-                            <div className='thumbnailBoxTitle'>
-                                <div>{data.title}</div>
-                            </div>
-                            <div className='thumbnailBoxTag'>
-                            {data.stack.map((language,i) => {
-                            return <button key={i} className='thumbnailTagBtn miniBtn filterMiniBtn'>{language}</button>
-                            })}
-                            </div>
-                        </div>
-                        )
-                    })
-                }
+      {
+          (function ()  {
+            if(thumbnail === ''){
+              return (<Loading/>)
+            } else if (thumbnail === null){
+              return (
+                <div className='postNoneDiv'>
+                  <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z'/></svg>           
+                  <div className='postNone'>게시물이 없어요</div>
+                </div>
+                )
+            } else{
+              return (
+                (thumbnail ?? []).map((data, i) => {
+                  return (
+                  <div key={i} className='thumbnailBox' onClick={() => boardClick(data.id)}>
+                      <div className='thumbnailBoxTitle'>
+                          <div>{data.title}</div>
+                      </div>
+                      <div className='thumbnailBoxTag'>
+                      {data.stack.map((language,i) => {
+                      return <button key={i} className='thumbnailTagBtn miniBtn filterMiniBtn'>{language}</button>
+                      })}
+                      </div>
+                  </div>
+                  )
+              })
+            )}}
+          )()
+        }
         </div>
     </div>
   )
