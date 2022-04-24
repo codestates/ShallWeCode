@@ -1,12 +1,14 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './NewProfile.css'
 import Swal from 'sweetalert2'
 import { useHistory } from 'react-router'
+import { MyContext } from "../../App"
+
 
 function NewProfile(props) {
   const history = useHistory
-  const { userinfo } = props
+  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
   const [curImg, clickImg] = useState('/images/1.png')
 
   const handleProfileClick = (e) => {
@@ -25,19 +27,7 @@ function NewProfile(props) {
     .then((res)=>{
       console.log('res',res)
       if(res.status === 200){
-        // Swal.fire({
-        //   title: '이미지가 적용 되었습니다',
-        //   width: 600,
-        //   padding: '3em',
-        //   confirmButtonColor: '#298854',
-        //   color: 'black',
-        //   background: '#fff ',
-        //   backdrop: ` 
-        //     rgba(0,0,0,0.4)
-        //   `
-        // })
         window.location.replace('/Setting')
-        // history.push('/Setting')
       }
     }).catch((err)=>{
         console.log(err);

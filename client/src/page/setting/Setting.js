@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Navbar from '../../component/navbar/Navbar'
 import Profile from '../../component/profile/Profile'
 import './Setting.css'
@@ -8,13 +8,12 @@ import { components } from 'react-select'
 import { useLocation } from 'react-router'
 import Swal from 'sweetalert2'
 import NewProfile from '../../component/newprofile/NewProfile'
-
+import { MyContext } from '../../App'
 
 
 function Setting(props) {
-
+  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
   const location = useLocation()
-  const { isLogin, handleLogout, userinfo } = props
   const history = useHistory()
 
   const [nickname, setNickName] = useState('')
@@ -182,8 +181,8 @@ function Setting(props) {
 
   return (
     <div>
-      <Navbar isLogin={isLogin} handleLogout={handleLogout} userinfo={userinfo}/>
-      <NewProfile userinfo={userinfo}/>
+      <Navbar />
+      <NewProfile />
 
       <div className='settingBox settingSection'>
         <form onSubmit={(e) => e.preventDefault()} >

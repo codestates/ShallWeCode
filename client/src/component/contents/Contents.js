@@ -15,9 +15,11 @@ function Contents() {
   const [languageFilter, setLanguageFilter] = useState([])
 
   const loadingThumbnail = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/board/filter`)
+    axios.get(`${process.env.REACT_APP_API_URL}/board/filter`, {withCredentials: true})
     .then((res) => {
       setThumbnail(res.data.data.data)
+    }).catch((err)=>{
+      console.log(err)
     })
   }
   useEffect(() => {
@@ -25,9 +27,9 @@ function Contents() {
   }, [])
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/board/filter`, { params: {stack: languageFilter.join(''), PRorTP }}).then((res) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/board/filter`, { params: {stack: languageFilter.join(''), PRorTP }}, {withCredentials: true})
+    .then((res) => {
       if (res.data.message === '필터에 맞는 게시물이 존재하지 않습니다') {
-        console.log(res.data.message)
       }
       else if (res.status === 200) {
         filteredThumbnail(res.data.data.data)
@@ -85,7 +87,7 @@ function Contents() {
 }
 
   return (
-    <div>
+    <div className="contentWrapper">
       {/* 모집글 구분 버튼 */}
       <div className='selectBtnBackgroundSize'>
       <div className='selectBtnSize'>

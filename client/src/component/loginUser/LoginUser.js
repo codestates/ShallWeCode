@@ -1,8 +1,10 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useContext } from "react"
 import { useHistory } from 'react-router-dom'
 import './LoginUser.css'
+import { MyContext } from "../../App"
 
-function LoginUser({ userinfo, handleLogout }) {
+function LoginUser() {
+  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
 
   const history = useHistory()
   const dropdownRef = useRef(null)

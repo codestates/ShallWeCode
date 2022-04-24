@@ -1,4 +1,4 @@
-import React, { useState,Component, useRef, useEffect } from 'react'
+import React, { useState,Component, useRef, useEffect, useContext } from 'react'
 import Select from 'react-select'
 import Navbar from '../../component/navbar/Navbar'
 import './Writing.css'
@@ -9,12 +9,11 @@ import { useLocation } from 'react-router'
 import Swal from 'sweetalert2'
 import '@toast-ui/editor/dist/toastui-editor.css'
 import { Editor } from '@toast-ui/react-editor'
+import { MyContext } from '../../App'
 
 
 function Writing(props) {
-
   const location = useLocation()
-  const { isLogin, handleLogout, userinfo } = props
   const [type, setType] = useState('') // 글의 타입 지정, 클릭시 변경, 1번 2번으로 구분
   const [title, setTitle] = useState('') // 제목
   const [stack, setStack] = useState({languageList}) // 기본 스택 목록
@@ -85,7 +84,7 @@ function Writing(props) {
   return (
     
     <div>
-      <Navbar isLogin={isLogin} handleLogout={handleLogout} userinfo={userinfo}/>
+      <Navbar />
 
     <div className='writingSection'>
       {/* 프로젝트 포트폴리오 선택 */}
@@ -123,7 +122,7 @@ function Writing(props) {
         initialValue={
         `프로젝트 설명: \n프로젝트 진행 방식: \n모집 인원:`}
         previewStyle='vertical'
-        height='1000px'
+        height='800px'
         initialEditType='markdown'
         useCommandShortcut={true}
         ref={editorRef}

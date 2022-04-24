@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from "react"
 import { useHistory } from 'react-router-dom'
 import LoginUser from '../loginUser/LoginUser'
 import './Navbar.css'
 import axios from 'axios'
+import { MyContext } from '../../App'
+
 
 function Navbar(props) {
-
-  const { isLogin, userinfo, handleLogout } = props
+  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
   const history = useHistory()
 
   const writingOnClick = () => {

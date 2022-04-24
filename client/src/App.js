@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import logo from './logo.svg'
+import React, { useEffect, useState, createContext } from 'react'
 import './App.css'
 import { BrowserRouter, useHistory, Route, Switch, Link , useLocation} from 'react-router-dom'
-import LoginUser from './component/loginUser/LoginUser'
-import Navbar from './component/navbar/Navbar'
 import Main from './page/main/Main'
 import Login from './page/login/Login'
 import SignUp from './page/signUp/SignUp'
@@ -13,8 +10,10 @@ import Detail from './page/detail/Detail'
 import MyPage from './page/mypage/MyPage'
 import axios from 'axios'
 
-function App() {
+export const MyContext = createContext();
 
+
+function App() {
   const [isLogin, setIsLogin] = useState(false)
   const [userinfo, setUserinfo] = useState(null)
   const history = useHistory()
@@ -46,8 +45,9 @@ function App() {
 
   return (
     <BrowserRouter>
+      <MyContext.Provider value={{isLogin, userinfo, handleLogout}} >
         <Route exact path='/'>
-          <Main isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout} />
+          <Main />
         </Route>
         <Route path='/Login'>
           <Login handleResponseSuccess={handleResponseSuccess}/>
@@ -56,17 +56,18 @@ function App() {
           <SignUp />
         </Route>
         <Route path='/Setting'>
-          <Setting isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout}/>
+          <Setting />
         </Route>
         <Route path='/Writing'>
-          <Writing isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout}/>
+          <Writing />
         </Route>
         <Route path='/Detail'>
-          <Detail isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout}/>
+          <Detail />
         </Route>
         <Route path='/MyPage'>
-          <MyPage isLogin={isLogin} userinfo = {userinfo} handleLogout={handleLogout}/>
+          <MyPage />
         </Route>
+      </MyContext.Provider>
     </BrowserRouter>
   )
 }
