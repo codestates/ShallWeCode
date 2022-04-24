@@ -75,8 +75,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-httpServer.listen(80, () => {
-  console.log(`HTTP Server running on port 80`)
+httpServer.listen(4000, () => {
+  console.log(`HTTP Server running on port 4000`)
 });
 
 // httpsServer.listen(443, () => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../component/navbar/Navbar'
 import ReactMarkdown from 'react-markdown'
@@ -9,15 +9,14 @@ import CommentList from '../../component/commentList/CommentList'
 import axios from 'axios'
 import { useLocation } from 'react-router'
 import Swal from 'sweetalert2'
-
+import { MyContext } from '../../App'
 
 function Detail(props) {
-
+  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
   const history = useHistory()
+  const location = useLocation()
   const [ boardinfo, setBoardinfo ] = useState('')
   const [ comment, setComment ] = useState('')
-  const location = useLocation()
-  const { isLogin, handleLogout, userinfo } = props
   const [ loadUserinfo, setLoadUserinfo ] = useState([{id:'', picture:'', nickname:''}])
 
   const createComment = () => {
@@ -29,15 +28,11 @@ function Detail(props) {
       if (res.status === 201) {
       }
     })
-    window.location.replace('/Detail')
-    
-    // (location || window.location || document.location).reload()
+    window.location.replace('/Detail')    
   }
 
   const handleInputValue = (key) => (e) => {
-
     setComment({ ...comment, [key]: e.target.value })
-
   }
 
   const handleMyPage = () => {
@@ -49,21 +44,12 @@ function Detail(props) {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/board/detail`, { params: {contentId: location.state.contentId }})
     .then((res) => {
-      // const { PRorTP, body, created_at, nickname, picture, stack, title, userId } = res.data.data
-      // data = { PRorTP, body, created_at, nickname, picture, stack, title, userId }
       const changeDate = new Date(res.data.data.created_at) 
       res.data.data.created_at = changeDate.toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'})    
       setBoardinfo(res.data.data)
     })
-
   }, []);
 
-  // const editContent = () => {
-  //   history.push({
-  //     pathname: '/Writing',
-  //     state: {contentId: location.state.contentId}
-  //   })
-  // }
 
   const deleteContent = () => {
     Swal.fire({
@@ -80,7 +66,6 @@ function Detail(props) {
           if(res.status===200){
             Swal.fire({
               title: '삭제되었습니다',
-              // width: 600,
               padding: '3em',
               confirmButtonColor: '#298854',
               color: 'black',
@@ -106,7 +91,7 @@ function Detail(props) {
 
   return (
     <div>
-      <Navbar isLogin={isLogin} userinfo={userinfo} handleLogout={handleLogout}/>
+      <Navbar />
       { !boardinfo ? null
         :
       <div className='section'>
@@ -138,7 +123,7 @@ function Detail(props) {
           <Viewer initialValue={boardinfo.body} />
         </div> 
 
-        <CommentList contentId={location.state.contentId} userinfo={userinfo}/>
+        <CommentList contentId={location.state.contentId} />
         <h2>댓글</h2>
         <div className='commentBox'>
           <div className='detailComment'>

@@ -1,10 +1,11 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import "./CommentList.css"
+import { MyContext } from "../../App"
 
 function CommentList(props) {
-
-  const { contentId, userinfo } = props
+  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
+  const { contentId } = props
   const [ commentinfo, setCommentinfo ] = useState('')
   const [ edit ,setEdit ] = useState(false)
   const [ comment, setComment] = useState('')

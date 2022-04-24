@@ -8,15 +8,15 @@ import Navbar from '../../component/navbar/Navbar'
 import './Main.css'
 
 
-function Main(props) {
-  const { isLogin, handleLogout, userinfo} = props
-
+function Main() {
   return (
-    <div>
-      <Navbar isLogin={isLogin} userinfo={userinfo} handleLogout={handleLogout}/>
-      <Banner />
-      <Contents/>
-      <Footer />
+    <div className='wrapper'>
+      <div className='contentWrapper'>
+        <Navbar />
+        <Banner />
+        <Contents/>
+      </div>
+        <Footer />
     </div>
   )
 }

@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Navbar from '../../component/navbar/Navbar'
 import { useLocation } from 'react-router'
 import './MyPage.css'
 import MyContents from '../../component/Mycontents/MyContents'
+import { MyContext } from '../../App'
+
 
 function MyPage(props) {
-
+  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
   const location = useLocation()
-  const { isLogin, handleLogout, userinfo } = props
 
   return (
     <div>
-      <Navbar isLogin={isLogin} handleLogout={handleLogout} userinfo={userinfo}/>
+      <Navbar />
       {!location.state.userinfo[0].id ? <div>로딩 중...</div>
       : <div className='detailProfile section'>
         <div className='detailProfileImg '>
