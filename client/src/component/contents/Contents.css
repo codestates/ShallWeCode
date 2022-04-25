@@ -21,6 +21,7 @@
   font-size: 18px;
   font-weight: bold;
   color: #7c7c7c;
+  border-radius: 10px;
 }
 
 .selectBtn:hover{
@@ -56,7 +57,6 @@
 }
 
 .active { background-color: #298854; color: #fff; font-weight: bold;}
-
 
 .thumbnailSection{
   display: flex;
