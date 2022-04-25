@@ -1,18 +1,19 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+import React, { useState, useEffect, useContext } from 'react'
 import "./CommentList.css"
+import { MyContext } from "../../App"
 
 function CommentList(props) {
-
-  const { contentId, userinfo } = props
-  const [ commentinfo, setCommentinfo ] = useState("")
+  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
+  const { contentId } = props
+  const [ commentinfo, setCommentinfo ] = useState('')
   const [ edit ,setEdit ] = useState(false)
-  const [ comment, setComment] = useState("")
+  const [ comment, setComment] = useState('')
   const [ editId, setEditId ] = useState(null)
-  const [ getUserinfo, setGetUserinfo ] = useState([{id: "", username: "", picture: "", nickname: ""}])
+  const [ getUserinfo, setGetUserinfo ] = useState([{id: '', username: '', picture: '', nickname: ''}])
 
   const deleteComment = (e) => {
-    axios.delete('http://localhost:4000/comment/delete', {params: { commentId: e.target.value }})
+    axios.delete(`${process.env.REACT_APP_API_URL}/comment/delete`, {params: { commentId: e.target.value }})
     .then((res) => {
       window.location.replace('/Detail')
     })
@@ -34,7 +35,7 @@ function CommentList(props) {
 
   const editComment = (e) => {
     console.log(comment)
-    axios.patch('http://localhost:4000/comment/edit', {
+    axios.patch(`${process.env.REACT_APP_API_URL}/comment/edit`, {
       commentId: editId,
       body: comment
     })
@@ -49,7 +50,7 @@ function CommentList(props) {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:4000/comment/detail', { params: { contentId: contentId }})
+    axios.get(`${process.env.REACT_APP_API_URL}/comment/detail`, { params: { contentId: contentId }})
     .then((res) => {
       setCommentinfo(res.data.data.data)
     })
@@ -63,55 +64,38 @@ function CommentList(props) {
 
   return (
     <div >
-        <div className=" commentListBox">
+        <div className=' commentListBox'>
       {!commentinfo ? <div>댓글이 없습니다.</div>
       : commentinfo.map((data, i) => {
         return (
         <div key={i}>
-        <div className="thinLine"></div>
-        <div className="commentEditDelete">
-        <div className="detailComment">
-        <img src={data.picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
-              <div className="commentName">{data.nickname}</div>
+        <div className='thinLine'></div>
+        <div className='commentEditDelete'>
+        <div className='detailComment'>
+        <img src={data.picture} style={{'backgroundColor': '#F7F7F7', 'width':'40px', 'height' : '40px', 'border-radius': '50%'}} />
+              <div className='commentName'>{data.nickname}</div>
             </div>
             <div> {!(getUserinfo[0].nickname === data.nickname) ? <div></div>
-              : <div><button className="commentEditDeleteButton" onClick={handleCommentBox} value={data.id}>수정</button>
-              <button className="commentEditDeleteButton" value={data.id} onClick={deleteComment}>삭제</button></div>}
+              : <div><button className='commentEditDeleteButton' onClick={handleCommentBox} value={data.id}>수정</button>
+              <button className='commentEditDeleteButton' value={data.id} onClick={deleteComment}>삭제</button></div>}
             </div>
           </div>
-          { !(edit && Number(editId) === data.id) ? <div className="commentContent"><aside>{data.body}</aside></div>
-          : <div><div className="commentBox">
-          <input className="commentInput" type="text" onChange={handleInputValue('comment')}/>
+          { !(edit && Number(editId) === data.id) ? <div className='commentContent'><aside>{data.body}</aside></div>
+          : <div><div className='commentBox'>
+          <input className='commentInput' type='text' onChange={handleInputValue('comment')}/>
         </div> 
-        <div className="commentBtn">
-          <button className="miniBtn writingCancelBtn smallSizeFont" onClick={editComment}>입력</button>
+        <div className='commentBtn'>
+          <button className='miniBtn writingCancelBtn smallSizeFont' onClick={editComment}>입력</button>
         </div>
         </div>
-
-
-          // <div><input className="commentInput" type="text" value={data.body} onChange={handleInputValue('comment')}/>
-          //   <button className="miniBtn writingCancelBtn smallSizeFont" value={data.id} onClick={createComment}>입력</button></div>
         }
           </div>
         )
       })
-
       }
         </div>
     </div>
   );
 }
 
-export default CommentList;
-
-// <div className="commentBox">
-// <div className="detailComment">
-//   <img src={userinfo[0].picture} style={{"backgroundColor": "#F7F7F7", "width":"40px", "height" : "40px", "border-radius": "50%"}} />
-//   <div className="commentName">{userinfo[0].nickname}</div>
-// </div>
-// <input className="commentInput" type="text" placeholder="입력하세요!" onChange={handleInputValue('comment')}/>
-// </div> 
-// <div className="commentBtn">
-// <button className="miniBtn writingCancelBtn smallSizeFont" onClick={createComment}>입력</button>
-
-// </div>
+export default CommentList

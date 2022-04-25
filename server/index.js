@@ -76,7 +76,7 @@ app.get('*', (req, res) => {
 });
 
 httpServer.listen(80, () => {
-  console.log(`HTTP Server running on port 80`)
+  console.log(`HTTP Server running on port 4000`)
 });
 
 httpsServer.listen(443, () => {

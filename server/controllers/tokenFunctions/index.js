@@ -25,7 +25,7 @@ module.exports = {
     }
     try {
       return verify(token, process.env.ACCESS_SECRET)
-    } catch {
+    } catch (err) {
       return null
     }
   }
