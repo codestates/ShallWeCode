@@ -55,7 +55,7 @@ function Writing(props) {
     if(!type || !title || !content || !stack){
       setErrorMessage('모든 항목은 필수입니다')
     }else{
-      axios.post(`${process.env.REACT_APP_API_URL}board/writing`, data)
+      axios.post(`${process.env.REACT_APP_API_URL}/board/writing`, data)
       .then(res=> {
         Swal.fire({
           title: '글쓰기 성공',

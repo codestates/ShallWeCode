@@ -39,8 +39,8 @@ return (
     {/* 모집글 구분 버튼 */}
     <div className='selectBtnBackgroundSize'>
     <div className='selectBtnSize'>
-          <button className='selectBtn' value='1' onClick={filterBoard}>프로젝트 모집</button>
-          <button className='selectBtn' value='2' onClick={filterBoard}>포트폴리오</button>
+      <button className={PRorTP==='1' ? 'active selectBtn' : 'selectBtn'} value='1' onClick={filterBoard}>프로젝트 모집</button>
+      <button className={PRorTP==='2' ? 'active selectBtn' : 'selectBtn'} value='2' onClick={filterBoard}>포트폴리오</button>
     </div>
     </div>
     {/* 게시물 */}
