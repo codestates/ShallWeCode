@@ -1,13 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React from 'react'
 import Navbar from '../../component/navbar/Navbar'
 import { useLocation } from 'react-router'
 import './MyPage.css'
 import MyContents from '../../component/Mycontents/MyContents'
-import { MyContext } from '../../App'
 
 
 function MyPage(props) {
-  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
   const location = useLocation()
 
   return (

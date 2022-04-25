@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import Navbar from '../../component/navbar/Navbar'
-import ReactMarkdown from 'react-markdown'
 import './Detail.css'
 import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 import { Viewer } from '@toast-ui/react-editor'
@@ -12,7 +11,7 @@ import Swal from 'sweetalert2'
 import { MyContext } from '../../App'
 
 function Detail(props) {
-  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
+  const {  userinfo } = useContext(MyContext)
   const history = useHistory()
   const location = useLocation()
   const [ boardinfo, setBoardinfo ] = useState('')
