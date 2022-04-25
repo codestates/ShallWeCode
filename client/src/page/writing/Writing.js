@@ -1,24 +1,20 @@
-import React, { useState,Component, useRef, useEffect, useContext } from 'react'
+import React, { useState, useRef } from 'react'
 import Select from 'react-select'
 import Navbar from '../../component/navbar/Navbar'
 import './Writing.css'
 import languageList from './LanguageList'
 import axios from 'axios'
 import { useHistory } from 'react-router'
-import { useLocation } from 'react-router'
 import Swal from 'sweetalert2'
 import '@toast-ui/editor/dist/toastui-editor.css'
 import { Editor } from '@toast-ui/react-editor'
-import { MyContext } from '../../App'
 
 
 function Writing(props) {
-  const location = useLocation()
   const [type, setType] = useState('') // 글의 타입 지정, 클릭시 변경, 1번 2번으로 구분
   const [title, setTitle] = useState('') // 제목
   const [stack, setStack] = useState({languageList}) // 기본 스택 목록
   const [content, setContent] = useState('') // 에디터에 적혀진 글로 변경
-  const [editBoard, setEditBoard] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const history = useHistory()
 
@@ -59,7 +55,7 @@ function Writing(props) {
     if(!type || !title || !content || !stack){
       setErrorMessage('모든 항목은 필수입니다')
     }else{
-      axios.post('http://localhost:4000/board/writing', data)
+      axios.post(`${process.env.REACT_APP_API_URL}board/writing`, data)
       .then(res=> {
         Swal.fire({
           title: '글쓰기 성공',

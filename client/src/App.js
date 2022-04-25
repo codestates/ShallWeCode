@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createContext } from 'react'
 import './App.css'
-import { BrowserRouter, useHistory, Route, Switch, Link , useLocation} from 'react-router-dom'
+import { BrowserRouter, Route} from 'react-router-dom'
 import Main from './page/main/Main'
 import Login from './page/login/Login'
 import SignUp from './page/signUp/SignUp'
@@ -16,7 +16,6 @@ export const MyContext = createContext();
 function App() {
   const [isLogin, setIsLogin] = useState(false)
   const [userinfo, setUserinfo] = useState(null)
-  const history = useHistory()
 
   const isAuthenticated = () => {
     axios.get(`${process.env.REACT_APP_API_URL}/users/auth`, {withCredentials:true})

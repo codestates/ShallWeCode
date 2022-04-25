@@ -1,14 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState, useContext } from 'react'
 import './NewProfile.css'
-import Swal from 'sweetalert2'
-import { useHistory } from 'react-router'
 import { MyContext } from "../../App"
 
 
 function NewProfile(props) {
-  const history = useHistory
-  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
+  const { userinfo } = useContext(MyContext)
   const [curImg, clickImg] = useState('/images/1.png')
 
   const handleProfileClick = (e) => {

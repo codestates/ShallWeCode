@@ -1,4 +1,4 @@
-import React, { useState,Component, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useLocation } from 'react-router'
 import './MyContents.css'

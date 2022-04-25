@@ -1,18 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState } from 'react'
 import Navbar from '../../component/navbar/Navbar'
-import Profile from '../../component/profile/Profile'
 import './Setting.css'
 import axios from 'axios'
-import { Link, useHistory } from 'react-router-dom'
-import { components } from 'react-select'
+import { useHistory } from 'react-router-dom'
 import { useLocation } from 'react-router'
 import Swal from 'sweetalert2'
 import NewProfile from '../../component/newprofile/NewProfile'
-import { MyContext } from '../../App'
 
 
 function Setting(props) {
-  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
   const location = useLocation()
   const history = useHistory()
 

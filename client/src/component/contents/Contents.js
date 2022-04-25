@@ -1,4 +1,4 @@
-import React, { useState,Component, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Contents.css'
 import Loading from '../loading/Loading'
@@ -8,9 +8,6 @@ import axios from 'axios'
 function Contents() {
   const history = useHistory()
   const [thumbnail, setThumbnail] = useState(null)
-
-  const [category, setCategory] = useState('프로젝트 모집')
-
   const [ PRorTP, setPRorTP ] = useState('1')
   const [languageFilter, setLanguageFilter] = useState([])
 

@@ -4,7 +4,7 @@ import './LoginUser.css'
 import { MyContext } from "../../App"
 
 function LoginUser() {
-  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
+  const { userinfo, handleLogout } = useContext(MyContext)
 
   const history = useHistory()
   const dropdownRef = useRef(null)

@@ -4,7 +4,7 @@ import "./CommentList.css"
 import { MyContext } from "../../App"
 
 function CommentList(props) {
-  const { isLogin, userinfo, handleLogout } = useContext(MyContext)
+  const { userinfo } = useContext(MyContext)
   const { contentId } = props
   const [ commentinfo, setCommentinfo ] = useState('')
   const [ edit ,setEdit ] = useState(false)
