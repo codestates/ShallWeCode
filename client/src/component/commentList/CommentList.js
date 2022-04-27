@@ -41,7 +41,6 @@ function CommentList(props) {
     })
     .then((res) => {
       if (res.status === 201) {
-        alert('댓글 수정 완료')
       }
     })
     window.location.replace('/Detail')

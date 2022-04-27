@@ -11,34 +11,18 @@ function Contents() {
   const [ PRorTP, setPRorTP ] = useState('1')
   const [languageFilter, setLanguageFilter] = useState([])
 
-  const loadingThumbnail = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/board/filter`, {withCredentials: true})
-    .then((res) => {
-      setThumbnail(res.data.data.data)
-    }).catch((err)=>{
-      console.log(err)
-    })
-  }
-  useEffect(() => {
-    loadingThumbnail()
-  }, [])
-
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/board/filter`, { params: {stack: languageFilter.join(''), PRorTP }}, {withCredentials: true})
     .then((res) => {
       if (res.data.message === '필터에 맞는 게시물이 존재하지 않습니다') {
-        filteredThumbnail(null)
+        setThumbnail(null)
       }
       else if (res.status === 200) {
-        filteredThumbnail(res.data.data.data)
+        setThumbnail(res.data.data.data)
       }
     }).catch((err) => {
       console.log(err)
     })  }, [languageFilter, PRorTP])
-
-  const filteredThumbnail = (boards) => {
-    setThumbnail(boards)
-  }
 
   const languages = [
     { value: '01', label: 'JavaScript' },
