@@ -63,7 +63,7 @@ function Contents() {
 
   const boardClick = (contentId) => {
     history.push({
-        pathname: '/Detail',
+        pathname: `/Detail/${contentId}`,
         state: { contentId: contentId }
     })
 }
@@ -113,9 +113,14 @@ function Contents() {
                           <div>{data.title}</div>
                       </div>
                       <div className='thumbnailBoxTag'>
-                      {data.stack.map((language,i) => {
-                      return <button key={i} className='thumbnailTagBtn miniBtn filterMiniBtn'>{language}</button>
-                      })}
+                      {data.stack.length > 4 
+                      ? data.stack.slice(0,4).map((language,i) => {
+                        return <button key={i} className='thumbnailTagBtn miniBtn filterMiniBtn'>{language}</button>
+                        })
+                      : data.stack.map((language,i) => {
+                        return <button key={i} className='thumbnailTagBtn miniBtn filterMiniBtn'>{language}</button>
+                        })
+                      }
                       </div>
                   </div>
                   )

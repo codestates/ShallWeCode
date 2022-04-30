@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import Navbar from '../../component/navbar/Navbar'
 import './Detail.css'
 import '@toast-ui/editor/dist/toastui-editor-viewer.css'
@@ -10,7 +10,9 @@ import { useLocation } from 'react-router'
 import Swal from 'sweetalert2'
 import { MyContext } from '../../App'
 
+
 function Detail(props) {
+  let { detailId } = useParams()
   const {  userinfo } = useContext(MyContext)
   const history = useHistory()
   const location = useLocation()
@@ -27,7 +29,7 @@ function Detail(props) {
       if (res.status === 201) {
       }
     })
-    window.location.replace('/Detail')    
+    window.location.replace(`/Detail/${detailId}`)    
   }
 
   const handleInputValue = (key) => (e) => {
@@ -41,8 +43,11 @@ function Detail(props) {
   })  }
 
   useEffect(() => {
+    location.state.contentId = detailId
+
     axios.get(`${process.env.REACT_APP_API_URL}/board/detail`, { params: {contentId: location.state.contentId }})
     .then((res) => {
+      location.state.contentId = detailId
       const changeDate = new Date(res.data.data.created_at) 
       res.data.data.created_at = changeDate.toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'})    
       setBoardinfo(res.data.data)
@@ -57,7 +62,7 @@ function Detail(props) {
       showCancelButton: true,
       confirmButtonColor: '#298854',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'ok'
+      confirmButtonText: 'Ok'
     }).then((result) => {
       if(result.isConfirmed){
         axios.delete(`${process.env.REACT_APP_API_URL}/board/delete`, { params: {contentId: location.state.contentId}})
