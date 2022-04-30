@@ -15,12 +15,11 @@ function CommentList(props) {
   const deleteComment = (e) => {
     axios.delete(`${process.env.REACT_APP_API_URL}/comment/delete`, {params: { commentId: e.target.value }})
     .then((res) => {
-      window.location.replace('/Detail')
+      window.location.replace(`/Detail/${contentId}`)
     })
   }  
 
   const handleCommentBox = (e) => {
-    console.log(e.target)
     setEdit(!edit)
     if (!editId) {
       setEditId(e.target.value)
@@ -34,7 +33,6 @@ function CommentList(props) {
   }
 
   const editComment = (e) => {
-    console.log(comment)
     axios.patch(`${process.env.REACT_APP_API_URL}/comment/edit`, {
       commentId: editId,
       body: comment
@@ -43,9 +41,7 @@ function CommentList(props) {
       if (res.status === 201) {
       }
     })
-    window.location.replace('/Detail')
-    
-    // (location || window.location || document.location).reload()
+    window.location.replace(`/Detail/${contentId}`)
   }
 
   useEffect(() => {
@@ -60,6 +56,7 @@ function CommentList(props) {
       setGetUserinfo(userinfo)
     }
   }, [userinfo])
+
 
   return (
     <div >
@@ -81,7 +78,7 @@ function CommentList(props) {
           </div>
           { !(edit && Number(editId) === data.id) ? <div className='commentContent'><aside>{data.body}</aside></div>
           : <div><div className='commentBox'>
-          <input className='commentInput' type='text' onChange={handleInputValue('comment')}/>
+          <input className='commentInput' type='text' defaultValue={data.body} onChange={handleInputValue('comment')}/>
         </div> 
         <div className='commentBtn'>
           <button className='miniBtn writingCancelBtn smallSizeFont' onClick={editComment}>입력</button>

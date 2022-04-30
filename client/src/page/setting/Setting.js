@@ -132,6 +132,7 @@ function Setting(props) {
               rgba(0,0,0,0.4)
             `
           })
+          setuserinfo({ password: '', passwordCheck: '' })
         }
       })
       .catch((err)=>{
@@ -203,7 +204,9 @@ function Setting(props) {
             <input 
               onChange={settingPasswordOnchange('password')} 
               className='settingInput' 
-              type='password' />
+              type='password' 
+              value={inuserinfo.password||''}
+              />
             <button type='submit' disabled={passwordBtnActive} onClick={settingPasswordOnClick} className='passwordBtn'>비밀번호 변경</button>
           </div>
           {inuserinfo.password.length > 0 && validation.passwordValidation ? <div><span className='settingPassErr signUpErr'>{message.passwordMessage}</span></div> : null}
@@ -214,7 +217,9 @@ function Setting(props) {
             <input 
               onChange={settingPasswordOnchange('passwordCheck')} 
               className='settingInput' 
-              type='password' />
+              type='password' 
+              value={inuserinfo.passwordCheck||''}
+              />
           </div>
           {inuserinfo.passwordCheck.length > 0 && validation.passwordCheckValidation ? <div><span className='settingPassErr signUpErr'>{message.passwordCheckMessage}</span></div> : null}
         </form>

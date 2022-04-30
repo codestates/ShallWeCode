@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createContext } from 'react'
 import './App.css'
-import { BrowserRouter, Route} from 'react-router-dom'
+import { BrowserRouter, Route, useParams} from 'react-router-dom'
 import Main from './page/main/Main'
 import Login from './page/login/Login'
 import SignUp from './page/signUp/SignUp'
@@ -60,8 +60,8 @@ function App() {
         <Route path='/Writing'>
           <Writing />
         </Route>
-        <Route path='/Detail'>
-          <Detail />
+        <Route path='/Detail/:detailId' component={Detail}>
+          {/* <Detail /> */}
         </Route>
         <Route path='/MyPage'>
           <MyPage />
