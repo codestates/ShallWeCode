@@ -42,12 +42,14 @@ function Detail(props) {
       state: { userinfo: [{id: boardinfo.userId, nickname: boardinfo.nickname, picture: boardinfo.picture}] }
   })  }
 
-  useEffect(() => {
-    location.state.contentId = detailId
+  const current = decodeURI(window.location.href);
+  const search = current.split("/")[4];
 
-    axios.get(`${process.env.REACT_APP_API_URL}/board/detail`, { params: {contentId: location.state.contentId }})
+  useEffect(() => {
+    // location.state.contentId = detailId
+    axios.get(`${process.env.REACT_APP_API_URL}/board/detail/:${search}`, { params: {contentId: search }})
     .then((res) => {
-      location.state.contentId = detailId
+      detailId = search
       const changeDate = new Date(res.data.data.created_at) 
       res.data.data.created_at = changeDate.toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'})    
       setBoardinfo(res.data.data)
@@ -127,7 +129,7 @@ function Detail(props) {
           <Viewer initialValue={boardinfo.body} />
         </div> 
 
-        <CommentList contentId={location.state.contentId} />
+        <CommentList contentId={detailId} />
         <h2>댓글</h2>
         <div className='commentBox'>
           <div className='detailComment'>

@@ -60,7 +60,7 @@ app.patch('/users/passwordEdit', controllers.password)
 app.delete('/users/signout', controllers.signout)
 
 app.post('/board/writing', controllers.boardWriting)
-app.get('/board/detail', controllers.boardDetail)
+app.get('/board/detail/:contentId', controllers.boardDetail)
 app.patch('/board/edit', controllers.boardEdit)
 app.delete('/board/delete', controllers.boardDelete)
 app.get('/board/filter', controllers.boardFilter)
