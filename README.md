@@ -14,6 +14,12 @@
 
 ### 📌 배포링크 : https://www.shallwecode.kro.kr
 
+테스트 계정
+
+id: test / password: 12341234
+
+
+
 # 기술 스택 
 |분야|사용 기술|
 |------|---|
